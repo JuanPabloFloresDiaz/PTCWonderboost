@@ -1,14 +1,35 @@
 package com.example.ptcwonderboost;
 
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-
+import java.sql.Connection;
 public class Login extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        Button testConnectionButton = findViewById(R.id.testConnectionButton);
+        testConnectionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                testDatabaseConnection();
+            }
+        });
+    }
+
+    private void testDatabaseConnection() {
+        Connection connection = Conexion.getConnection(this);
+        if (connection != null) {
+            Toast.makeText(this, "Conexión exitosa", Toast.LENGTH_SHORT).show();
+            Conexion.closeConnection(connection);
+        } else {
+            Toast.makeText(this, "Error en la conexión", Toast.LENGTH_SHORT).show();
+        }
     }
 }
