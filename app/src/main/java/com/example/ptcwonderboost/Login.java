@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +18,36 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        EditText usernameEditText = findViewById(R.id.txtusuario);
+        EditText passwordEditText = findViewById(R.id.txtcontra);
+
+        Button loginButton = findViewById(R.id.btningresar);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+                String username = usernameEditText.getText().toString();
+                String password = passwordEditText.getText().toString();
+
+                Usuario usuario = new Usuario();
+                usuario.setUsuario(username);
+                usuario.setClave(password);
+
+                    if (usuario.Login()) {
+                        // Inicio de sesión correcto
+                        Toast.makeText(Login.this,"Credenciales correctas",Toast.LENGTH_SHORT).show();
+                    } else {
+                        // Inicio de sesión incorrecto
+                        Toast.makeText(Login.this,"Error credenciales incorrectas",Toast.LENGTH_SHORT).show();
+                    }
+
+                }catch (Exception ex){
+                    Toast.makeText(Login.this,"Error" + ex,Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         Button testConnectionButton = findViewById(R.id.testConnectionButton);
         testConnectionButton.setOnClickListener(new View.OnClickListener() {
             @Override
