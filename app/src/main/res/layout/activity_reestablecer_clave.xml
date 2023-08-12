@@ -48,13 +48,24 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btnreglogin"
+        android:id="@+id/btnConfirmarCorreo"
         android:layout_width="207dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="116dp"
-        android:text="Cacelar"
+        android:layout_marginBottom="136dp"
+        android:text="Verificar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnreglogin"
+        android:layout_width="176dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="56dp"
+        android:text="Cancelar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
