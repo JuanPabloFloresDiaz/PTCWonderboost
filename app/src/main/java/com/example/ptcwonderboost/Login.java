@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.security.spec.ECField;
 import java.sql.Connection;
 public class Login extends AppCompatActivity {
 
@@ -26,24 +27,18 @@ public class Login extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try{
-                String username = usernameEditText.getText().toString();
-                String password = passwordEditText.getText().toString();
-
                 Usuario usuario = new Usuario();
-                usuario.setUsuario(username);
-                usuario.setClave(password);
-
-                    if (usuario.Login()) {
-                        // Inicio de sesión correcto
-                        Toast.makeText(Login.this,"Credenciales correctas",Toast.LENGTH_SHORT).show();
-                    } else {
-                        // Inicio de sesión incorrecto
-                        Toast.makeText(Login.this,"Error credenciales incorrectas",Toast.LENGTH_SHORT).show();
+                try {
+                    usuario.setUsuario(usernameEditText.getText().toString());
+                    usuario.setClave(passwordEditText.getText().toString());
+                    int respuesta = usuario.Login(Login.this);
+                    if(respuesta == 1){
+                        Toast.makeText(Login.this, "Aviso credenciales correctas", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(Login.this, "Error credenciales incorrectas", Toast.LENGTH_SHORT).show();
                     }
-
-                }catch (Exception ex){
-                    Toast.makeText(Login.this,"Error" + ex,Toast.LENGTH_SHORT).show();
+                }catch (Exception e){
+                    Toast.makeText(Login.this, "Error con el login" + e, Toast.LENGTH_SHORT).show();
                 }
             }
         });

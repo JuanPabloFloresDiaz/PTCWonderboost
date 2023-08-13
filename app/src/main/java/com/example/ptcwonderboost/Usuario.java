@@ -3,6 +3,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Connection;
 
@@ -46,22 +47,26 @@ public class Usuario {
 
         }
     }
-
-    public boolean Login() {
-        Connection connection = Conexion.getConnection(null);
+    public int Login(Context context) {
+        Connection con = Conexion.getConnection(null);
+        int i = 0;
+        PreparedStatement ps;
         try {
-            String insertQuery = "SELECT Usuario, Clave FROM TbUsuarios  WHERE Usuario = ? AND Clave = ?";
-
             String claveEncriptada = e.encriptarContrasenaSHA256(clave);
-            PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
-            preparedStatement.setString(1, usuario);
-            preparedStatement.setString(2, claveEncriptada);
-            preparedStatement.executeQuery();
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
+
+            ps = con.prepareStatement("SELECT Usuario, Clave FROM TbUsuarios  WHERE Usuario = ? AND Clave = ?");
+            ps.setString(1, usuario);
+            ps.setString(2, claveEncriptada);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                i = 1;
+            } else {
+                i = 0;
+            }
+            return i;
+        } catch (Exception e) {
+            return 0;
         }
-        return false;
     }
 
     private static void showToast(Context context, String message) {
