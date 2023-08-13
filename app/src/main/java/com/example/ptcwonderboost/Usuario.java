@@ -11,6 +11,9 @@ public class Usuario {
 
     private String usuario;
     private String clave;
+    private int idTipoUsuario;
+    private int idEstadoUsuario;
+    private int id;
 
     public String getUsuario() {
         return usuario;
@@ -26,6 +29,30 @@ public class Usuario {
 
     public void setClave(String clave) {
         this.clave = clave;
+    }
+
+    public int getIdTipoUsuario() {
+        return idTipoUsuario;
+    }
+
+    public void setIdTipoUsuario(int idTipoUsuario) {
+        this.idTipoUsuario = idTipoUsuario;
+    }
+
+    public int getIdEstadoUsuario() {
+        return idEstadoUsuario;
+    }
+
+    public void setIdEstadoUsuario(int idEstadoUsuario) {
+        this.idEstadoUsuario = idEstadoUsuario;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     Encriptacion e = new Encriptacion();
@@ -54,12 +81,15 @@ public class Usuario {
         try {
             String claveEncriptada = e.encriptarContrasenaSHA256(clave);
 
-            ps = con.prepareStatement("SELECT Usuario, Clave FROM TbUsuarios  WHERE Usuario = ? AND Clave = ?");
+            ps = con.prepareStatement("SELECT idUsuarios, Usuario, Clave, idTipoUsuario, idEstadoUsuario FROM TbUsuarios  WHERE Usuario = ? AND Clave = ?");
             ps.setString(1, usuario);
             ps.setString(2, claveEncriptada);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 i = 1;
+                this.idTipoUsuario = rs.getInt("idTipoUsuario");
+                this.idEstadoUsuario = rs.getInt("idEstadoUsuario");
+                this.id = rs.getInt("idUsuarios");
             } else {
                 i = 0;
             }

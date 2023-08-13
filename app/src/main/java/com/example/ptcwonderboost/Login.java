@@ -9,9 +9,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.security.spec.ECField;
 import java.sql.Connection;
+
 public class Login extends AppCompatActivity {
 
 
@@ -34,6 +33,17 @@ public class Login extends AppCompatActivity {
                     int respuesta = usuario.Login(Login.this);
                     if(respuesta == 1){
                         Toast.makeText(Login.this, "Aviso credenciales correctas", Toast.LENGTH_SHORT).show();
+                        int idTipoUsuario = usuario.getIdTipoUsuario();
+                        int idEstadoUsuario = usuario.getIdEstadoUsuario();
+                        int idUsuario = usuario.getId();
+
+                        VariablesGlobales.idUsuario = idUsuario;
+                        VariablesGlobales.idTipoUsuario = idTipoUsuario;
+                        VariablesGlobales.idEstado = idEstadoUsuario;
+
+                        Toast.makeText(Login.this, "user:" + idUsuario, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, "tipo: " + idTipoUsuario, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, "estado: " + idEstadoUsuario, Toast.LENGTH_SHORT).show();
                     }else {
                         Toast.makeText(Login.this, "Error credenciales incorrectas", Toast.LENGTH_SHORT).show();
                     }
