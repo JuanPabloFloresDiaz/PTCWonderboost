@@ -17,6 +17,9 @@
         android:theme="@style/Theme.PTCWonderboost"
         tools:targetApi="31">
         <activity
+            android:name=".Agregar_Productos"
+            android:exported="false" />
+        <activity
             android:name=".RegistrarsePersona"
             android:exported="false" />
         <activity
