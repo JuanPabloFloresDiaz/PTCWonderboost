@@ -4,7 +4,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class Encriptacion {
-    //Metodo para encriptar contraseña con SHA-256
     public String encriptarContrasenaSHA256(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -18,5 +17,4 @@ public class Encriptacion {
             throw new RuntimeException(e);
         }
     }
-
 }

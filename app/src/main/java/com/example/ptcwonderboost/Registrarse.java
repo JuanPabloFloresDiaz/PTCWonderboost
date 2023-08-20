@@ -4,33 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-
+import android.widget.Toast;
 
 public class Registrarse extends AppCompatActivity {
 
-    private EditText etPass;
-    private EditText etUser;
+    private EditText UsuarioEditText, ClaveEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrarse);
-        etUser = (EditText) findViewById(R.id.txtusuarioR);
-        etPass=(EditText) findViewById(R.id.txtpass);
 
         Button Cancel = findViewById(R.id.btncancelar);
-        Button Regist = findViewById(R.id.btnregistrar);
         Cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -38,6 +28,37 @@ public class Registrarse extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
 
+        UsuarioEditText = findViewById(R.id.txtusuarioR);
+        ClaveEditText = findViewById(R.id.txtpass);
+        String validacion1 = UsuarioEditText.getText().toString().trim();
+        String validacion2 = ClaveEditText.getText().toString().trim();
+
+        Button Registrarse = findViewById(R.id.btnregistrar);
+        Registrarse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                if (TextUtils.isEmpty(validacion1)) {
+//                    Toast.makeText(Registrarse.this,"El campos de usuario esta vacio", Toast.LENGTH_SHORT);
+//                } else if (TextUtils.isEmpty(validacion2)) {
+//                    Toast.makeText(Registrarse.this,"El campos de clave esta vacio", Toast.LENGTH_SHORT);
+//                }else {
+                    try {
+                        Usuario user = new Usuario();
+                        String username = UsuarioEditText.getText().toString();
+                        String password = ClaveEditText.getText().toString();
+                        user.setUsuario(username);
+                        user.setClave(password);
+                        user.insertarUsuario(Registrarse.this);
+                        Toast.makeText(Registrarse.this, "Se han ingresado los datos", Toast.LENGTH_SHORT);
+                        Intent intent = new Intent(Registrarse.this, RegistrarsePersona.class);
+                        startActivity(intent);
+                    } catch (Exception e) {
+                        Toast.makeText(Registrarse.this, "Error: " + e, Toast.LENGTH_SHORT);
+                    }
+                }
+//            }
+        });
+
+    }
 }
