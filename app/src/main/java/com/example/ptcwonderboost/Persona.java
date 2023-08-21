@@ -27,6 +27,7 @@ public class Persona {
         // Inicializa los campos
     }
 
+
     public void insertarPersona() {
         String url = "jdbc:sqlserver://<servidor>:<>;databaseName=<bdPrototipoPTC>;user=<sa>;password=<itr2023 >";
 
