@@ -24,7 +24,43 @@ public class Servicio {
         // Inicializa los campos
     }
 
-    public ResultSet ingresarProductos() {
+    public Servicio() {
+
+    }
+    //Metodo spinner servicio
+    public ResultSet CargarCategoriasSer() {
+        PreparedStatement ps;
+        Connection con;
+        try {
+            con = Conexion.getConnection(null);
+            ps = con.prepareStatement("SELECT * FROM tbServicios");
+            ResultSet respuesta=ps.executeQuery();
+            return respuesta;
+        } catch (Exception e) {
+            return null;
+        }
+
+
+
+    }
+    // metodo spinner tipoPrecio
+    public ResultSet CargarTipoPrecioSer() {
+        PreparedStatement ps;
+        Connection con;
+        try {
+            con = Conexion.getConnection(null);
+            ps = con.prepareStatement("SELECT * FROM tbServicios");
+            ResultSet respuesta2=ps.executeQuery();
+            return respuesta2;
+        } catch (Exception e) {
+            return null;
+        }
+
+
+
+    }
+
+    public ResultSet ingresarServicios() {
 
         String url = "jdbc:sqlserver://<servidor>:<>;databaseName=<bdPrototipoPTC>;user=<sa>;password=<itr2023 >";
 
@@ -49,7 +85,7 @@ public class Servicio {
 
         return null;
     }
-    public void eliminarProductos() {
+    public void eliminarServicio() {
         String url1 = "jdbc:sqlserver://<servidor>:<>;databaseName=<bdPrototipoPTC>;user=<sa>;password=<itr2023 >";
 
         try (Connection connection = DriverManager.getConnection(url1)) {

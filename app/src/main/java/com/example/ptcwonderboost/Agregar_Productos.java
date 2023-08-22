@@ -110,7 +110,7 @@ public class Agregar_Productos extends AppCompatActivity {
                 // Crea el adaptador y asigna los datos al Spinner
                 ArrayAdapter<String> adapterN1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, datos);
                 adapterN1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                categorias.setAdapter(adapterN1);
+                TipoPrecios.setAdapter(adapterN1);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
