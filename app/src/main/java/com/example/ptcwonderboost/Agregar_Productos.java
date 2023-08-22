@@ -26,6 +26,10 @@ import java.util.List;
 public class Agregar_Productos extends AppCompatActivity {
 
     private Button btnSeleimg;
+    private Button agregarP;
+    private Button eleminarP;
+    private Button actualizarP;
+
 
     private ImageView imgProd;
 
@@ -39,11 +43,35 @@ public class Agregar_Productos extends AppCompatActivity {
         btnSeleimg = findViewById(R.id.btnSeleImg);
        imgProd = findViewById(R.id.imgProd);
 
+        agregarP = findViewById(R.id.btnAgregarP);
+        eleminarP = findViewById(R.id.btnEliminarP);
+        actualizarP = findViewById(R.id.btnActualizarP);
+        Producto productobtn = new Producto();
+
 
         btnSeleimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openImagePicker();
+            }
+        });
+
+        agregarP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                productobtn.ingresarProductos();
+            }
+        });
+        eleminarP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                productobtn.eliminarProductos();
+            }
+        });
+        actualizarP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                productobtn.actualizarDatos();
             }
         });
 
@@ -141,7 +169,7 @@ public class Agregar_Productos extends AppCompatActivity {
         });
 
 
-        //Spinner TipoPrecio
+        //Spinner EstadoProducto
         Producto producto2 =  new Producto();
         Spinner EstadoProd = findViewById(R.id.spinnerCategoriaP);
         ResultSet resultSet2 = producto1.ingresarProductos();
