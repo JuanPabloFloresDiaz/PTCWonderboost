@@ -17,6 +17,14 @@
         android:theme="@style/Theme.PTCWonderboost"
         tools:targetApi="31">
         <activity
+            android:name=".califi_opini"
+            android:exported="false" />
+        <activity
+            android:name=".calificacion_y_opiniones"
+            android:exported="false"
+            android:label="@string/title_activity_calificacion_yopiniones"
+            android:theme="@style/Theme.PTCWonderboost" />
+        <activity
             android:name=".Agregar_Productos"
             android:exported="false" />
         <activity
