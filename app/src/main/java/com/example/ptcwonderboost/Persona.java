@@ -1,7 +1,6 @@
 package com.example.ptcwonderboost;
 
 import java.sql.*;
-import java.util.Date;
 
 public class Persona {
     private int id;

@@ -40,6 +40,11 @@ public class Login extends AppCompatActivity {
                         VariablesGlobales.idUsuario = idUsuario;
                         VariablesGlobales.idTipoUsuario = idTipoUsuario;
                         VariablesGlobales.idEstado = idEstadoUsuario;
+                        usuario.setId(VariablesGlobales.idUsuario);
+                        int valor = usuario.ActualizarEstadoActivo();
+                        if(valor == 1){
+                            Toast.makeText(Login.this, "Se actualizo su estado a activo:" + idUsuario, Toast.LENGTH_SHORT).show();
+                        }
 
                         Toast.makeText(Login.this, "user:" + idUsuario, Toast.LENGTH_SHORT).show();
                         Toast.makeText(Login.this, "tipo: " + idTipoUsuario, Toast.LENGTH_SHORT).show();

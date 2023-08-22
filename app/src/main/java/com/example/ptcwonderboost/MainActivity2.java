@@ -22,7 +22,26 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        realizarAccionAntesDeCierre();
+//    }
+//
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        realizarAccionAntesDeCierre();
+//    }
+//
+//    private void realizarAccionAntesDeCierre() {
+//        Usuario usuario = new Usuario();
+//        usuario.setId(VariablesGlobales.idUsuario);
+//        int valor = usuario.ActualizarEstadoInactivo();
+//        if(valor == 1){
+//            Toast.makeText(MainActivity2.this, "Se actualizo su estado a inactivo:" + VariablesGlobales.idUsuario, Toast.LENGTH_SHORT).show();
+//        }
+//    }
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;

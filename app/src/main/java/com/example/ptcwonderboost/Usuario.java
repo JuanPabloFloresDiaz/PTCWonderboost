@@ -121,6 +121,56 @@ public class Usuario {
             return null;
         }
     }
+
+    public int ActualizarEstadoActivo(){
+        Connection con = null;
+        PreparedStatement ps;
+        try{
+            con = Conexion.getConnection(null);
+            String query = "UPDATE TbUsuarios SET idEstadoUsuario = 1 WHERE idUsuarios = ?";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.execute();
+            return 1;
+        }
+        catch(Exception e){
+            return 0;
+        }finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public int ActualizarEstadoInactivo(){
+        Connection con = null;
+        PreparedStatement ps;
+        try{
+            con = Conexion.getConnection(null);
+            String query = "UPDATE TbUsuarios SET idEstadoUsuario = 2 WHERE idUsuarios = ?";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.execute();
+            return 1;
+        }
+        catch(Exception e){
+
+            return 0;
+        }finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
     private static void showToast(Context context, String message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
