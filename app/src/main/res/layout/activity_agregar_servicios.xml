@@ -289,7 +289,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/btnAgregarP"
+                        android:id="@+id/btnAgregarSer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -298,7 +298,7 @@
                         android:text="Agregar" />
 
                     <Button
-                        android:id="@+id/btnEliminarP"
+                        android:id="@+id/btnEliminarSer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -307,7 +307,7 @@
                         android:text="Eliminar" />
 
                     <Button
-                        android:id="@+id/btnActualizarP"
+                        android:id="@+id/btnActualizarSer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
