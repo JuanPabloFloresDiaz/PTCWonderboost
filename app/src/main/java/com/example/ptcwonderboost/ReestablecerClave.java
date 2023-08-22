@@ -72,14 +72,14 @@ public class ReestablecerClave extends AppCompatActivity {
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
 
-        Session session = javax.mail.Session.getInstance(props,
+        /*Session session = javax.mail.Session.getInstance(props,
                 new Authenticator() {
                     protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
                         return new javax.mail.PasswordAuthentication(USERNAME, PASSWORD.toCharArray());
                     }
-                });
+                });/*
 
-        try {
+        /*try {
             javax.mail.Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(USERNAME));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
@@ -90,8 +90,12 @@ public class ReestablecerClave extends AppCompatActivity {
 
         } catch (MessagingException e) {
 
-        }
+        }*/
 
+
+
+
+        //hola
     }
     //Metodo para generar un codigo de verificación
     public static String generateVerificationCode() {
