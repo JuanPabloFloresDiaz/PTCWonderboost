@@ -4,12 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.sql.Connection;
+
 public class Login extends AppCompatActivity {
 
 
@@ -17,6 +18,41 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        EditText usernameEditText = findViewById(R.id.txtusuario);
+        EditText passwordEditText = findViewById(R.id.txtcontra);
+
+        Button loginButton = findViewById(R.id.btningresar);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Usuario usuario = new Usuario();
+                try {
+                    usuario.setUsuario(usernameEditText.getText().toString());
+                    usuario.setClave(passwordEditText.getText().toString());
+                    int respuesta = usuario.Login(Login.this);
+                    if(respuesta == 1){
+                        Toast.makeText(Login.this, "Aviso credenciales correctas", Toast.LENGTH_SHORT).show();
+                        int idTipoUsuario = usuario.getIdTipoUsuario();
+                        int idEstadoUsuario = usuario.getIdEstadoUsuario();
+                        int idUsuario = usuario.getId();
+
+                        VariablesGlobales.idUsuario = idUsuario;
+                        VariablesGlobales.idTipoUsuario = idTipoUsuario;
+                        VariablesGlobales.idEstado = idEstadoUsuario;
+
+                        Toast.makeText(Login.this, "user:" + idUsuario, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, "tipo: " + idTipoUsuario, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, "estado: " + idEstadoUsuario, Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(Login.this, "Error credenciales incorrectas", Toast.LENGTH_SHORT).show();
+                    }
+                }catch (Exception e){
+                    Toast.makeText(Login.this, "Error con el login" + e, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         Button testConnectionButton = findViewById(R.id.testConnectionButton);
         testConnectionButton.setOnClickListener(new View.OnClickListener() {
             @Override

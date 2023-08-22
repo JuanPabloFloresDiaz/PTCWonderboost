@@ -5,6 +5,8 @@ public class VariablesGlobales {
     public static int idPersona;
     public static int idRegistro;
     public static String usuario;
+    public static int idTipoUsuario;
+    public static int idEstado;
 
     public static int getIdUsuario() {
         return idUsuario;
@@ -36,5 +38,21 @@ public class VariablesGlobales {
 
     public static void setUsuario(String usuario) {
         VariablesGlobales.usuario = usuario;
+    }
+
+    public static int getIdTipoUsuario() {
+        return idTipoUsuario;
+    }
+
+    public static void setIdTipoUsuario(int idTipoUsuario) {
+        VariablesGlobales.idTipoUsuario = idTipoUsuario;
+    }
+
+    public static int getIdEstado() {
+        return idEstado;
+    }
+
+    public static void setIdEstado(int idEstado) {
+        VariablesGlobales.idEstado = idEstado;
     }
 }
