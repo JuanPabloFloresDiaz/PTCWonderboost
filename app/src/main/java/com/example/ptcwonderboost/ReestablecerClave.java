@@ -4,20 +4,27 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.content.Intent;
-import android.os.Bundle;
+import android.se.omapi.Session;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
+import java.net.PasswordAuthentication;
+import java.util.Properties;
+import java.util.Random;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
-import java.util.Random;
+import javax.mail.Authenticator;
+import javax.mail.MessagingException;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.mail.Message;
 
 public class ReestablecerClave extends AppCompatActivity {
 
@@ -29,6 +36,7 @@ public class ReestablecerClave extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reestablecer_clave);
         EditText textCorreo = findViewById(R.id.editTextTextEmailAddress3);
+
         //Acciones del boton enviar
         Button enviar = findViewById(R.id.btnConfirmarCorreo);
         enviar.setOnClickListener(new View.OnClickListener() {
@@ -53,12 +61,9 @@ public class ReestablecerClave extends AppCompatActivity {
             }
         });
     }
-    //Metodo para generar un codigo de verificación
-    public static String generateVerificationCode() {
-        Random random = new Random();
-        int code = 100000 + random.nextInt(900000);
-        return String.valueOf(code);
-    }
+
+
+
     //Envio de correos.
     public static void sendVerificationCode(String recipientEmail, String verificationCode) {
         Properties props = new Properties();
@@ -67,15 +72,15 @@ public class ReestablecerClave extends AppCompatActivity {
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
 
-        Session session = Session.getInstance(props,
-                new javax.mail.Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(USERNAME, PASSWORD);
+        Session session = javax.mail.Session.getInstance(props,
+                new Authenticator() {
+                    protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+                        return new javax.mail.PasswordAuthentication(USERNAME, PASSWORD.toCharArray());
                     }
                 });
 
         try {
-            Message message = new MimeMessage(session);
+            javax.mail.Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(USERNAME));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
             message.setSubject("Código de verificación");
@@ -86,5 +91,12 @@ public class ReestablecerClave extends AppCompatActivity {
         } catch (MessagingException e) {
 
         }
+
+    }
+    //Metodo para generar un codigo de verificación
+    public static String generateVerificationCode() {
+        Random random = new Random();
+        int code = 100000 + random.nextInt(900000);
+        return String.valueOf(code);
     }
 }
