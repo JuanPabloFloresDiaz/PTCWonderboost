@@ -1,15 +1,10 @@
 package com.example.ptcwonderboost;
 
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Producto {
     private int id;
@@ -29,8 +24,11 @@ public class Producto {
     private int TipoPrecio;
     private int idPersonas;
 
+    public Producto() {
 
+    }
 
+ //Metodo spinner categorias
     public ResultSet CargarCategorias() {
         PreparedStatement ps;
         Connection con;
@@ -47,12 +45,46 @@ public class Producto {
 
     }
 
-    private Producto(String nombreProd, float precioProd, String descripcionProd, int cantidadProd, float gastoProduccion, int idcategoria, int EstadoProducto, int  TipoPrecio, int idPersonas){
+    // metodo spinner tipoPrecio
+    public ResultSet CargarTipoPrecio() {
+        PreparedStatement ps;
+        Connection con;
+        try {
+            con = Conexion.getConnection(null);
+            ps = con.prepareStatement("SELECT * FROM tbTiposPrecio");
+            ResultSet respuesta1=ps.executeQuery();
+            return respuesta1;
+        } catch (Exception e) {
+            return null;
+        }
+
+
+
+    }
+
+        //Metodo spinner EstadoProd
+    public ResultSet CargarEstadoProd() {
+        PreparedStatement ps;
+        Connection con;
+        try {
+            con = Conexion.getConnection(null);
+            ps = con.prepareStatement("SELECT * FROM tbEstadosProductos");
+            ResultSet respuesta2=ps.executeQuery();
+            return respuesta2;
+        } catch (Exception e) {
+            return null;
+        }
+
+
+
+    }
+
+        public Producto(String nombreProd, float precioProd, String descripcionProd, int cantidadProd, float gastoProduccion, int idcategoria, int EstadoProducto, int TipoPrecio, int idPersonas){
         // Inicializa los campos
     }
 
 
-            public void ingresarProductos() {
+            public ResultSet ingresarProductos() {
 
                 String url = "jdbc:sqlserver://<servidor>:<>;databaseName=<bdPrototipoPTC>;user=<sa>;password=<itr2023 >";
 
@@ -78,7 +110,7 @@ public class Producto {
                 }
 
 
-
+                return null;
             }
     public void eliminarProductos() {
         String url1 = "jdbc:sqlserver://<servidor>:<>;databaseName=<bdPrototipoPTC>;user=<sa>;password=<itr2023 >";
@@ -130,6 +162,9 @@ public class Producto {
             e.printStackTrace();
 
         }
+
+
+
 
     }
 }

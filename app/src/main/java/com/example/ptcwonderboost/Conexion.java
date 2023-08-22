@@ -13,6 +13,12 @@ public class Conexion {
     private static final String USERNAME = "sa";
     private static final String PASSWORD = "jupadi";
 
+    /*private static final String IP = "192.168.42.117:49862";
+    private static final String DATABASE_NAME = "bdPrototipoPTC";
+    private static final String USERNAME = "sa";
+    private static final String PASSWORD = "jupadi";*/
+
+
     public static Connection getConnection(Context context){
         Connection con = null;
         try{
