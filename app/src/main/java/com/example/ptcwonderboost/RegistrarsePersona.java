@@ -22,7 +22,7 @@ public class RegistrarsePersona extends AppCompatActivity {
     private Button selectImageButton;
     private ImageView imageView;
 
-    protected static final int REQUEST_CODE_IMAGE = 101;
+    private static final int REQUEST_CODE_IMAGE = 101;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

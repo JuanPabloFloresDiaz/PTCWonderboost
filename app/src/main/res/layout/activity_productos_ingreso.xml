@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProductosIngreso">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="413dp"
+        android:layout_height="579dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:text="Agregar imagen del producto"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+
+            <!-- ScrollView horizontal (dentro del ScrollView original) -->
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnSeleImg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingStart="5dp"
+                        android:paddingLeft="24dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="5dp"
+                        android:paddingRight="24dp"
+                        android:paddingBottom="5dp"
+                        android:text="Seleccionar imagen" />
+
+                    <ImageView
+                        android:id="@+id/imgProd"
+                        android:layout_width="139dp"
+                        android:layout_height="151dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/productos1" />
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+
+            <!-- ScrollView horizontal (dentro del ScrollView original) -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="82dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/nombreP"
+                        android:layout_width="match_parent"
+                        android:layout_height="53dp"
+                        android:text="Nombre: "
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/txtNombreP"
+                        android:layout_width="279dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="348dp"
+                        android:background="@drawable/bordett"
+                        android:ems="10"
+                        android:hint="Nombre"
+                        android:inputType="textPersonName"
+                        android:paddingStart="5dp"
+                        android:textColor="@color/design_default_color_primary_dark"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"  />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+
+            <!-- ScrollView horizontal (dentro del ScrollView original) -->
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="82dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/precioP"
+                        android:layout_width="match_parent"
+                        android:layout_height="53dp"
+                        android:text="Precio: "
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/txtPrecioP"
+                        android:layout_width="279dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="348dp"
+                        android:background="@drawable/bordett"
+                        android:ems="10"
+                        android:hint="Precio"
+                        android:inputType="textPersonName"
+                        android:paddingStart="5dp"
+                        android:textColor="@color/design_default_color_primary_dark"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+
+            <!-- ScrollView horizontal (dentro del ScrollView original) -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="82dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/TipoPrecioP"
+                        android:layout_width="match_parent"
+                        android:layout_height="53dp"
+                        android:text="Tipo de precio: "
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/spinnerTipoPrecioP"
+                        android:layout_width="279dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="348dp"
+                        android:background="@drawable/bordett"
+                        android:paddingStart="5dp"
+                        android:textColor="@color/design_default_color_primary_dark"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- ScrollView horizontal (dentro del ScrollView original) -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="82dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/descripcionP"
+                        android:layout_width="match_parent"
+                        android:layout_height="53dp"
+                        android:text="Descripción: "
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/txtDescripcionP"
+                        android:layout_width="279dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="348dp"
+                        android:background="@drawable/bordett"
+                        android:ems="10"
+                        android:hint="Descripción Producto"
+                        android:inputType="textPersonName"
+                        android:paddingStart="5dp"
+                        android:textColor="@color/design_default_color_primary_dark"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+
+            <!-- ScrollView horizontal (dentro del ScrollView original) -->
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="82dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/cantidadP"
+                        android:layout_width="match_parent"
+                        android:layout_height="53dp"
+                        android:text="Cantidad: "
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/txtCantidadP"
+                        android:layout_width="279dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="348dp"
+                        android:background="@drawable/bordett"
+                        android:ems="10"
+                        android:hint="Cantidad Producto"
+                        android:inputType="textPersonName"
+                        android:paddingStart="5dp"
+                        android:textColor="@color/design_default_color_primary_dark"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+
+            <!-- ScrollView horizontal (dentro del ScrollView original) -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="82dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/GastoProdP"
+                        android:layout_width="match_parent"
+                        android:layout_height="53dp"
+                        android:text="Gasto producción:"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/txtGastoProdP"
+                        android:layout_width="279dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="348dp"
+                        android:background="@drawable/bordett"
+                        android:ems="10"
+                        android:hint="Gasto de producción"
+                        android:inputType="textPersonName"
+                        android:paddingStart="5dp"
+                        android:textColor="@color/design_default_color_primary_dark"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+
+            <!-- ScrollView horizontal (dentro del ScrollView original) -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="82dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/CategoriaP"
+                        android:layout_width="match_parent"
+                        android:layout_height="53dp"
+                        android:text="Categoria: "
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+
+                    <Spinner
+                        android:id="@+id/spinnerCategoriaP"
+                        android:layout_width="279dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="348dp"
+                        android:background="@drawable/bordett"
+                        android:paddingStart="5dp"
+                        android:textColor="@color/design_default_color_primary_dark"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+
+            <!-- ScrollView horizontal (dentro del ScrollView original) -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="82dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/EstadoP"
+                        android:layout_width="match_parent"
+                        android:layout_height="53dp"
+                        android:text="Estado: "
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/spinnerEstadpP"
+                        android:layout_width="279dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="348dp"
+                        android:background="@drawable/bordett"
+                        android:paddingStart="5dp"
+                        android:textColor="@color/design_default_color_primary_dark"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+
+            <!-- ScrollView horizontal (dentro del ScrollView original) -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="82dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnAgregarP"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="50dp"
+                        android:layout_weight="1"
+                        android:text="Agregar" />
+
+                    <Button
+                        android:id="@+id/btnEliminarP"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:layout_weight="1"
+                        android:text="Eliminar" />
+
+                    <Button
+                        android:id="@+id/btnActualizarP"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:layout_weight="1"
+                        android:text="Actualizar" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="413dp"
+        android:layout_height="152dp"
+        android:src="@drawable/img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Agregar productos"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

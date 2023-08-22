@@ -14,6 +14,8 @@ public class Usuario {
     private int idTipoUsuario;
     private int idEstadoUsuario;
     private int id;
+    private int pin;
+
 
     public String getUsuario() {
         return usuario;
@@ -55,23 +57,31 @@ public class Usuario {
         this.id = id;
     }
 
+    public int getPin() {
+        return pin;
+    }
+
+    public void setPin(int pin) {
+        this.pin = pin;
+    }
+
     Encriptacion e = new Encriptacion();
 
-    public void insertarUsuario(Context context) {
+    public int insertarUsuario(Context context) {
         Connection connection = Conexion.getConnection(null);
         try{
-            String insertQuery = "INSERT INTO TbUsuarios(Usuario, Clave, idTipoUsuario, idEstadoUsuario) VALUES (?,?,3,2)";
+            String insertQuery = "INSERT INTO TbUsuarios(Usuario, Clave, Ping, idTipoUsuario, idEstadoUsuario) VALUES (?,?,?,3,2)";
 
             String claveEncriptada = e.encriptarContrasenaSHA256(clave);
             PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
             preparedStatement.setString(1, usuario);
             preparedStatement.setString(2, claveEncriptada);
+            preparedStatement.setInt(3,pin);
             preparedStatement.executeUpdate();
-
-            preparedStatement.close();
+            return 1;
         } catch (SQLException e) {
             showToast(context,e.toString());
-
+            return 0;
         }
     }
     public int Login(Context context) {
@@ -96,6 +106,68 @@ public class Usuario {
             return i;
         } catch (Exception e) {
             return 0;
+        }
+    }
+    public ResultSet CapturarID(){
+        Connection con = Conexion.getConnection(null);
+        PreparedStatement ps;
+        String query = "SELECT idUsuarios FROM TbUsuarios WHERE Usuario = ?;";
+        try {
+            ps = con.prepareStatement(query);
+            ps.setString(1, usuario);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public int ActualizarEstadoActivo(){
+        Connection con = null;
+        PreparedStatement ps;
+        try{
+            con = Conexion.getConnection(null);
+            String query = "UPDATE TbUsuarios SET idEstadoUsuario = 1 WHERE idUsuarios = ?";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.execute();
+            return 1;
+        }
+        catch(Exception e){
+            return 0;
+        }finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public int ActualizarEstadoInactivo(){
+        Connection con = null;
+        PreparedStatement ps;
+        try{
+            con = Conexion.getConnection(null);
+            String query = "UPDATE TbUsuarios SET idEstadoUsuario = 2 WHERE idUsuarios = ?";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.execute();
+            return 1;
+        }
+        catch(Exception e){
+
+            return 0;
+        }finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
