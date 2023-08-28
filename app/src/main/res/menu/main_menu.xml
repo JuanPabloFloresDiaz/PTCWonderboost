@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/baseline_home_24"
+            android:title="Sección principal" />
+    </group>
+    <item android:title="Productos">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_login"
+                    android:icon="@drawable/baseline_inventory_24"
+                    android:title="Inventario" />
+                <item
+                    android:id="@+id/nav_profile"
+                    android:icon="@drawable/baseline_collections_bookmark_24"
+                    android:title="Catálogos" />
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/baseline_add_shopping_cart_24"
+                    android:title="Ingrese productos" />
+                <item
+                    android:id="@+id/nav_logout2"
+                    android:icon="@drawable/baseline_settings_suggest_24"
+                    android:title="Productos y servicios" />
+            </group>
+        </menu>
+    </item>
+    <item android:title="Gestión">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/baseline_playlist_add_24"
+                android:title="Pedidos" />
+            <item
+                android:id="@+id/nav_rate"
+                android:icon="@drawable/baseline_supervised_user_circle_24"
+                android:title="Clientes frecuentes" />
+            <item
+                android:id="@+id/nav_rate1"
+                android:icon="@drawable/baseline_local_shipping_24"
+                android:title="Envios" />
+            <item
+                android:id="@+id/nav_rate2"
+                android:icon="@drawable/baseline_calendar_today_24"
+                android:title="Calendario" />
+
+        </menu>
+    </item>
+    <item android:title="Compras">
+        <menu>
+            <item
+                android:id="@+id/nav_share3"
+                android:icon="@drawable/baseline_swap_horizontal_circle_24"
+                android:title="Negociaciones" />
+            <item
+                android:id="@+id/nav_rate4"
+                android:icon="@drawable/baseline_shopping_cart_24"
+                android:title="Carrito de compras" />
+        </menu>
+    </item>
+    <item android:title="Ajustes">
+        <menu>
+            <item
+                android:id="@+id/nav_config"
+                android:icon="@drawable/baseline_settings_24"
+                android:title="Configuracion" />
+            <item
+                android:id="@+id/nav_perfil"
+                android:icon="@drawable/baseline_profile"
+                android:title="Perfil de usuario" />
+        </menu>
+    </item>
+</menu>

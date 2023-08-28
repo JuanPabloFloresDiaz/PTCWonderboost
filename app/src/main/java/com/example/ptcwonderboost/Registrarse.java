@@ -11,10 +11,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.ResultSet;
+import java.util.Random;
+
 public class Registrarse extends AppCompatActivity {
 
     private EditText UsuarioEditText, ClaveEditText;
 
+    private static String generarPing(){
+        Random random = new Random();
+        int verificationCode = 1000 + random.nextInt(9000); // Genera un número de 4 dígitos
+        return String.valueOf(verificationCode);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,26 +46,37 @@ public class Registrarse extends AppCompatActivity {
         Registrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if (TextUtils.isEmpty(validacion1)) {
-//                    Toast.makeText(Registrarse.this,"El campos de usuario esta vacio", Toast.LENGTH_SHORT);
-//                } else if (TextUtils.isEmpty(validacion2)) {
-//                    Toast.makeText(Registrarse.this,"El campos de clave esta vacio", Toast.LENGTH_SHORT);
-//                }else {
                     try {
                         Usuario user = new Usuario();
                         String username = UsuarioEditText.getText().toString();
                         String password = ClaveEditText.getText().toString();
+                        String codigoPin = generarPing();
                         user.setUsuario(username);
                         user.setClave(password);
-                        user.insertarUsuario(Registrarse.this);
-                        Toast.makeText(Registrarse.this, "Se han ingresado los datos", Toast.LENGTH_SHORT);
-                        Intent intent = new Intent(Registrarse.this, RegistrarsePersona.class);
-                        startActivity(intent);
+                        user.setPin(Integer.parseInt(codigoPin));
+                        int valor = user.insertarUsuario(Registrarse.this);
+                        if(valor == 1){
+                            Toast.makeText(Registrarse.this, "Se han ingresado los datos", Toast.LENGTH_SHORT);
+                            ResultSet rs = user.CapturarID();
+                            try{
+                                while(rs.next()){
+                                    VariablesGlobales.idRegistro = rs.getInt("idUsuarios");
+                                }
+                                Toast.makeText(Registrarse.this, "id: " + VariablesGlobales.idRegistro, Toast.LENGTH_SHORT);
+                            }catch(Exception ex){
+                                Toast.makeText(Registrarse.this, "Error: " + ex, Toast.LENGTH_SHORT);
+                            }
+                            Intent intent = new Intent(Registrarse.this, RegistrarsePersona.class);
+                            startActivity(intent);
+                        }
+                        else if(valor == 0){
+                            Toast.makeText(Registrarse.this, "Ha ocurrido un error inesperado ", Toast.LENGTH_SHORT);
+                        }
                     } catch (Exception e) {
                         Toast.makeText(Registrarse.this, "Error: " + e, Toast.LENGTH_SHORT);
                     }
                 }
-//            }
+
         });
 
     }
