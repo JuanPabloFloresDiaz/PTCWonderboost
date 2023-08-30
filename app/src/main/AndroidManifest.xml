@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -18,43 +17,10 @@
         android:theme="@style/Theme.PTCWonderboost"
         tools:targetApi="31">
         <activity
-            android:name=".configuracion"
-            android:label="configuracion" />
+            android:name=".monitoreo_Usuarios"
+            android:exported="false" />
         <activity
-            android:name=".perfil_de_usuario"
-            android:label="perfil_de_usuario" />
-        <activity
-            android:name=".InventarioActivity"
-            android:label="Inventario" />
-        <activity
-            android:name=".Catalogo"
-            android:label="Catalogo" />
-        <activity
-            android:name=".ProductosIngreso"
-            android:label="Ingreso de productos" />
-        <activity
-            android:name=".ProductosServicios"
-            android:label="Productos y servicios" />
-        <activity
-            android:name=".Pedidos"
-            android:label="Pedidos" />
-        <activity
-            android:name=".ClientesFrecuentes"
-            android:label="Clientes frecuentes" />
-        <activity
-            android:name=".Envios"
-            android:label="Envio" />
-        <activity
-            android:name=".Calendario"
-            android:label="Calendario" />
-        <activity
-            android:name=".Necociaciones"
-            android:label="Negociaciones" />
-        <activity
-            android:name=".CarritoCompras"
-            android:label="Carrito" />
-        <activity
-            android:name=".MainActivity2"
+            android:name=".Monitoreo_Envios"
             android:exported="false" />
         <activity
             android:name=".RegistrarsePersona"
