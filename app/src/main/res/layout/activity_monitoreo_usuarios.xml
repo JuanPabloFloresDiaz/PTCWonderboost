@@ -211,13 +211,14 @@
                         android:text="Eliminar"  />
 
                     <Button
-                        android:id="@+id/btnActualizarMU"
-                        android:layout_width="match_parent"
+                        android:id="@+id/button"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="5dp"
                         android:layout_weight="1"
                         android:text="Actualizar" />
+
                 </LinearLayout>
             </HorizontalScrollView>
 
