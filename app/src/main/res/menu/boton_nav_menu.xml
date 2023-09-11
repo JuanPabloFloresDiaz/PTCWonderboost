@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/EnvioIngreso"
+        android:title="Ingreso datos"
+        android:icon="@drawable/ingreso"/>
+    <item
+        android:id="@+id/Gestionar"
+        android:title="Gestión"
+        android:icon="@drawable/gestionar"/>
+    <item
+        android:id="@+id/enviohistorial"
+        android:title="Historial"
+        android:icon="@drawable/historial"/>
+</menu>

@@ -1,176 +1,127 @@
 package com.example.ptcwonderboost;
 
+import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Producto {
-    private int id;
+    private int idProducto;
+    private byte[] fotoProducto;
+    private String producto;
+    private double precio;
+    private String estadoProducto;
+    private String tipoPrecio;
+    private int cantidad;
+    private String vendedor;
 
-   private String nombreProd;
-
-   private float precioProd;
-
-   private String descripcionProd;
-
-    private int cantidadProd;
-
-    private float gastoProduccion;
-
-    private int idcategoria;
-    private int EstadoProducto;
-    private int TipoPrecio;
-    private int idPersonas;
-
-    public Producto() {
-
+    public int getIdProducto() {
+        return idProducto;
     }
 
- //Metodo spinner categorias
-    public ResultSet CargarCategorias() {
+    public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
+    }
+
+    public byte[] getFotoProducto() {
+        return fotoProducto;
+    }
+
+    public void setFotoProducto(byte[] fotoProducto) {
+        this.fotoProducto = fotoProducto;
+    }
+
+    public String getProducto() {
+        return producto;
+    }
+
+    public void setProducto(String producto) {
+        this.producto = producto;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public String getEstadoProducto() {
+        return estadoProducto;
+    }
+
+    public void setEstadoProducto(String estadoProducto) {
+        this.estadoProducto = estadoProducto;
+    }
+
+    public String getTipoPrecio() {
+        return tipoPrecio;
+    }
+
+    public void setTipoPrecio(String tipoPrecio) {
+        this.tipoPrecio = tipoPrecio;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public String getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(String vendedor) {
+        this.vendedor = vendedor;
+    }
+
+    public List<Producto> CargarCatalogos() throws SQLException{
+        List<Producto> productos = new ArrayList<>();
         PreparedStatement ps;
         Connection con;
         try {
             con = Conexion.getConnection(null);
-            ps = con.prepareStatement("SELECT * FROM tbCategorias");
-            ResultSet respuesta=ps.executeQuery();
-            return respuesta;
-        } catch (Exception e) {
-            return null;
-        }
+            ps = con.prepareStatement("SELECT p.idProducto, p.FotoProducto, p.Producto, p.Precio,ep.EstadoProducto, tp.TipoPrecio, p.Cantidad, pe.Nombres + ' ' + pe.Apellidos AS 'Vendedor' FROM tbProductos p INNER JOIN tbEstadosProductos ep ON ep.idEstadoProducto = p.idEstadoProducto INNER JOIN tbTiposPrecio tp ON tp.idTipoPrecio = p.idTipoPrecio INNER JOIN tbPersonas pe ON pe.idPersonas = p.idPersonas"); // Tu consulta SQL aquí
+            ResultSet respuesta = ps.executeQuery();
 
-
-
-    }
-
-    // metodo spinner tipoPrecio
-    public ResultSet CargarTipoPrecio() {
-        PreparedStatement ps;
-        Connection con;
-        try {
-            con = Conexion.getConnection(null);
-            ps = con.prepareStatement("SELECT * FROM tbTiposPrecio");
-            ResultSet respuesta1=ps.executeQuery();
-            return respuesta1;
-        } catch (Exception e) {
-            return null;
-        }
-
-
-
-    }
-
-        //Metodo spinner EstadoProd
-    public ResultSet CargarEstadoProd() {
-        PreparedStatement ps;
-        Connection con;
-        try {
-            con = Conexion.getConnection(null);
-            ps = con.prepareStatement("SELECT * FROM tbEstadosProductos");
-            ResultSet respuesta2=ps.executeQuery();
-            return respuesta2;
-        } catch (Exception e) {
-            return null;
-        }
-
-
-
-    }
-
-        public Producto(String nombreProd, float precioProd, String descripcionProd, int cantidadProd, float gastoProduccion, int idcategoria, int EstadoProducto, int TipoPrecio, int idPersonas){
-        // Inicializa los campos
-    }
-
-
-            public ResultSet ingresarProductos() {
-
-                String url = "jdbc:sqlserver://<servidor>:<>;databaseName=<bdPrototipoPTC>;user=<sa>;password=<itr2023 >";
-
-                try (Connection connection = DriverManager.getConnection(url)) {
-                    String insertQuery = "INSERT INTO TbProductos (Producto, Precio, Descripcion, Cantidad, GastodeProduccion, idCategoria, idEstadoProducto, idTipoPrecio) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-
-                    PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
-                    preparedStatement.setString(1, nombreProd);
-                    preparedStatement.setFloat(2, precioProd);
-                    preparedStatement.setString(3, descripcionProd);
-                    preparedStatement.setInt(4, cantidadProd);
-                    preparedStatement.setFloat(5, gastoProduccion);
-                    preparedStatement.setInt(6, idcategoria);
-                    preparedStatement.setInt(7, EstadoProducto);
-                    preparedStatement.setInt(8, TipoPrecio);
-
-                    preparedStatement.executeUpdate();
-
-                    preparedStatement.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-
-                }
-
-
-                return null;
+            while (respuesta.next()) {
+                Producto producto = new Producto();
+                producto.setIdProducto(respuesta.getInt("idProducto"));
+                producto.setFotoProducto(respuesta.getBytes("FotoProducto"));
+                producto.setProducto(respuesta.getString("Producto"));
+                producto.setPrecio(respuesta.getDouble("Precio"));
+                producto.setEstadoProducto(respuesta.getString("EstadoProducto"));
+                producto.setTipoPrecio(respuesta.getString("TipoPrecio"));
+                producto.setCantidad(respuesta.getInt("Cantidad"));
+                producto.setVendedor(respuesta.getString("Vendedor"));
+                productos.add(producto);
             }
-    public void eliminarProductos() {
-        String url1 = "jdbc:sqlserver://<servidor>:<>;databaseName=<bdPrototipoPTC>;user=<sa>;password=<itr2023 >";
-
-        try (Connection connection = DriverManager.getConnection(url1)) {
-            String deleteQuery = "DELETE FROM TbProductos WHERE Producto = ? AND Precio = ? AND Descripcion = ? AND Cantidad = ? AND GastodeProduccion = ? AND idCategoria = ? AND idEstadoProducto = ? AND idTipoPrecio = ?;";
-
-            PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery);
-            preparedStatement.setString(1, nombreProd);
-            preparedStatement.setDouble(2, precioProd);
-            preparedStatement.setString(3, descripcionProd);
-            preparedStatement.setInt(4, cantidadProd);
-            preparedStatement.setDouble(5, gastoProduccion);
-            preparedStatement.setInt(6, idcategoria);
-            preparedStatement.setInt(7, EstadoProducto);
-            preparedStatement.setInt(8, TipoPrecio);
-            int rowsDeleted = preparedStatement.executeUpdate();
-            if (rowsDeleted > 0) {
-                System.out.println("Se eliminaron " + rowsDeleted + " filas de la tabla tbProductos.");
-            } else {
-                System.out.println("No se eliminaron filas de la tabla tbProductos.");
-            }
-        } catch (SQLException e) {
-            System.out.println("Error al eliminar los datos de la tabla tbProductos: " + e.getMessage());
+            return productos;
+        }catch (SQLException e) {
+            return null;
+        } catch (Exception e) {
+            return null;
         }
     }
 
-
-    public void actualizarDatos(){
-
-        String url1 = "jdbc:sqlserver://<servidor>:<>;databaseName=<bdPrototipoPTC>;user=<sa>;password=<itr2023 >";
-
-        try(Connection connection = DriverManager.getConnection(url1)){
-            String query = "UPDATE tbProductos SET Producto=?, Precio=?, Descripcion=?, Cantidad=?, GastodeProduccion=?, idCategoria=?, idEstadoProducto=?, idTipoPrecio=? WHERE id=?";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, this.nombreProd);
-            preparedStatement.setDouble(2, this.precioProd);
-            preparedStatement.setString(3, this.descripcionProd);
-            preparedStatement.setInt(4, this.cantidadProd);
-            preparedStatement.setDouble(5, this.gastoProduccion);
-            preparedStatement.setInt(6, this.idcategoria);
-            preparedStatement.setInt(7, this.EstadoProducto);
-            preparedStatement.setInt(8, this.TipoPrecio);
-
-            preparedStatement.executeUpdate();
-            preparedStatement.close();
+    public ResultSet mostrarinventarioProductos(){
+        Connection con;
+        PreparedStatement ps;
+        try{
+            con= Conexion.getConnection(null);
+            String query = "SELECT s.Producto AS 'Nombre del producto', s.Precio AS 'Precio del producto', s.Descripcion AS 'Descripcion del producto', s.GastodeProduccion AS 'Gasto de produccion', s.Cantidad AS 'Cantidad', p.Nombres + ' ' + p.Apellidos AS 'Vendedor' FROM tbProductos s INNER JOIN tbPersonas p on p.idPersonas = s.idPersonas;";
+            ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        }catch(Exception e){
+            return null;
         }
-        catch (SQLException e) {
-            e.printStackTrace();
-
-        }
-
-
-
-
     }
 }
-
-
-
-
-
-

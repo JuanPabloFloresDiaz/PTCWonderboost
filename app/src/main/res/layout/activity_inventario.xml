@@ -7,6 +7,7 @@
     tools:context=".InventarioActivity">
 
     <ListView
+        android:id="@+id/listViewInventario"
         android:layout_width="410dp"
         android:layout_height="424dp"
         android:background="@drawable/bordett"

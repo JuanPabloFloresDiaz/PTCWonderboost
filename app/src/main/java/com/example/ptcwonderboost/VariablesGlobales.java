@@ -7,6 +7,15 @@ public class VariablesGlobales {
     public static String usuario;
     public static int idTipoUsuario;
     public static int idEstado;
+    public static int idProducto;
+
+    public static int getIdProducto() {
+        return idProducto;
+    }
+
+    public static void setIdProducto(int idProducto) {
+        VariablesGlobales.idProducto = idProducto;
+    }
 
     public static int getIdUsuario() {
         return idUsuario;
