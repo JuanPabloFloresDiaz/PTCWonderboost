@@ -2,6 +2,7 @@ package com.example.ptcwonderboost;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,98 +16,50 @@ import java.security.SecureRandom;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Properties;
 public class ReestablecerClave extends AppCompatActivity {
 
-    private static final String USERNAME = "soportewonderboost@gmail.com"; // Correo emisor
-    private static final String PASSWORD = "fjttsuxuzkpabvbw"; // Contraseña del correo emisor
-    private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    private static final int TOKEN_LENGTH = 20;
+    private EditText txtPing, txtUsuario;
 
-    public String generateToken() {
-        try{
-        StringBuilder token = new StringBuilder(TOKEN_LENGTH);
-        SecureRandom random = new SecureRandom();
-
-        for (int i = 0; i < TOKEN_LENGTH; i++) {
-            int randomIndex = random.nextInt(CHARACTERS.length());
-            token.append(CHARACTERS.charAt(randomIndex));
-        }
-
-        return token.toString();}
-        catch (Exception e){
-            Toast.makeText(ReestablecerClave.this, "Error" + e, Toast.LENGTH_LONG);
-            return null;
-        }
-    }
-
-    public void mandarCorreo(){
-        try{
-            EditText textCorreo = findViewById(R.id.editTextTextEmailAddress3);
-            //Preparar las cosas
-            String correoEmisor = "soportewonderboost@gmail.com";
-            String contraseñaEmisor = "fjttsuxuzkpabvbw";
-            String CorreoReceptor = textCorreo.getText().toString();;
-            String asunto = "Recuperación de contraseña";
-            String mensaje = "Tu codigo de verificación es: "+ generateToken();
-
-            //Configurar SMTP
-            Properties props = new Properties();
-            props.setProperty("mail.smtp.host", "smtp.gmail.com");
-            props.setProperty("mail.smtp.starls.enable", "true");
-            props.setProperty("mail.smtp.port", "465");
-            props.setProperty("mail.smtp.auth", "true");
-            props.setProperty("mail.smtp.socketFactory.port", "465");
-            props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-            //Configurar el envio
-            Session session = Session.getDefaultInstance(props);
-            MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(correoEmisor));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(CorreoReceptor));
-            message.setSubject(asunto);
-            message.setText(mensaje);
-            //Envío del mensaje
-            Transport t = session.getTransport("smtp");
-            t.connect(correoEmisor, contraseñaEmisor);
-            t.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
-            Toast.makeText(ReestablecerClave.this,"Correo enviado ", Toast.LENGTH_SHORT).show();
-        }catch(NullPointerException e){
-            Toast.makeText(ReestablecerClave.this,"Error +: " + e, Toast.LENGTH_SHORT).show();
-        }catch(NetworkOnMainThreadException e){
-            Toast.makeText(ReestablecerClave.this,"Error +: " + e, Toast.LENGTH_SHORT).show();
-        }catch (Exception e){
-            Toast.makeText(ReestablecerClave.this,"Error +: " + e, Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private class SendEmailTask extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected Void doInBackground(Void... params) {
-            mandarCorreo();
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            // Realizar acciones después de enviar el correo, si es necesario
-        }
-    }
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reestablecer_clave);
-        EditText textCorreo = findViewById(R.id.editTextTextEmailAddress3);
+        txtPing = findViewById(R.id.txtPin);
+        txtUsuario = findViewById(R.id.txtPinUsuario);
         //Acciones del boton enviar
-        Button enviar = findViewById(R.id.btnConfirmarCorreo);
+        Button enviar = findViewById(R.id.btnConfirmarPin);
        enviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                try {
-                   new SendEmailTask().execute();
-              }catch (Exception ex){
-                    Toast.makeText(ReestablecerClave.this,"Error: " + ex, Toast.LENGTH_SHORT).show();
+                   String usuario = txtUsuario.getText().toString();
+                   int ping = Integer.parseInt(txtPing.getText().toString());
 
+                   Recuperacion recuperacion = new Recuperacion();
+                   recuperacion.setUsuario(usuario);
+                   recuperacion.setPing(ping);
+
+                   // Llama al método RecuperacionPing() para verificar la existencia del usuario y ping
+                   int res = recuperacion.RecuperacionPing();
+                   if (res == 1) {
+                       // Usuario y ping son válidos, permite al usuario restablecer su contraseña
+                       // Redirige a la actividad de restablecimiento de contraseña
+                       int idUsuario = recuperacion.getIdUsuario();
+                       VariablesGlobales.setIdUsuario(idUsuario);
+                       Intent intent = new Intent(ReestablecerClave.this, ReestablecerContrasena.class);
+                       startActivity(intent);
+                       Toast.makeText(ReestablecerClave.this,"Pin correcto: " + usuario, Toast.LENGTH_SHORT).show();
+                   } else {
+                       // Usuario o ping inválido, muestra un mensaje de error al usuario
+                       Toast.makeText(ReestablecerClave.this, "Usuario o ping inválido", Toast.LENGTH_SHORT).show();
+                   }
+               }catch (Exception ex){
+                    Toast.makeText(ReestablecerClave.this,"Error: " + ex, Toast.LENGTH_SHORT).show();
                 }
             }
         });

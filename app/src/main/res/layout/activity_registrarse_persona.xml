@@ -25,14 +25,14 @@
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="205dp"
-                app:srcCompat="@drawable/imgregistro"
-                android:background="@color/yellow"/>
+                app:srcCompat="@drawable/imgregistro"/>
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
+                android:gravity="center"
                 android:layout_height="53dp"
-                android:text="Registre sus datos"
+                android:text="Registra tus datos"
                 android:textColor="#000000"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -363,7 +363,7 @@
 
                     <EditText
                         android:id="@+id/txtDescripcion"
-                        android:layout_width="279dp"
+                        android:layout_width="250dp"
                         android:layout_height="80dp"
                         android:layout_marginBottom="348dp"
                         android:background="@drawable/bordett"
@@ -401,7 +401,7 @@
 
                     <Spinner
                         android:id="@+id/spinnerNacionalidad"
-                        android:layout_width="279dp"
+                        android:layout_width="261dp"
                         android:layout_height="60dp"
                         android:layout_marginBottom="348dp"
                         android:background="@drawable/bordett"
@@ -421,34 +421,26 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/selectImageButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Seleccionar Imagen"
-                        android:textColor="#FFFFFF"
-                        android:background="@drawable/bordett"
-                        android:paddingStart="5dp"
-                        android:paddingTop="5dp"
-                        android:paddingEnd="5dp"
-                        android:paddingBottom="5dp"
-                        android:layout_gravity="center_vertical" />
+                    android:orientation="horizontal"
+                    android:gravity="center">
 
                     <ImageView
                         android:id="@+id/imgFotoPerfil"
-                        android:layout_width="248dp"
+                        android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:layout_marginStart="16dp"
-                        android:src="@drawable/iconousuario" />
+                        android:layout_marginStart="125dp"
+                        android:layout_marginEnd="50dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginBottom="16dp"
+                        android:src="@drawable/iconousuario"
+                        android:tag="0" />
 
                 </LinearLayout>
             </HorizontalScrollView>
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="86dp">
+                android:layout_height="150dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -460,14 +452,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:background="@drawable/bordett"
                         android:paddingStart="100dp"
                         android:paddingTop="25dp"
                         android:paddingEnd="100dp"
                         android:paddingBottom="25dp"
-                        android:layout_marginStart="75dp"
                         android:text="Registrarse"
-                        android:textColor="#FFFFFF" />
+                        android:textColor="#FFFFFF"
+                        android:layout_marginStart="75dp"/>
                 </LinearLayout>
             </HorizontalScrollView>
 

@@ -122,6 +122,22 @@ public class Usuario {
         }
     }
 
+    public int ActualizarContraseña() {
+        Connection con = null;
+        PreparedStatement ps;
+        try {
+            con = Conexion.getConnection(null);
+            String claveEncriptada = e.encriptarContrasenaSHA256(clave);
+            String query = "UPDATE TbUsuarios SET Clave = ? WHERE idUsuarios = ?";
+            ps = con.prepareStatement(query);
+            ps.setString(1, claveEncriptada);
+            ps.setInt(2, id);
+            ps.execute();
+            return 1;
+        } catch (SQLException ex) {
+            return 0;
+        }
+    }
     public int ActualizarEstadoActivo(){
         Connection con = null;
         PreparedStatement ps;

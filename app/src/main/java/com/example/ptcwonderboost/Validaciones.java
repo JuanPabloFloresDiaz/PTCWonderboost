@@ -6,54 +6,40 @@ import android.widget.EditText;
 
 public class Validaciones {
 
+    // Método para validar si un campo de texto está vacío.
     public static boolean Vacio(EditText editText) {
         return TextUtils.isEmpty(editText.getText().toString().trim());
     }
 
+    // Método para validar si un campo de texto contiene solo números.
     public static boolean Numeros(EditText editText) {
         String input = editText.getText().toString().trim();
         return input.matches("\\d+");
     }
 
+    // Método para validar si un campo de texto contiene solo letras.
     public static boolean Letras(EditText editText) {
         String input = editText.getText().toString().trim();
         return input.matches("[a-zA-Z]+");
     }
 
+    // Método para validar si un campo de texto contiene un precio válido con máximo 2 decimales.
     public static boolean Precio(EditText editText) {
         String input = editText.getText().toString().trim();
         return input.matches("^\\d+(\\.\\d{1,2})?$");
     }
 
-    public boolean validarFormatos(String dui, String contrasena, String correo) {
-        // Validar campos vacíos
-        if (TextUtils.isEmpty(dui) || TextUtils.isEmpty(contrasena) || TextUtils.isEmpty(correo)) {
-            // mostrar mensaje de error
-            return false;
-        }
+    public static boolean ValidarContrasena(String contrasena) {
+        // Validar contraseña segura (al menos una letra y un número)
+        return contrasena.matches("^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$");
+    }
 
-        // Validar formato del DUI
-        if (!dui.matches("[0-9]+")) {
-            // mostrar mensaje de error
-            return false;
-        }
-
-        // Agregar guion al DUI
-        String duiConGuion = dui.substring(0, 8) + "-" + dui.substring(8);
-
-        // Validar contraseña segura
-        if (!contrasena.matches("^(?=.[0-9])(?=.[a-zA-Z])([a-zA-Z0-9]+)$")) {
-            // mostrar mensaje de error
-            return false;
-        }
-
-        // Validar formato del correo electrónico
-        if (!Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
-            // mostrar mensaje de error
-            return false;
-        }
-
-        // Si todas las validaciones pasaron, retornar verdadero
-        return true;
+    public static boolean ValidarDUI(String dui) {
+        // Validar formato del DUI (8 numeros un - y el ultimo numero)
+        return dui.matches("^\\d{8}-\\d$");
+    }
+    public static boolean ValidarCorreo(String correo) {
+        // Validar formato del correo electrónico utilizando Patterns.EMAIL_ADDRESS
+        return Patterns.EMAIL_ADDRESS.matcher(correo).matches();
     }
 }

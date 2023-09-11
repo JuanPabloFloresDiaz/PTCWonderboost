@@ -1,11 +1,17 @@
 package com.example.ptcwonderboost;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import java.sql.*;
 
 public class Persona {
     private int id;
     private String nombres;
     private String apellidos;
+    private byte permisoVenta;
+    private String nombrePerfil;
+    private String usuario;
     private byte genero;
     private String nacimiento;
     private String direccion;
@@ -18,6 +24,14 @@ public class Persona {
     private int idNacionalidad;
     private byte modoColor;
     private int idIdioma;
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
 
     public int getId() {
         return id;
@@ -138,14 +152,28 @@ public class Persona {
     public void setIdIdioma(int idIdioma) {
         this.idIdioma = idIdioma;
     }
+    public byte getPermisoVenta() {
+        return permisoVenta;
+    }
 
-    public int RegistrarPersona(){
+    public String getNombrePerfil() {
+        return nombrePerfil;
+    }
+
+    public void setNombrePerfil(String nombrePerfil) {
+        this.nombrePerfil = nombrePerfil;
+    }
+
+    public void setPermisoVenta(byte permisoVenta) {
+        this.permisoVenta = permisoVenta;
+    }
+    public int RegistrarPersona(Context context){
         Connection con = null;
         PreparedStatement ps;
         try{
             con = Conexion.getConnection(null);
 
-            String query = "INSERT INTO TbPersonas(Nombres, Apellidos, Genero, Nacimiento, Direccion, Telefono, Correo, DUI, Descripcion, idUsuarios, idNacionalidad, ModoColor, idIdioma) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO TbPersonas(Nombres, Apellidos, Genero, Nacimiento, Direccion, Telefono, Correo, DUI, Descripcion, idUsuarios, idNacionalidad, ModoColor, idIdioma,PermisoVenta, Foto) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             ps = con.prepareStatement(query);
             ps.setString(1, nombres);
             ps.setString(2, apellidos);
@@ -160,12 +188,28 @@ public class Persona {
             ps.setInt(11,idNacionalidad);
             ps.setByte(12, modoColor);
             ps.setInt(13, idIdioma);
+            ps.setByte(14, permisoVenta);
+            ps.setBytes(15, foto);
             ps.executeUpdate();
 
             return 1;
         }
         catch(Exception ex){
+            Toast.makeText(context, "Error: " + ex, Toast.LENGTH_SHORT).show();
             return 0;
+        }
+    }
+
+    public ResultSet CapturarID(Connection con, int id){
+        PreparedStatement ps;
+        String query = "SELECT idPersonas, PermisoVenta, ModoColor, idIdioma FROM TbPersonas WHERE idUsuarios = ?;";
+        try {
+            ps = con.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            return null;
         }
     }
 

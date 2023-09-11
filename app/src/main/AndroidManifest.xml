@@ -18,6 +18,12 @@
         android:theme="@style/Theme.PTCWonderboost"
         tools:targetApi="31">
         <activity
+            android:name=".ReestablecerContrasena"
+            android:exported="false" />
+        <activity
+            android:name=".MonitorearEnvios"
+            android:exported="false" />
+        <activity
             android:name=".configuracion"
             android:label="configuracion" />
         <activity
@@ -43,6 +49,7 @@
             android:label="Clientes frecuentes" />
         <activity
             android:name=".Envios"
+            android:exported="true"
             android:label="Envio" />
         <activity
             android:name=".Calendario"
@@ -67,6 +74,18 @@
             android:exported="false" />
         <activity
             android:name=".Login"
+            android:exported="false" />
+        <activity
+            android:name=".historial"
+            android:exported="false" />
+        <activity
+            android:name=".gestionar"
+            android:exported="false" />
+        <activity
+            android:name=".PagoSeguimientos"
+            android:exported="false" />
+        <activity
+            android:name=".Ventas"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
