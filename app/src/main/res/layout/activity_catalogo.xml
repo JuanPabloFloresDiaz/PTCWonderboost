@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/baja"
-        android:layout_width="413dp"
-        android:layout_height="728dp"
+        android:layout_width="408dp"
+        android:layout_height="814dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/vectorpanel"
         app:layout_constraintBottom_toBottomOf="parent"

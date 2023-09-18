@@ -54,8 +54,6 @@ public class ImagenListAdapter extends BaseAdapter {
         TextView txtTipo = convertView.findViewById(R.id.TipoPrecioCat);
         TextView txtCantidad = convertView.findViewById(R.id.CantidadCat);
         TextView txtVendedor = convertView.findViewById(R.id.Vendedor);
-        ImageButton btnNegociacionesCate = convertView.findViewById(R.id.btnNegociacionesCat);
-        ImageButton btnCarroCate = convertView.findViewById(R.id.btnCarroCat);
         Producto producto = productos.get(position);
         byte[] fotoBytes = producto.getFotoProducto();
         Bitmap bitmap = BitmapFactory.decodeByteArray(fotoBytes, 0, fotoBytes.length);
@@ -70,21 +68,6 @@ public class ImagenListAdapter extends BaseAdapter {
         txtCantidad.setText(String.valueOf(producto.getCantidad()));
         txtVendedor.setText(producto.getVendedor());
 
-
-
-        btnNegociacionesCate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Se ha ingresado el producto a negociaciones", Toast.LENGTH_SHORT);
-            }
-        });
-
-        btnCarroCate.setOnClickListener(new View.OnClickListener() {
-           @Override
-            public void onClick(View v) {
-               Toast.makeText(v.getContext(), "Se ha ingresado el producto a carrito de compras", Toast.LENGTH_SHORT);
-            }
-       });
         return convertView;
     }
 }

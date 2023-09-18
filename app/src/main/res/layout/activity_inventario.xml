@@ -6,29 +6,43 @@
     android:layout_height="match_parent"
     tools:context=".InventarioActivity">
 
+    <ImageView
+        android:id="@+id/baja"
+        android:layout_width="412dp"
+        android:layout_height="733dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/vectorpanel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.514" />
+
     <ListView
         android:id="@+id/listViewInventario"
-        android:layout_width="410dp"
-        android:layout_height="424dp"
+        android:layout_width="409dp"
+        android:layout_height="448dp"
         android:background="@drawable/bordett"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.802" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        style="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar"
-        android:layout_width="221dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="232dp"
-        android:layout_marginBottom="452dp"
-        android:background="@drawable/bordett"
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="416dp"
+        android:layout_height="196dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/panelfondo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.868"
+        app:layout_constraintHorizontal_bias="0.783"
         app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:srcCompat="@drawable/panelfondo" />
 
     <TextView
         android:id="@+id/textView11"
@@ -37,22 +51,9 @@
         android:layout_marginTop="76dp"
         android:text="Inventario de productos"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView14"
-        android:layout_width="448dp"
-        android:layout_height="194dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/img"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.783"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:srcCompat="@drawable/img" />
 </androidx.constraintlayout.widget.ConstraintLayout>

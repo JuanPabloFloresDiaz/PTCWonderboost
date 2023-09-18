@@ -44,24 +44,10 @@ public class ProductosIngreso extends AppCompatActivity {
     private List<String> datos;
     private static final int REQUEST_CODE_IMAGE = 100;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_productos_ingreso);
+    public final void LeerDatos(){
         Productos producto = new Productos();
-        listView = findViewById(R.id.listViewIngresarProductos);
-        txtProducto = findViewById(R.id.txtNombreP);
-        txtPrecio = findViewById(R.id.txtPrecioP);
-        txtDescripcion = findViewById(R.id.txtDescripcionP);
-        txtGasto = findViewById(R.id.txtGastoProdP);
-        txtCantidad = findViewById(R.id.txtCantidadP);
-        agregarP = findViewById(R.id.btnAgregarP);
-        eleminarP = findViewById(R.id.btnEliminarP);
-        actualizarP = findViewById(R.id.btnActualizarP);
-
-        producto.idPersonas = VariablesGlobales.getIdUsuario();
+        producto.idPersonas = VariablesGlobales.getIdPersona();
         ResultSet rsL = producto.mostrarProductos();
-
         // Procesa los datos del ResultSet y agrégalos a la lista "datos"
         datos = new ArrayList<>();
         try {
@@ -79,12 +65,148 @@ public class ProductosIngreso extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         // Crea un ArrayAdapter y configúralo con los datos
         ArrayAdapter<String> adaptador = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, datos);
-
         // Establece el adaptador en el ListView
         listView.setAdapter(adaptador);
+
+    }
+
+    public final void AgregarDatos(){
+        Productos producto = new Productos();
+        if(Validaciones.Vacio(txtProducto) || Validaciones.Vacio(txtPrecio) || Validaciones.Vacio(txtDescripcion) || Validaciones.Vacio(txtGasto) || Validaciones.Vacio(txtCantidad)){
+            Toast.makeText(ProductosIngreso.this, "Los campos estan vacios", Toast.LENGTH_SHORT).show();
+        }else if(!Validaciones.Precio(txtPrecio) || !Validaciones.Precio(txtGasto)){
+            Toast.makeText(ProductosIngreso.this, "Se debe respetar el formato del precio", Toast.LENGTH_SHORT).show();
+        } else if(!Validaciones.Numeros(txtCantidad)){
+            Toast.makeText(ProductosIngreso.this, "Solo debes poner numeros para cantidad", Toast.LENGTH_SHORT).show();
+        } else{
+            try{
+                String Producto = txtProducto.getText().toString();
+                String PrecioTexto = txtPrecio.getText().toString().trim();
+                BigDecimal Precio = new BigDecimal(PrecioTexto);
+                String Descripcion = txtDescripcion.getText().toString();
+                String GastoTexto = txtGasto.getText().toString().trim();
+                BigDecimal Gasto = new BigDecimal(GastoTexto);
+                String Cantidad = txtCantidad.getText().toString();
+                producto.setProducto(Producto);
+                producto.setPrecio(Precio);
+                try {
+                    producto.setFotoProducto(imagenBytes);
+                }catch (Exception ex) {
+                    producto.setFotoProducto(null);
+                }
+                producto.setDescripcion(Descripcion);
+                producto.setCantidad(Integer.parseInt(Cantidad));
+                producto.setGastoDeProduccion(Gasto);
+                producto.setIdCategoria(idCategoria);
+                producto.setIdEstadoProducto(1);
+                producto.setIdTipoPrecio(idTipoPrecio);
+                producto.setIdPersonas(VariablesGlobales.getIdPersona());
+                int valor = producto.AgregarProducto();
+                if(valor == 1){
+                    Toast.makeText(ProductosIngreso.this, "Se han ingresado los datos", Toast.LENGTH_SHORT).show();
+                }else if(valor == 0){
+                    Toast.makeText(ProductosIngreso.this, "El valor es 0", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(ProductosIngreso.this, "Ha ocurrido un error", Toast.LENGTH_SHORT);
+                }
+            }catch (Exception ex){
+
+            }
+        }
+    }
+
+    public final void EliminarProductos(){
+        Productos producto = new Productos();
+        try {
+            producto.setIdProducto(VariablesGlobales.getIdProducto());
+            int valor = producto.EliminarProducto();
+            if(valor == 1){
+                Toast.makeText(ProductosIngreso.this, "Se han eliminado los datos", Toast.LENGTH_SHORT).show();
+            }else if(valor == 0){
+                Toast.makeText(ProductosIngreso.this, "El valor es 0", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                Toast.makeText(ProductosIngreso.this, "Ha ocurrido un error", Toast.LENGTH_SHORT);
+            }
+        }catch (NullPointerException ex){
+            Toast.makeText(getApplicationContext(), "Error no se ha seleccionado nada", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public final void ActualizarProductos(){
+        Productos producto = new Productos();
+        if(Validaciones.Vacio(txtProducto) || Validaciones.Vacio(txtPrecio) || Validaciones.Vacio(txtDescripcion) || Validaciones.Vacio(txtGasto) || Validaciones.Vacio(txtCantidad)){
+            Toast.makeText(ProductosIngreso.this, "Los campos estan vacios", Toast.LENGTH_SHORT).show();
+        }else if(!Validaciones.Precio(txtPrecio) || !Validaciones.Precio(txtGasto)){
+            Toast.makeText(ProductosIngreso.this, "Se debe respetar el formato del precio", Toast.LENGTH_SHORT).show();
+        } else if(!Validaciones.Numeros(txtCantidad)){
+            Toast.makeText(ProductosIngreso.this, "Solo debes poner numeros para cantidad", Toast.LENGTH_SHORT).show();
+        } else{
+            try{
+                String Producto = txtProducto.getText().toString();
+                String PrecioTexto = txtPrecio.getText().toString().trim();
+                BigDecimal Precio = new BigDecimal(PrecioTexto);
+                String Descripcion = txtDescripcion.getText().toString();
+                String GastoTexto = txtGasto.getText().toString().trim();
+                BigDecimal Gasto = new BigDecimal(GastoTexto);
+                String Cantidad = txtCantidad.getText().toString();
+                producto.setProducto(Producto);
+                producto.setPrecio(Precio);
+                try {
+                    producto.setFotoProducto(imagenBytes);
+                }catch (Exception ex) {
+                    producto.setFotoProducto(null);
+                }
+                producto.setDescripcion(Descripcion);
+                producto.setCantidad(Integer.parseInt(Cantidad));
+                producto.setGastoDeProduccion(Gasto);
+                producto.setIdCategoria(idCategoria);
+                producto.setIdEstadoProducto(1);
+                producto.setIdTipoPrecio(idTipoPrecio);
+                producto.setIdPersonas(VariablesGlobales.getIdPersona());
+                producto.setIdProducto(VariablesGlobales.getIdProducto());
+                int valor = producto.EditarProductoImagen();
+                if(valor == 1){
+                    Toast.makeText(ProductosIngreso.this, "Se han ingresado los datos", Toast.LENGTH_SHORT).show();
+                }else if(valor == 0){
+                    Toast.makeText(ProductosIngreso.this, "El valor es 0", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(ProductosIngreso.this, "Ha ocurrido un error", Toast.LENGTH_SHORT);
+                }
+            }catch (Exception ex){
+
+            }
+        }
+    }
+
+    public final void LimpiarCampos(){
+        txtProducto.setText("");
+        txtPrecio.setText("");
+        txtDescripcion.setText("");
+        txtGasto.setText("");
+        txtCantidad.setText("");
+    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_productos_ingreso);
+        Productos producto = new Productos();
+        listView = findViewById(R.id.listViewIngresarProductos);
+        txtProducto = findViewById(R.id.txtNombreP);
+        txtPrecio = findViewById(R.id.txtPrecioP);
+        txtDescripcion = findViewById(R.id.txtDescripcionP);
+        txtGasto = findViewById(R.id.txtGastoProdP);
+        txtCantidad = findViewById(R.id.txtCantidadP);
+        agregarP = findViewById(R.id.btnAgregarP);
+        eleminarP = findViewById(R.id.btnEliminarP);
+        actualizarP = findViewById(R.id.btnActualizarP);
+
+        LeerDatos();
+
         // Click en la lista
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -193,114 +315,32 @@ public class ProductosIngreso extends AppCompatActivity {
         agregarP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Validaciones.Vacio(txtProducto) || Validaciones.Vacio(txtPrecio) || Validaciones.Vacio(txtDescripcion) || Validaciones.Vacio(txtGasto) || Validaciones.Vacio(txtCantidad)){
-                    Toast.makeText(ProductosIngreso.this, "Los campos estan vacios", Toast.LENGTH_SHORT).show();
-                }else if(!Validaciones.Precio(txtPrecio) || !Validaciones.Precio(txtGasto)){
-                    Toast.makeText(ProductosIngreso.this, "Se debe respetar el formato del precio", Toast.LENGTH_SHORT).show();
-                } else if(!Validaciones.Numeros(txtCantidad)){
-                    Toast.makeText(ProductosIngreso.this, "Solo debes poner numeros para cantidad", Toast.LENGTH_SHORT).show();
-                } else{
-                try{
-                String Producto = txtProducto.getText().toString();
-                String PrecioTexto = txtPrecio.getText().toString().trim();
-                BigDecimal Precio = new BigDecimal(PrecioTexto);
-                String Descripcion = txtDescripcion.getText().toString();
-                String GastoTexto = txtGasto.getText().toString().trim();
-                BigDecimal Gasto = new BigDecimal(GastoTexto);
-                String Cantidad = txtCantidad.getText().toString();
-                producto.setProducto(Producto);
-                producto.setPrecio(Precio);
-                try {
-                    producto.setFotoProducto(imagenBytes);
-                }catch (Exception ex) {
-                    producto.setFotoProducto(null);
-                }
-                producto.setDescripcion(Descripcion);
-                producto.setCantidad(Integer.parseInt(Cantidad));
-                producto.setGastoDeProduccion(Gasto);
-                producto.setIdCategoria(idCategoria);
-                producto.setIdEstadoProducto(1);
-                producto.setIdTipoPrecio(idTipoPrecio);
-                producto.setIdPersonas(VariablesGlobales.getIdUsuario());
-                    int valor = producto.AgregarProducto();
-                    if(valor == 1){
-                        Toast.makeText(ProductosIngreso.this, "Se han ingresado los datos", Toast.LENGTH_SHORT).show();
-                    }else if(valor == 0){
-                        Toast.makeText(ProductosIngreso.this, "El valor es 0", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        Toast.makeText(ProductosIngreso.this, "Ha ocurrido un error", Toast.LENGTH_SHORT);
-                    }
-                }catch (Exception ex){
-
-                }
-                }
+                AgregarDatos();
+                LeerDatos();
+                LimpiarCampos();
             }
         });
         eleminarP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
-                    producto.setIdProducto(VariablesGlobales.getIdProducto());
-                    int valor = producto.EliminarProducto();
-                    if(valor == 1){
-                        Toast.makeText(ProductosIngreso.this, "Se han eliminado los datos", Toast.LENGTH_SHORT).show();
-                    }else if(valor == 0){
-                        Toast.makeText(ProductosIngreso.this, "El valor es 0", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        Toast.makeText(ProductosIngreso.this, "Ha ocurrido un error", Toast.LENGTH_SHORT);
-                    }
-                }catch (NullPointerException ex){
-                    Toast.makeText(getApplicationContext(), "Error no se ha seleccionado nada", Toast.LENGTH_LONG).show();
+                    EliminarProductos();
+                    LeerDatos();
+                    LimpiarCampos();
+                }catch(Exception ex){
+                    Toast.makeText(ProductosIngreso.this, "No se ha seleccionado nada. ", Toast.LENGTH_SHORT).show();
                 }
             }
         });
         actualizarP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Validaciones.Vacio(txtProducto) || Validaciones.Vacio(txtPrecio) || Validaciones.Vacio(txtDescripcion) || Validaciones.Vacio(txtGasto) || Validaciones.Vacio(txtCantidad)){
-                    Toast.makeText(ProductosIngreso.this, "Los campos estan vacios", Toast.LENGTH_SHORT).show();
-                }else if(!Validaciones.Precio(txtPrecio) || !Validaciones.Precio(txtGasto)){
-                    Toast.makeText(ProductosIngreso.this, "Se debe respetar el formato del precio", Toast.LENGTH_SHORT).show();
-                } else if(!Validaciones.Numeros(txtCantidad)){
-                    Toast.makeText(ProductosIngreso.this, "Solo debes poner numeros para cantidad", Toast.LENGTH_SHORT).show();
-                } else{
-                    try{
-                        String Producto = txtProducto.getText().toString();
-                        String PrecioTexto = txtPrecio.getText().toString().trim();
-                        BigDecimal Precio = new BigDecimal(PrecioTexto);
-                        String Descripcion = txtDescripcion.getText().toString();
-                        String GastoTexto = txtGasto.getText().toString().trim();
-                        BigDecimal Gasto = new BigDecimal(GastoTexto);
-                        String Cantidad = txtCantidad.getText().toString();
-                        producto.setProducto(Producto);
-                        producto.setPrecio(Precio);
-                        try {
-                            producto.setFotoProducto(imagenBytes);
-                        }catch (Exception ex) {
-                            producto.setFotoProducto(null);
-                        }
-                        producto.setDescripcion(Descripcion);
-                        producto.setCantidad(Integer.parseInt(Cantidad));
-                        producto.setGastoDeProduccion(Gasto);
-                        producto.setIdCategoria(idCategoria);
-                        producto.setIdEstadoProducto(1);
-                        producto.setIdTipoPrecio(idTipoPrecio);
-                        producto.setIdPersonas(VariablesGlobales.getIdUsuario());
-                        producto.setIdProducto(VariablesGlobales.getIdProducto());
-                        int valor = producto.EditarProductoImagen();
-                        if(valor == 1){
-                            Toast.makeText(ProductosIngreso.this, "Se han ingresado los datos", Toast.LENGTH_SHORT).show();
-                        }else if(valor == 0){
-                            Toast.makeText(ProductosIngreso.this, "El valor es 0", Toast.LENGTH_SHORT).show();
-                        }
-                        else{
-                            Toast.makeText(ProductosIngreso.this, "Ha ocurrido un error", Toast.LENGTH_SHORT);
-                        }
-                    }catch (Exception ex){
-
-                    }
+                try {
+                    ActualizarProductos();
+                    LeerDatos();
+                    LimpiarCampos();
+                }catch(Exception ex){
+                    Toast.makeText(ProductosIngreso.this, "No se ha seleccionado nada ", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -111,6 +111,36 @@ public class Producto {
         }
     }
 
+    public List<Producto> BuscarCatalogos() throws SQLException{
+        List<Producto> productos = new ArrayList<>();
+        PreparedStatement ps;
+        Connection con;
+        try {
+            con = Conexion.getConnection(null);
+            ps = con.prepareStatement("SELECT p.idProducto, p.FotoProducto, p.Producto, p.Precio,ep.EstadoProducto, tp.TipoPrecio, p.Cantidad, pe.Nombres + ' ' + pe.Apellidos AS 'Vendedor' FROM tbProductos p INNER JOIN tbEstadosProductos ep ON ep.idEstadoProducto = p.idEstadoProducto INNER JOIN tbTiposPrecio tp ON tp.idTipoPrecio = p.idTipoPrecio INNER JOIN tbPersonas pe ON pe.idPersonas = p.idPersonas WHERE p.Producto LIKE ?"); // Tu consulta SQL aquí
+            ps.setString(1, "%" + producto + "%");
+            ResultSet respuesta = ps.executeQuery();
+
+            while (respuesta.next()) {
+                Producto producto = new Producto();
+                producto.setIdProducto(respuesta.getInt("idProducto"));
+                producto.setFotoProducto(respuesta.getBytes("FotoProducto"));
+                producto.setProducto(respuesta.getString("Producto"));
+                producto.setPrecio(respuesta.getDouble("Precio"));
+                producto.setEstadoProducto(respuesta.getString("EstadoProducto"));
+                producto.setTipoPrecio(respuesta.getString("TipoPrecio"));
+                producto.setCantidad(respuesta.getInt("Cantidad"));
+                producto.setVendedor(respuesta.getString("Vendedor"));
+                productos.add(producto);
+            }
+            return productos;
+        }catch (SQLException e) {
+            return null;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     public ResultSet mostrarinventarioProductos(){
         Connection con;
         PreparedStatement ps;

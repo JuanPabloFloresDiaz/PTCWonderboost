@@ -8,7 +8,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conexion {
-    private static final String IP = "192.168.1.28:62274";
+    private static final String IP = "192.168.1.8:62274";
     private static final String DATABASE_NAME = "bdPrototipoPTC";
     private static final String USERNAME = "sa";
     private static final String PASSWORD = "jupadi";

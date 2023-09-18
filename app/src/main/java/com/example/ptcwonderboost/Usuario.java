@@ -121,7 +121,20 @@ public class Usuario {
             return null;
         }
     }
-
+    //Captura de datos importantes según el id
+    public ResultSet CapturarIDPersona(){
+        Connection con = Conexion.getConnection(null);
+        PreparedStatement ps;
+        String query = "SELECT idPersonas, PermisoVenta, ModoColor, idIdioma FROM TbPersonas WHERE idUsuarios = ?;";
+        try {
+            ps = con.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            return null;
+        }
+    }
     public int ActualizarContraseña() {
         Connection con = null;
         PreparedStatement ps;

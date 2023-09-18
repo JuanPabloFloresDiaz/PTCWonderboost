@@ -226,38 +226,6 @@ public class Productos {
         }
     }
 
-    public int EditarProducto(){
-        Connection con = null;
-        PreparedStatement ps;
-        try{
-            con = con = Conexion.getConnection(null);
-            String query = "UPDATE tbProductos SET Producto= ?, Precio = ?, Descripcion = ?, Cantidad = ?, GastodeProduccion = ?, idCategoria = ?, idEstadoProducto = ?, idTipoPrecio = ?, idPersonas = ? WHERE idProducto = ?";
-            ps = con.prepareStatement(query);
-            ps.setString(1, producto);
-            ps.setBigDecimal(2, Precio);
-            ps.setString(3, Descripcion);
-            ps.setInt(4, Cantidad);
-            ps.setBigDecimal(5, GastoDeProduccion);
-            ps.setInt(6, idCategoria);
-            ps.setInt(7, idEstadoProducto);
-            ps.setInt(8, idTipoPrecio);
-            ps.setInt(9, idPersonas);
-            ps.setInt(10, idProducto);
-            ps.execute();
-            return 1;
-        }catch(Exception ex){
-            return 0;
-        }finally {
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
     public int EliminarProducto(){
         Connection con = null;
         PreparedStatement ps;

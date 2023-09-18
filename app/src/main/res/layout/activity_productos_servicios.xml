@@ -8,8 +8,8 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="413dp"
-        android:layout_height="579dp"
+        android:layout_width="403dp"
+        android:layout_height="533dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -23,13 +23,14 @@
             android:orientation="vertical">
 
             <TextView
-                android:gravity="center"
                 android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="Agregar imagen del servicio"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
             <LinearLayout
                 android:id="@+id/linearLayout2"
@@ -38,6 +39,7 @@
                 android:orientation="vertical">
 
             </LinearLayout>
+
             <HorizontalScrollView
                 android:id="@+id/horizontalScrollView"
                 android:layout_width="match_parent"
@@ -51,8 +53,8 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imgSer"
@@ -129,7 +131,7 @@
                         android:layout_marginBottom="348dp"
                         android:background="@drawable/bordett"
                         android:ems="10"
-                        android:hint="Precio"
+                        android:hint="00.00"
                         android:inputType="textPersonName"
                         android:paddingStart="5dp"
                         android:textColor="@color/design_default_color_primary_dark"
@@ -203,7 +205,7 @@
                         android:layout_marginBottom="348dp"
                         android:background="@drawable/bordett"
                         android:ems="10"
-                        android:hint="Descripción Producto"
+                        android:hint="Descripción del servicio"
                         android:inputType="textPersonName"
                         android:paddingStart="5dp"
                         android:textColor="@color/design_default_color_primary_dark"
@@ -230,7 +232,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/CategoriaP"
@@ -239,7 +241,7 @@
                         android:text="Tipo Precio: "
                         android:textColor="#000000"
                         android:textSize="20sp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                     <Spinner
                         android:id="@+id/spinnerTipoPrecioS"
@@ -326,13 +328,15 @@
 
     <ImageView
         android:id="@+id/imageView9"
-        android:layout_width="411dp"
-        android:layout_height="150dp"
-        android:src="@color/yellow"
+        android:layout_width="408dp"
+        android:layout_height="192dp"
+        android:src="@drawable/panelfondo"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView7"
@@ -340,7 +344,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:text="Agregar servicio"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

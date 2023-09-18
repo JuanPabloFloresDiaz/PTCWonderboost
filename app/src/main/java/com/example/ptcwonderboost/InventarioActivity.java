@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,37 +20,23 @@ public class InventarioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventario);
-        // Inicializa el ListView
-        listView = findViewById(R.id.listViewInventario);
+        CargarLista();
+    }
 
-        // Llamar al método mostrarInventarioProductos() para obtener los datos
-        Producto producto = new Producto();
-        ResultSet rs = producto.mostrarinventarioProductos();
-
-        // Procesa los datos del ResultSet y agrégalos a la lista "datos"
-        datos = new ArrayList<>();
+    public final void CargarLista(){
         try {
-            while (rs.next()) {
-                // Aquí, puedes obtener los valores de las columnas que necesites del ResultSet
-                String nombreProducto = rs.getString("Nombre del producto");
-                double precioProducto = rs.getDouble("Precio del producto");
-                String descripcionProducto = rs.getString("Descripcion del producto");
-                double gastoDeProduccion = rs.getDouble("Gasto de produccion");
-                int cantidad = rs.getInt("Cantidad");
-                String vendedor = rs.getString("Vendedor");
+            listView = findViewById(R.id.listViewInventario);
+            Producto producto = new Producto();
+            List<Producto> productos = producto.CargarCatalogos();
 
-                // Agrega los datos a la lista "datos"
-                String item = "Nombre: " + nombreProducto + "\nPrecio: " + precioProducto + "\nDescripción: " + descripcionProducto + "\nGasto de Producción: " + gastoDeProduccion + "\nCantidad: " + cantidad + "\nVendedor: " + vendedor;
-                datos.add(item);
+            if (productos != null) {
+                ImagenListAdapter adapter = new ImagenListAdapter(this, productos);
+                listView.setAdapter(adapter);
+            } else {
+                Toast.makeText(InventarioActivity.this, "No se ha podido cargar la tabla", Toast.LENGTH_SHORT).show();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            Toast.makeText(InventarioActivity.this, "Error desconocido: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
-
-        // Crea un ArrayAdapter y configúralo con los datos
-        ArrayAdapter<String> adaptador = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, datos);
-
-        // Establece el adaptador en el ListView
-        listView.setAdapter(adaptador);
     }
 }
