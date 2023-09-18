@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -52,6 +53,41 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+        CardView cardView1 = findViewById(R.id.cardGanancias);
+        CardView cardView2 = findViewById(R.id.cardBalance);
+        CardView cardView3 = findViewById(R.id.cardTasa);
+        CardView cardView4 = findViewById(R.id.cardPermiso);
+
+        cardView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirNuevaPantalla1();
+            }
+        });
+        cardView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirNuevaPantalla2();
+            }
+        });
+        cardView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirNuevaPantalla3();
+            }
+        });
+        cardView4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirNuevaPantalla4();
+            }
+        });
+
+
+
+
+
         /*---------------------Hooks------------------------*/
         drawerLayout=findViewById(R.id.drawer_Layout);
         navigationView=findViewById(R.id.nav_view);
@@ -68,6 +104,27 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
+    }
+
+    private void abrirNuevaPantalla1() {
+        // Aquí puedes abrir una nueva pantalla, por ejemplo:
+        Intent intent = new Intent(this, ganansias.class);
+        startActivity(intent);
+    }
+    private void abrirNuevaPantalla2() {
+        // Aquí puedes abrir una nueva pantalla, por ejemplo:
+        Intent intent = new Intent(this, balance.class);
+        startActivity(intent);
+    }
+    private void abrirNuevaPantalla3() {
+        // Aquí puedes abrir una nueva pantalla, por ejemplo:
+       Intent intent = new Intent(this, tasaEconomica.class);
+        startActivity(intent);
+    }
+    private void abrirNuevaPantalla4() {
+        // Aquí puedes abrir una nueva pantalla, por ejemplo:
+        Intent intent = new Intent(this, solicitarPermiso.class);
+        startActivity(intent);
     }
     @Override
     public void onBackPressed(){

@@ -73,7 +73,7 @@ public class agregar_servicios extends AppCompatActivity {
 
         //Spinner Categorias
         Servicio SERVICIO =  new Servicio();
-        Spinner categorias1 = findViewById(R.id.spinnerServicioCa);
+        Spinner categorias1 = findViewById(R.id.SpinnerGeneroEP);
         ResultSet resultSet = SERVICIO.ingresarServicios();
         if (resultSet != null) {
             List<String> datos = new ArrayList<>();

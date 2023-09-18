@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Agregar_Productos">
+    tools:context=".Agregar_Productos"
+    tools:ignore="ExtraText">
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -40,9 +41,12 @@
 
 
             <!-- ScrollView horizontal (dentro del ScrollView original) -->
+
+
+            <!-- ScrollView horizontal (dentro del ScrollView original) -->
             <HorizontalScrollView
                 android:id="@+id/horizontalScrollView"
-                android:layout_width="match_parent"
+                android:layout_width="410dp"
                 android:layout_height="180dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -78,8 +82,6 @@
                 </LinearLayout>
             </HorizontalScrollView>
 
-
-            <!-- ScrollView horizontal (dentro del ScrollView original) -->
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="82dp">
@@ -178,7 +180,7 @@
                         android:textStyle="bold" />
 
                     <Spinner
-                        android:id="@+id/spinnerServicioCa"
+                        android:id="@+id/SpinnerGeneroEP"
                         android:layout_width="279dp"
                         android:layout_height="60dp"
                         android:layout_marginBottom="348dp"
@@ -427,13 +429,15 @@
 
     <ImageView
         android:id="@+id/imageView9"
-        android:layout_width="411dp"
-        android:layout_height="150dp"
+        android:layout_width="408dp"
+        android:layout_height="154dp"
+        android:layout_marginTop="4dp"
+        android:adjustViewBounds="true"
+        android:scaleType="center"
+        android:src="@drawable/panelfondo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@color/yellow" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView7"

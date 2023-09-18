@@ -162,7 +162,7 @@
                         android:textStyle="bold" />
 
                     <Spinner
-                        android:id="@+id/spinnerServicioCa"
+                        android:id="@+id/SpinnerGeneroEP"
                         android:layout_width="291dp"
                         android:layout_height="60dp"
                         android:layout_marginBottom="348dp"

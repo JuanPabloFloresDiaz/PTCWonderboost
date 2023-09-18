@@ -111,6 +111,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textViewMenu">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardGanancias"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
@@ -143,6 +144,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardBalance"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
@@ -188,6 +190,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardTasa"
                     android:layout_width="2dp"
                     android:layout_height="135dp"
                     android:layout_margin="10dp"
@@ -220,6 +223,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardPermiso"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"

@@ -2,7 +2,7 @@ package com.example.ptcwonderboost;
 
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.app.DatePickerDialog;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,8 +11,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -24,7 +22,6 @@ import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 public class ProductosServicios extends AppCompatActivity {
@@ -45,7 +42,7 @@ public class ProductosServicios extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_productos_servicios);
         Productos producto = new Productos();
-        categoria = findViewById(R.id.spinnerServicioCa);
+        categoria = findViewById(R.id.SpinnerGeneroEP);
         ResultSet resultSet = producto.CargarCategoria();
         if (resultSet != null) {
             List<String> datos = new ArrayList<>();
