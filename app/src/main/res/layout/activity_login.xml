@@ -11,7 +11,6 @@
         android:id="@+id/imageView3"
         android:layout_width="412dp"
         android:layout_height="203dp"
-        android:background="@color/yellow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -38,7 +37,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.381"
+        app:layout_constraintHorizontal_bias="0.3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.319" />
@@ -49,11 +48,23 @@
         android:layout_height="31dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.854"
+        app:layout_constraintHorizontal_bias="0.801"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.322"
         app:srcCompat="@drawable/uuuuser" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.941"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.323"
+        app:srcCompat="@drawable/elsalvador" />
 
     <TextView
         android:id="@+id/textView3"
@@ -70,8 +81,8 @@
 
     <EditText
         android:id="@+id/txtusuario"
-        android:layout_width="279dp"
-        android:layout_height="60dp"
+        android:layout_width="300dp"
+        android:layout_height="56dp"
         android:layout_marginBottom="348dp"
         android:background="@drawable/bordett"
         android:ems="10"
@@ -85,13 +96,13 @@
 
     <EditText
         android:id="@+id/txtcontra"
-        android:layout_width="279dp"
+        android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_marginBottom="268dp"
         android:background="@drawable/bordett"
         android:ems="10"
         android:hint="Contraseña"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:paddingStart="5dp"
         android:textColor="@color/design_default_color_primary_dark"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -101,8 +112,8 @@
 
     <Button
         android:id="@+id/btningresar"
-        android:layout_width="241dp"
-        android:layout_height="56dp"
+        android:layout_width="317dp"
+        android:layout_height="55dp"
         android:layout_marginBottom="132dp"
         android:background="@drawable/rounded_button_background"
         android:text="Iniciar sesión"

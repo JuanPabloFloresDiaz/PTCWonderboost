@@ -226,6 +226,7 @@ public class Productos {
         }
     }
 
+
     public int EliminarProducto(){
         Connection con = null;
         PreparedStatement ps;

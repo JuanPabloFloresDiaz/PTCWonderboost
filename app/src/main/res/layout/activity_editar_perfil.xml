@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".editarPerfil"
+    android:orientation="vertical">
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="154dp"
+        android:background="@drawable/panelfondo"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Editar Perfil"
+            android:textSize="32dp"
+            android:textStyle="bold"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.504"
+            tools:ignore="MissingConstraints" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp" >
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="131dp"
+                    android:layout_height="55dp"
+                    android:text="Nombre:"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:typeface="normal"
+
+                    android:textSize="20sp"/>
+
+                <EditText
+                    android:id="@+id/txtNombreEP"
+                    android:layout_width="277dp"
+                    android:layout_height="53dp"
+                    android:background="@drawable/bordett"
+                    android:ems="10"
+                    android:hint="Nombre"
+                    android:inputType="text"
+
+
+                    android:textColor="@color/design_default_color_primary_dark"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp" >
+
+
+            <TextView
+                android:id="@+id/textView1261"
+                android:layout_width="131dp"
+                android:layout_height="55dp"
+                android:text="Apellidos"
+                android:textStyle="bold"
+                android:textAlignment="center"
+
+                android:textSize="20sp"
+                android:typeface="normal" />
+
+                <EditText
+                    android:id="@+id/txtApellidosEP"
+                    android:layout_width="277dp"
+                    android:layout_height="53dp"
+                    android:background="@drawable/bordett"
+                    android:ems="10"
+                    android:hint="Apellidos"
+                    android:inputType="text"
+
+
+                    android:textColor="@color/design_default_color_primary_dark"
+                    android:textSize="20sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp" >
+
+
+                <TextView
+                    android:id="@+id/textView161"
+                    android:layout_width="131dp"
+                    android:layout_height="55dp"
+                    android:text="Correo"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+
+                    android:typeface="normal" />
+
+                <EditText
+                    android:id="@+id/txtCorreoEP"
+                    android:layout_width="277dp"
+                    android:layout_height="53dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:background="@drawable/bordett"
+                    android:textColor="@color/design_default_color_primary_dark"
+                    android:hint="Correo"
+
+
+                    android:textSize="20sp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp" >
+
+
+                <TextView
+                    android:id="@+id/textView1671"
+                    android:layout_width="131dp"
+                    android:layout_height="55dp"
+                    android:text="Género"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+
+                    android:typeface="normal" />
+
+                <Spinner
+                    android:id="@+id/SpinnerGeneroEP"
+                    android:layout_width="279dp"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/bordett"
+                    android:paddingStart="5dp"
+                    android:textColor="@color/design_default_color_primary_dark"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp" >
+
+
+                <TextView
+                    android:id="@+id/textView1681"
+                    android:layout_width="131dp"
+                    android:layout_height="55dp"
+                    android:text="Nacimiento"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+
+                    android:typeface="normal" />
+
+                <EditText
+                    android:id="@+id/txtNacimientoEP"
+                    android:layout_width="277dp"
+                    android:layout_height="53dp"
+                    android:ems="10"
+                    android:background="@drawable/bordett"
+                    android:textColor="@color/design_default_color_primary_dark"
+                    android:inputType="text"
+                    android:hint="Nacimiento"
+
+
+                    android:textSize="20sp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp" >
+
+
+                <TextView
+                    android:id="@+id/textView1601"
+                    android:layout_width="131dp"
+                    android:layout_height="55dp"
+                    android:text="Dirección"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+
+                    android:typeface="normal" />
+
+                <EditText
+                    android:id="@+id/txtDireccionEP"
+                    android:layout_width="277dp"
+                    android:layout_height="53dp"
+                    android:background="@drawable/bordett"
+                    android:textColor="@color/design_default_color_primary_dark"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="Dirección"
+
+
+                    android:textSize="20sp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp" >
+
+
+                <TextView
+                    android:id="@+id/textView1621"
+                    android:layout_width="131dp"
+                    android:layout_height="55dp"
+                    android:text="Telefono"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+
+                    android:typeface="normal" />
+
+                <EditText
+                    android:id="@+id/txtTelefonoEP"
+                    android:layout_width="277dp"
+                    android:layout_height="53dp"
+                    android:background="@drawable/bordett"
+                    android:textColor="@color/design_default_color_primary_dark"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="Telefono"
+
+
+                    android:textSize="20sp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp" >
+
+
+                <TextView
+                    android:id="@+id/textView1615"
+                    android:layout_width="131dp"
+                    android:layout_height="55dp"
+                    android:text="DUI"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+
+                    android:typeface="normal" />
+
+                <EditText
+                    android:id="@+id/txtDuiEP"
+                    android:layout_width="277dp"
+                    android:background="@drawable/bordett"
+                    android:textColor="@color/design_default_color_primary_dark"
+                    android:layout_height="53dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="DUI"
+
+
+                    android:textSize="20sp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnGuardarCambios"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginStart="75dp"
+                    android:layout_marginEnd="75dp"
+                    android:layout_weight="1"
+
+                    android:text="Guardar cambios" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>
