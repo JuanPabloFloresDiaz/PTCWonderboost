@@ -46,37 +46,42 @@ public class Registrarse extends AppCompatActivity {
         Registrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String username = UsuarioEditText.getText().toString();
+                String password = ClaveEditText.getText().toString();
+                if(Validaciones.Vacio(UsuarioEditText) || Validaciones.Vacio(ClaveEditText)) {
+                    Toast.makeText(Registrarse.this, "Los campos estan vacios", Toast.LENGTH_SHORT).show();
+                }else if(!Validaciones.ValidarContrasena(password)) {
+                    Toast.makeText(Registrarse.this, "La clave debe tener al menos una letra y un numero", Toast.LENGTH_SHORT).show();
+                }else {
                     try {
                         Usuario user = new Usuario();
-                        String username = UsuarioEditText.getText().toString();
-                        String password = ClaveEditText.getText().toString();
+
                         String codigoPin = generarPing();
                         user.setUsuario(username);
                         user.setClave(password);
                         user.setPin(Integer.parseInt(codigoPin));
                         int valor = user.insertarUsuario(Registrarse.this);
-                        if(valor == 1){
+                        if (valor == 1) {
                             Toast.makeText(Registrarse.this, "Se han ingresado los datos", Toast.LENGTH_SHORT);
                             ResultSet rs = user.CapturarID();
-                            try{
-                                while(rs.next()){
+                            try {
+                                while (rs.next()) {
                                     VariablesGlobales.idRegistro = rs.getInt("idUsuarios");
                                 }
                                 Toast.makeText(Registrarse.this, "id: " + VariablesGlobales.idRegistro, Toast.LENGTH_SHORT);
-                            }catch(Exception ex){
+                            } catch (Exception ex) {
                                 Toast.makeText(Registrarse.this, "Error: " + ex, Toast.LENGTH_SHORT);
                             }
                             Intent intent = new Intent(Registrarse.this, RegistrarsePersona.class);
                             startActivity(intent);
-                        }
-                        else if(valor == 0){
+                        } else if (valor == 0) {
                             Toast.makeText(Registrarse.this, "Ha ocurrido un error inesperado ", Toast.LENGTH_SHORT);
                         }
                     } catch (Exception e) {
                         Toast.makeText(Registrarse.this, "Error: " + e, Toast.LENGTH_SHORT);
                     }
                 }
-
+            }
         });
 
     }

@@ -6,13 +6,349 @@
     android:layout_height="match_parent"
     tools:context=".ProductosServicios">
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="152dp"
-        android:layout_height="53dp"
-        android:text="Productos y servicios"
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="403dp"
+        android:layout_height="533dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Agregar imagen del servicio"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imgSer"
+                        android:layout_width="375dp"
+                        android:layout_height="156dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:tag="0"
+                        app:srcCompat="@drawable/productos1" />
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="82dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/nombreS"
+                        android:layout_width="match_parent"
+                        android:layout_height="53dp"
+                        android:text="Servicio:"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/txtServicioP"
+                        android:layout_width="310dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="348dp"
+                        android:background="@drawable/bordett"
+                        android:ems="10"
+                        android:hint="Servicio"
+                        android:inputType="textPersonName"
+                        android:paddingStart="5dp"
+                        android:textColor="@color/design_default_color_primary_dark"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="82dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/precios"
+                        android:layout_width="match_parent"
+                        android:layout_height="53dp"
+                        android:text="Precio: "
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/txtPrecioSER"
+                        android:layout_width="321dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="348dp"
+                        android:background="@drawable/bordett"
+                        android:ems="10"
+                        android:hint="00.00"
+                        android:inputType="textPersonName"
+                        android:paddingStart="5dp"
+                        android:textColor="@color/design_default_color_primary_dark"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+
+            <!-- ScrollView horizontal (dentro del ScrollView original) -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="82dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/TipoPrecioP"
+                        android:layout_width="match_parent"
+                        android:layout_height="53dp"
+                        android:text="Categoria: "
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/spinnerServicioCa"
+                        android:layout_width="291dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="348dp"
+                        android:background="@drawable/bordett"
+                        android:paddingStart="5dp"
+                        android:textColor="@color/design_default_color_primary_dark"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- ScrollView horizontal (dentro del ScrollView original) -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="82dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/descripcionP"
+                        android:layout_width="match_parent"
+                        android:layout_height="53dp"
+                        android:text="Descripción: "
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/txtDescripcionS"
+                        android:layout_width="266dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="348dp"
+                        android:background="@drawable/bordett"
+                        android:ems="10"
+                        android:hint="Descripción del servicio"
+                        android:inputType="textPersonName"
+                        android:paddingStart="5dp"
+                        android:textColor="@color/design_default_color_primary_dark"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+
+            <!-- ScrollView horizontal (dentro del ScrollView original) -->
+
+
+            <!-- ScrollView horizontal (dentro del ScrollView original) -->
+
+
+            <!-- ScrollView horizontal (dentro del ScrollView original) -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="82dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/CategoriaP"
+                        android:layout_width="match_parent"
+                        android:layout_height="53dp"
+                        android:text="Tipo Precio: "
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/spinnerTipoPrecioS"
+                        android:layout_width="273dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="348dp"
+                        android:background="@drawable/bordett"
+                        android:paddingStart="5dp"
+                        android:textColor="@color/design_default_color_primary_dark"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+
+            <!-- ScrollView horizontal (dentro del ScrollView original) -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="425dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ListView
+                        android:id="@+id/listViewIngresarServicios"
+                        android:layout_width="410dp"
+                        android:layout_height="424dp"
+                        android:background="@drawable/bordett"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- ScrollView horizontal (dentro del ScrollView original) -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="82dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnAgregarSer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="50dp"
+                        android:layout_weight="1"
+                        android:text="Agregar" />
+
+                    <Button
+                        android:id="@+id/btnEliminarSer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:layout_weight="1"
+                        android:text="Eliminar" />
+
+                    <Button
+                        android:id="@+id/btnActualizarSer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:layout_weight="1"
+                        android:text="Actualizar" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="408dp"
+        android:layout_height="192dp"
+        android:src="@drawable/panelfondo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Agregar servicio"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

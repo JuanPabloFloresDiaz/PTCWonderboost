@@ -26,9 +26,35 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#FFFFFF">
+
+
+            <ImageView
+                android:id="@+id/baja"
+                android:layout_width="412dp"
+                android:layout_height="853dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/vectorpanel"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/toolbar" />
+
+            <ImageView
+                android:id="@+id/fondo"
+                android:layout_width="413dp"
+                android:layout_height="194dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/panelfondo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/toolbar"
+                app:layout_constraintVertical_bias="0.0" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -44,13 +70,15 @@
 
             <TextView
                 android:id="@+id/textViewMenu"
-                android:layout_width="160dp"
-                android:layout_height="33dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:text="WonderBoost"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toStartOf="@+id/imageView"
+                android:layout_width="371dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="168dp"
+                android:gravity="center"
+                android:text="Bienvenido a WonderBoost"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.6"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
@@ -58,35 +86,29 @@
                 android:id="@+id/textView2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
+                android:gravity="center"
                 android:text="Sección principal"
-                app:layout_constraintEnd_toStartOf="@+id/imageView"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewMenu" />
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="0dp"
-                android:layout_height="160dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
+                android:textSize="32dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textViewMenu"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/toolbar"
-                app:srcCompat="@drawable/iconejem_24" />
+                app:layout_constraintVertical_bias="0.0" />
 
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="0dp"
                 android:layout_height="175dp"
+                android:layout_marginTop="56dp"
                 android:orientation="horizontal"
                 android:padding="10dp"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView">
+                app:layout_constraintTop_toBottomOf="@+id/textViewMenu">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
@@ -96,7 +118,8 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="#000000">
 
                         <TextView
                             android:id="@+id/textView3"
@@ -106,7 +129,8 @@
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
                             android:text="Ganancias"
-                            android:textSize="24sp" />
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp" />
 
                         <ImageView
                             android:id="@+id/bus"
@@ -114,7 +138,7 @@
                             android:layout_height="75dp"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="15dp"
-                            android:src="@drawable/baseline_attach_money_24"/>
+                            android:src="@drawable/ganancias" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -126,7 +150,8 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="#000000">
 
                         <TextView
                             android:id="@+id/textView4"
@@ -135,8 +160,9 @@
                             android:layout_below="@id/imageView3"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Mis ingresos"
-                            android:textSize="24sp" />
+                            android:text="Balance"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp" />
 
                         <ImageView
                             android:id="@+id/imageView3"
@@ -144,7 +170,7 @@
                             android:layout_height="75dp"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="15dp"
-                            app:srcCompat="@drawable/icons8_walking" />
+                            app:srcCompat="@drawable/balance" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
@@ -153,6 +179,7 @@
                 android:id="@+id/linearLayout2"
                 android:layout_width="0dp"
                 android:layout_height="175dp"
+                android:layout_marginTop="12dp"
                 android:orientation="horizontal"
                 android:padding="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -161,14 +188,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="2dp"
+                    android:layout_height="135dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="#000000">
 
                         <TextView
                             android:id="@+id/textView6"
@@ -178,7 +206,8 @@
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
                             android:text="Tasa economica"
-                            android:textSize="24sp" />
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp" />
 
                         <ImageView
                             android:id="@+id/bus1"
@@ -186,7 +215,39 @@
                             android:layout_height="75dp"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="15dp"
-                            app:srcCompat="@drawable/baseline_auto_graph_24" />
+                            app:srcCompat="@drawable/tasa" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#000000">
+
+                        <TextView
+                            android:id="@+id/textView5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/imageView4"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="10dp"
+                            android:text="Permiso de venta"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp" />
+
+                        <ImageView
+                            android:id="@+id/imageView4"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="15dp"
+                            app:srcCompat="@drawable/permisoventa" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>

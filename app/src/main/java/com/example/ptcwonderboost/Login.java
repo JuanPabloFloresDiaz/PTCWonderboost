@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import java.sql.Connection;
+import java.sql.ResultSet;
 
 public class Login extends AppCompatActivity {
 
@@ -45,10 +46,21 @@ public class Login extends AppCompatActivity {
                         if(valor == 1){
                             Toast.makeText(Login.this, "Se actualizo su estado a activo:" + idUsuario, Toast.LENGTH_SHORT).show();
                         }
-
+                        ResultSet identificador = usuario.CapturarIDPersona();
+                        try{
+                            while (identificador.next()){
+                                VariablesGlobales.idPersona = identificador.getInt("idPersonas");
+                                VariablesGlobales.permisoVenta = identificador.getByte("permisoVenta");
+                                VariablesGlobales.idioma = identificador.getByte("idIdioma");
+                                VariablesGlobales.modoColor = identificador.getByte("ModoColor");
+                            }
+                        }catch(Exception ex){
+                            Toast.makeText(Login.this, "No se pudo capturar el ID", Toast.LENGTH_SHORT).show();
+                        }
                         Toast.makeText(Login.this, "user:" + idUsuario, Toast.LENGTH_SHORT).show();
                         Toast.makeText(Login.this, "tipo: " + idTipoUsuario, Toast.LENGTH_SHORT).show();
                         Toast.makeText(Login.this, "estado: " + idEstadoUsuario, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, "id:" + VariablesGlobales.getIdPersona(), Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(Login.this, MainActivity2.class);
                         startActivity(intent);
                     }else {

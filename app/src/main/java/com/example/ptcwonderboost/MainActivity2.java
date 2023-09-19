@@ -109,9 +109,6 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
         } else if (itemId == R.id.nav_share) {
             Intent intent = new Intent(MainActivity2.this, Pedidos.class);
             startActivity(intent);
-        } else if (itemId == R.id.nav_rate) {
-            Intent intent = new Intent(MainActivity2.this, ClientesFrecuentes.class);
-            startActivity(intent);
         } else if (itemId == R.id.nav_rate1) {
             Intent intent = new Intent(MainActivity2.this, Envios.class);
             startActivity(intent);

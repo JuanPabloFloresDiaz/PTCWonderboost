@@ -121,7 +121,36 @@ public class Usuario {
             return null;
         }
     }
-
+    //Captura de datos importantes según el id
+    public ResultSet CapturarIDPersona(){
+        Connection con = Conexion.getConnection(null);
+        PreparedStatement ps;
+        String query = "SELECT idPersonas, PermisoVenta, ModoColor, idIdioma FROM TbPersonas WHERE idUsuarios = ?;";
+        try {
+            ps = con.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public int ActualizarContraseña() {
+        Connection con = null;
+        PreparedStatement ps;
+        try {
+            con = Conexion.getConnection(null);
+            String claveEncriptada = e.encriptarContrasenaSHA256(clave);
+            String query = "UPDATE TbUsuarios SET Clave = ? WHERE idUsuarios = ?";
+            ps = con.prepareStatement(query);
+            ps.setString(1, claveEncriptada);
+            ps.setInt(2, id);
+            ps.execute();
+            return 1;
+        } catch (SQLException ex) {
+            return 0;
+        }
+    }
     public int ActualizarEstadoActivo(){
         Connection con = null;
         PreparedStatement ps;

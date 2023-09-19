@@ -7,6 +7,42 @@ public class VariablesGlobales {
     public static String usuario;
     public static int idTipoUsuario;
     public static int idEstado;
+    public static int idProducto;
+    public static byte permisoVenta;
+    public static byte idioma;
+    public static byte modoColor;
+
+    public static byte getPermisoVenta() {
+        return permisoVenta;
+    }
+
+    public static void setPermisoVenta(byte permisoVenta) {
+        VariablesGlobales.permisoVenta = permisoVenta;
+    }
+
+    public static byte getIdioma() {
+        return idioma;
+    }
+
+    public static void setIdioma(byte idioma) {
+        VariablesGlobales.idioma = idioma;
+    }
+
+    public static byte getModoColor() {
+        return modoColor;
+    }
+
+    public static void setModoColor(byte modoColor) {
+        VariablesGlobales.modoColor = modoColor;
+    }
+
+    public static int getIdProducto() {
+        return idProducto;
+    }
+
+    public static void setIdProducto(int idProducto) {
+        VariablesGlobales.idProducto = idProducto;
+    }
 
     public static int getIdUsuario() {
         return idUsuario;

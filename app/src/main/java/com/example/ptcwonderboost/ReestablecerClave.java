@@ -2,51 +2,63 @@ package com.example.ptcwonderboost;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.se.omapi.Session;
+import android.os.NetworkOnMainThreadException;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
-import java.net.PasswordAuthentication;
-import java.util.Properties;
-import java.util.Random;
-
+import java.security.SecureRandom;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.util.Properties;
-import javax.mail.Authenticator;
-import javax.mail.MessagingException;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import javax.mail.Message;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Properties;
 public class ReestablecerClave extends AppCompatActivity {
 
-    private static final String USERNAME = "soportewonderboost@gmail.com"; // Correo emisor
-    private static final String PASSWORD = "fjttsuxuzkpabvbw"; // Contraseña del correo emisor
+    private EditText txtPing, txtUsuario;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reestablecer_clave);
-        EditText textCorreo = findViewById(R.id.editTextTextEmailAddress3);
-
+        txtPing = findViewById(R.id.txtPin);
+        txtUsuario = findViewById(R.id.txtPinUsuario);
         //Acciones del boton enviar
-        Button enviar = findViewById(R.id.btnConfirmarCorreo);
-        enviar.setOnClickListener(new View.OnClickListener() {
+        Button enviar = findViewById(R.id.btnConfirmarPin);
+       enviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    String g =  generateVerificationCode();
-                    String email = textCorreo.getText().toString();
-                    sendVerificationCode(email, g);
-                }catch (Exception ex){
+               try {
+                   String usuario = txtUsuario.getText().toString();
+                   int ping = Integer.parseInt(txtPing.getText().toString());
+
+                   Recuperacion recuperacion = new Recuperacion();
+                   recuperacion.setUsuario(usuario);
+                   recuperacion.setPing(ping);
+
+                   // Llama al método RecuperacionPing() para verificar la existencia del usuario y ping
+                   int res = recuperacion.RecuperacionPing();
+                   if (res == 1) {
+                       // Usuario y ping son válidos, permite al usuario restablecer su contraseña
+                       // Redirige a la actividad de restablecimiento de contraseña
+                       int idUsuario = recuperacion.getIdUsuario();
+                       VariablesGlobales.setIdUsuario(idUsuario);
+                       Intent intent = new Intent(ReestablecerClave.this, ReestablecerContrasena.class);
+                       startActivity(intent);
+                       Toast.makeText(ReestablecerClave.this,"Pin correcto: " + usuario, Toast.LENGTH_SHORT).show();
+                   } else {
+                       // Usuario o ping inválido, muestra un mensaje de error al usuario
+                       Toast.makeText(ReestablecerClave.this, "Usuario o ping inválido", Toast.LENGTH_SHORT).show();
+                   }
+               }catch (Exception ex){
                     Toast.makeText(ReestablecerClave.this,"Error: " + ex, Toast.LENGTH_SHORT).show();
                 }
             }
@@ -57,50 +69,8 @@ public class ReestablecerClave extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ReestablecerClave.this, Login.class);
-                startActivity(intent);
-            }
+              startActivity(intent);
+           }
         });
-    }
-
-
-
-    //Envio de correos.
-    public static void sendVerificationCode(String recipientEmail, String verificationCode) {
-        Properties props = new Properties();
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
-
-        /*Session session = javax.mail.Session.getInstance(props,
-                new Authenticator() {
-                    protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
-                        return new javax.mail.PasswordAuthentication(USERNAME, PASSWORD.toCharArray());
-                    }
-                });/*
-
-        /*try {
-            javax.mail.Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(USERNAME));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
-            message.setSubject("Código de verificación");
-            message.setText("Tu código de verificación es: " + verificationCode);
-
-            Transport.send(message);
-
-        } catch (MessagingException e) {
-
-        }*/
-
-
-
-
-        //hola
-    }
-    //Metodo para generar un codigo de verificación
-    public static String generateVerificationCode() {
-        Random random = new Random();
-        int code = 100000 + random.nextInt(900000);
-        return String.valueOf(code);
     }
 }
