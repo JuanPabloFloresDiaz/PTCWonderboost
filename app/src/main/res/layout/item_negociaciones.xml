@@ -7,7 +7,7 @@
     android:background="@drawable/card_background">
 
     <ImageView
-        android:id="@+id/imgFotoProducto"
+        android:id="@+id/imgFotoNegociaciones"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@drawable/bordett"
@@ -22,43 +22,33 @@
         android:layout_marginStart="8dp">
 
         <TextView
-            android:id="@+id/txtNombreProducto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:hint="producto"
-            android:layout_marginTop="8dp"/>
-
-        <TextView
-            android:id="@+id/PrecioCat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:hint="$0.00"
-            android:layout_marginTop="8dp"/>
-
-        <TextView
-            android:id="@+id/EstadoProductoCat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:hint="disponible"
-            android:layout_marginTop="8dp"/>
-
-        <TextView
-            android:id="@+id/idCatalogo"
+            android:id="@+id/idNegociacion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
             android:textColor="#555555"
             android:textColorHint="#555555"
             android:hint="id"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/txtNombreProductoServicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:hint="Nombre"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/VendedorNego"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:hint="root"
             android:layout_marginTop="8dp"/>
 
     </LinearLayout>
@@ -71,35 +61,35 @@
         android:gravity="start"
         android:layout_marginStart="8dp">
 
-
-
         <TextView
-            android:id="@+id/TipoPrecioCat"
+            android:id="@+id/PrecioOriginal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
-            android:hint="fijo"
-            android:layout_marginTop="8dp"/>
-        <TextView
-            android:id="@+id/CantidadCat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:hint="1"
+            android:hint="$0.00"
             android:layout_marginTop="8dp"/>
 
         <TextView
-            android:id="@+id/Vendedor"
+            android:id="@+id/PrecioOfrecido"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:hint="root"
+            android:textColor="#FFFF4A"
+            android:textColorHint="#FFFF4A"
+            android:hint="$0.00"
             android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/PrecioVenta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="#FFE800"
+            android:textColorHint="#FFE800"
+            android:hint="$0.00"
+            android:layout_marginTop="8dp"/>
+
     </LinearLayout>
 </LinearLayout>

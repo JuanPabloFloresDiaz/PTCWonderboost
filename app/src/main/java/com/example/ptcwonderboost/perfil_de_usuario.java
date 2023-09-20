@@ -2,9 +2,12 @@ package com.example.ptcwonderboost;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,6 +18,7 @@ import java.util.List;
 
 public class perfil_de_usuario extends AppCompatActivity {
 
+    private Button btnEditarPerfil, btnCerrarSesion;
     private TextView username, profilename;
     private TextView description;
     private ImageView foto;
@@ -23,6 +27,22 @@ public class perfil_de_usuario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_de_usuario);
         CargarDatosPerfil();
+        btnEditarPerfil = findViewById(R.id.btnEditarPerfil);
+        btnEditarPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(perfil_de_usuario.this, editarperfil.class);
+                startActivity(intent);
+            }
+        });
+        btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
+        btnCerrarSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(perfil_de_usuario.this, Login.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public final void CargarDatosPerfil(){

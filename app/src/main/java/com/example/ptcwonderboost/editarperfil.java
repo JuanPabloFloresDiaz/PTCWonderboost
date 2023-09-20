@@ -1,7 +1,10 @@
 package com.example.ptcwonderboost;
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -24,36 +27,121 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class RegistrarsePersona extends AppCompatActivity {
+public class editarperfil extends AppCompatActivity {
 
     private EditText fechaEditText, txtNombre, txtApellidos, txtDireccion, txtCorreo, txtDescripcion, txtTelefono, txtDUI;
     private Calendar calendar = Calendar.getInstance();
-    private Button botonRegistrarPersona;
-
+    private Button btnEditarPerfil;
     private int idGenero, idNacionalidad;
     private Spinner genero, nacionalidades;
     ImageView imagen;
     Uri imageUri;
     private byte[] imagenBytes;
-
-
-
     private static final int REQUEST_CODE_IMAGE = 100;
     String[] generos = {"Masculino", "Femenino"};
+
+    public final void CargarDatosEditarPerfil(){
+        try{
+            Persona persona = new Persona();
+            persona.setId(VariablesGlobales.getIdUsuario());
+            ResultSet rs = persona.mostrarDatosEditarPerfil();
+            if (rs != null && rs.next()) {
+                String nombres = rs.getString("Nombres");
+                String apellidos = rs.getString("Apellidos");
+                String descripcion = rs.getString("Descripcion");
+                String nacimiento = rs.getString("Nacimiento");
+                String direccion = rs.getString("Direccion");
+                String telefono = rs.getString("Telefono");
+                String correo = rs.getString("Correo");
+                String dui = rs.getString("DUI");
+                int gen = rs.getInt("Genero");
+                int nac = rs.getInt("idNacionalidad");
+                imagenBytes = rs.getBytes("Foto");
+                Bitmap bitmap = BitmapFactory.decodeByteArray(imagenBytes, 0, imagenBytes.length);
+                imagen.setImageBitmap(bitmap);
+                txtNombre.setText(nombres);
+                txtApellidos.setText(apellidos);
+                txtDireccion.setText(direccion);
+                txtCorreo.setText(correo);
+                txtDescripcion.setText(descripcion);
+                txtTelefono.setText(telefono);
+                txtDUI.setText(dui);
+                fechaEditText.setText(nacimiento);
+                genero.setSelection(gen);
+                nacionalidades.setSelection(nac);
+            } else {
+                Toast.makeText(this, "No se encontraron datos de perfil para este usuario", Toast.LENGTH_SHORT).show();
+            }
+        }catch (Exception ex) {
+            Toast.makeText(editarperfil.this,"Error: " + ex,Toast.LENGTH_LONG).show();
+        }
+    }
+    final void EditarPerfil(){
+        Persona persona = new Persona();
+        String Nombres = txtNombre.getText().toString();
+        String Apellidos = txtApellidos.getText().toString();
+        String Correo = txtCorreo.getText().toString();
+        String Direccion = txtDireccion.getText().toString();
+        String telefono = txtTelefono.getText().toString();
+        String DUI = txtDUI.getText().toString();
+        String Descripcion = txtDescripcion.getText().toString();
+        if(Validaciones.Vacio(txtNombre) || Validaciones.Vacio(txtApellidos) || Validaciones.Vacio(txtCorreo) || Validaciones.Vacio(txtDescripcion) || Validaciones.Vacio(txtDUI) || Validaciones.Vacio(txtDireccion) || Validaciones.Vacio(txtTelefono)){
+            Toast.makeText(editarperfil.this, "Los campos estan vacios", Toast.LENGTH_SHORT).show();
+        }else if(!Validaciones.Letras(txtNombre) || !Validaciones.Letras(txtApellidos)){
+            Toast.makeText(editarperfil.this, "Nombre y apellidos solo deben tener letras", Toast.LENGTH_SHORT).show();
+        }else if(!Validaciones.ValidarTelefono(telefono)){
+            Toast.makeText(editarperfil.this, "El teléfono solo debe contener números", Toast.LENGTH_SHORT).show();
+        }else if(!Validaciones.ValidarCorreo(Correo)){
+            Toast.makeText(editarperfil.this, "Formato incorrecto para el correo", Toast.LENGTH_SHORT).show();
+        }else if(!Validaciones.ValidarDUI(DUI)){
+            Toast.makeText(editarperfil.this, "Formato de dui incorrecto", Toast.LENGTH_SHORT).show();
+        }else{
+            try {
+
+                persona.setNombres(Nombres);
+                persona.setApellidos(Apellidos);
+                persona.setGenero((byte) idGenero);
+                persona.setNacimiento(fechaEditText.getText().toString());
+                persona.setDireccion(Direccion);
+                persona.setTelefono(telefono);
+                persona.setCorreo(Correo);
+                persona.setDui(DUI);
+                try {
+                    persona.setFoto(imagenBytes);
+                }catch (Exception ex) {
+                    persona.setFoto(null);
+                }
+                persona.setDescripcion(Descripcion);
+                persona.setIdNacionalidad(idNacionalidad);
+                persona.setId(VariablesGlobales.getIdUsuario());
+                int valor = persona.EditarPerfil();
+                if(valor == 1){
+                    Toast.makeText(editarperfil.this, "Se han editado los datos", Toast.LENGTH_SHORT).show();
+                }else if(valor == 0){
+                    Toast.makeText(editarperfil.this, "ha ocurrido un error", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(editarperfil.this, "Ha ocurrido un error", Toast.LENGTH_SHORT).show();
+                }
+            } catch (Exception e) {
+                Toast.makeText(editarperfil.this, "Error: " + e, Toast.LENGTH_LONG).show();
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registrarse_persona);
-        txtNombre = findViewById(R.id.txtNombres);
-        txtApellidos = findViewById(R.id.txtApellidos);
-        txtDireccion = findViewById(R.id.txtDireccion);
-        txtCorreo = findViewById(R.id.txtCorreo);
-        txtDescripcion = findViewById(R.id.txtDescripcion);
-        txtTelefono = findViewById(R.id.txtTelefono);
-        txtDUI = findViewById(R.id.txtDUI);
+        setContentView(R.layout.activity_editarperfil);
+        txtNombre = findViewById(R.id.txtNombreEP);
+        txtApellidos = findViewById(R.id.txtApellidosEP);
+        txtDireccion = findViewById(R.id.txtDireccionEP);
+        txtCorreo = findViewById(R.id.txtCorreoEP);
+        txtDescripcion = findViewById(R.id.txtDescripcionEP);
+        txtTelefono = findViewById(R.id.txtTelefonoEP);
+        txtDUI = findViewById(R.id.txtDuiEP);
 
-        genero = findViewById(R.id.spinnerGenero);
+        genero = findViewById(R.id.SpinnerGeneroEP);
         ArrayAdapter<String> adapterG = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, generos);
         adapterG.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genero.setAdapter(adapterG);
@@ -65,7 +153,7 @@ public class RegistrarsePersona extends AppCompatActivity {
                 }else if(genero.getSelectedItem() == "Femenino"){
                     idGenero = 1;
                 }else{
-                    Toast.makeText(RegistrarsePersona.this, "Ha ocurrido un error", Toast.LENGTH_SHORT);
+                    Toast.makeText(editarperfil.this, "Ha ocurrido un error", Toast.LENGTH_SHORT);
                 }
             }
 
@@ -76,7 +164,7 @@ public class RegistrarsePersona extends AppCompatActivity {
         });
 
         Persona persona = new Persona();
-        nacionalidades = findViewById(R.id.spinnerNacionalidad);
+        nacionalidades = findViewById(R.id.SpinnerNacionalidadEP);
         ResultSet resultSet = persona.CargarNacionalidad();
         if (resultSet != null) {
             List<String> datos = new ArrayList<>();
@@ -102,9 +190,9 @@ public class RegistrarsePersona extends AppCompatActivity {
                 if (!selectedItem.equals("Seleccionar")) {
                     // Realiza acciones basadas en el elemento seleccionado
                     idNacionalidad = (int) id;
-                    Toast.makeText(RegistrarsePersona.this, "Seleccionaste: " + selectedItem + " " +id, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(editarperfil.this, "Seleccionaste: " + selectedItem + " " +id, Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(RegistrarsePersona.this, "No haz seleccionado nada ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(editarperfil.this, "No haz seleccionado nada ", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -116,12 +204,12 @@ public class RegistrarsePersona extends AppCompatActivity {
         nacionalidades.post(new Runnable() {
             @Override
             public void run() {
-                nacionalidades.setSelection(54);
+
             }
         });
 
 
-        fechaEditText = findViewById(R.id.txtFecha);
+        fechaEditText = findViewById(R.id.txtNacimientoEP);
         fechaEditText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,76 +217,27 @@ public class RegistrarsePersona extends AppCompatActivity {
             }
         });
 
-        imagen = (ImageView)findViewById(R.id.imgFotoPerfil);
+        imagen = (ImageView)findViewById(R.id.imgFotoPerfilEP);
         imagen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cargarImagen();
             }
         });
-
-        botonRegistrarPersona = findViewById(R.id.btnAgregarPersona);
-        botonRegistrarPersona.setOnClickListener(new View.OnClickListener() {
+        CargarDatosEditarPerfil();
+        btnEditarPerfil = findViewById(R.id.btnGuardarCambios);
+        btnEditarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String Nombres = txtNombre.getText().toString();
-                String Apellidos = txtApellidos.getText().toString();
-                String Correo = txtCorreo.getText().toString();
-                String Direccion = txtDireccion.getText().toString();
-                String telefono = txtTelefono.getText().toString();
-                String DUI = txtDUI.getText().toString();
-                String Descripcion = txtDescripcion.getText().toString();
-                if(Validaciones.Vacio(txtNombre) || Validaciones.Vacio(txtApellidos) || Validaciones.Vacio(txtCorreo) || Validaciones.Vacio(txtDescripcion) || Validaciones.Vacio(txtDUI) || Validaciones.Vacio(txtDireccion) || Validaciones.Vacio(txtTelefono)){
-                    Toast.makeText(RegistrarsePersona.this, "Los campos estan vacios", Toast.LENGTH_SHORT).show();
-                }else if(!Validaciones.Letras(txtNombre) || !Validaciones.Letras(txtApellidos)){
-                    Toast.makeText(RegistrarsePersona.this, "Nombre y apellidos solo deben tener letras", Toast.LENGTH_SHORT).show();
-                }else if(!Validaciones.ValidarTelefono(telefono)){
-                    Toast.makeText(RegistrarsePersona.this, "El teléfono solo debe contener números", Toast.LENGTH_SHORT).show();
-                }else if(!Validaciones.ValidarCorreo(Correo)){
-                    Toast.makeText(RegistrarsePersona.this, "Formato incorrecto para el correo", Toast.LENGTH_SHORT).show();
-                }else if(!Validaciones.ValidarDUI(DUI)){
-                    Toast.makeText(RegistrarsePersona.this, "Formato de dui incorrecto", Toast.LENGTH_SHORT).show();
-                }else{
-                try {
+                try{
+                EditarPerfil();
+                }catch (Exception ex){
 
-                    persona.setNombres(Nombres);
-                    persona.setApellidos(Apellidos);
-                    persona.setGenero((byte) idGenero);
-                    persona.setNacimiento(fechaEditText.getText().toString());
-                    persona.setDireccion(Direccion);
-                    persona.setTelefono(telefono);
-                    persona.setCorreo(Correo);
-                    persona.setDui(DUI);
-                    persona.setDescripcion(Descripcion);
-                    persona.setIdUsuarios(VariablesGlobales.getIdRegistro());
-                    persona.setIdNacionalidad(idNacionalidad);
-                    persona.setModoColor((byte)0);
-                    persona.setPermisoVenta((byte)0);
-                    try {
-                        persona.setFoto(imagenBytes);
-                    }catch (Exception ex) {
-                        persona.setFoto(null);
-                    }
-                    persona.setIdIdioma(1);
-                    int valor = persona.RegistrarPersona(RegistrarsePersona.this);
-                    if(valor == 1){
-                        Toast.makeText(RegistrarsePersona.this, "Se han ingresado los datos", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(RegistrarsePersona.this, Login.class);
-                        startActivity(intent);
-                    }else if(valor == 0){
-                            Toast.makeText(RegistrarsePersona.this, "ha ocurrido un error", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        Toast.makeText(RegistrarsePersona.this, "Ha ocurrido un error", Toast.LENGTH_SHORT);
-                    }
-                } catch (Exception e) {
-                    Toast.makeText(RegistrarsePersona.this, "Error: " + e, Toast.LENGTH_SHORT);
-                }
                 }
             }
         });
-    }
 
+    }
 
     private void cargarImagen() {
         try {
@@ -206,14 +245,14 @@ public class RegistrarsePersona extends AppCompatActivity {
             gallery.setType("image/*");
             startActivityForResult(gallery, REQUEST_CODE_IMAGE);
         } catch (Exception ex) {
-            Toast.makeText(RegistrarsePersona.this, ex.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(editarperfil.this, ex.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         try{
-        super.onActivityResult(requestCode, resultCode, data);
+            super.onActivityResult(requestCode, resultCode, data);
             if(resultCode == RESULT_OK && requestCode == REQUEST_CODE_IMAGE){
                 imageUri = data.getData();
                 imagen.setImageURI(imageUri);
@@ -231,11 +270,11 @@ public class RegistrarsePersona extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-        else{
-            Toast.makeText(RegistrarsePersona.this,"Ruta nula ",Toast.LENGTH_LONG).show();
-        }
+            else{
+                Toast.makeText(editarperfil.this,"Ruta nula ",Toast.LENGTH_LONG).show();
+            }
         }catch (Exception ex){
-            Toast.makeText(RegistrarsePersona.this,ex.getMessage(),Toast.LENGTH_LONG).show();
+            Toast.makeText(editarperfil.this,ex.getMessage(),Toast.LENGTH_LONG).show();
         }
     }
 
@@ -260,16 +299,13 @@ public class RegistrarsePersona extends AppCompatActivity {
             selectedDate.set(year, month, dayOfMonth);
 
             if (selectedDate.after(currentDate)) {
-                Toast.makeText(RegistrarsePersona.this, "Seleccione una fecha menor o igual a la fecha actual", Toast.LENGTH_SHORT).show();
+                Toast.makeText(editarperfil.this, "Seleccione una fecha menor o igual a la fecha actual", Toast.LENGTH_SHORT).show();
             } else if (selectedDate.before(minDate)) {
-                Toast.makeText(RegistrarsePersona.this, "Seleccione una fecha mayor a 1900", Toast.LENGTH_SHORT).show();
+                Toast.makeText(editarperfil.this, "Seleccione una fecha mayor a 1900", Toast.LENGTH_SHORT).show();
             } else {
                 String selectedDateStr = dayOfMonth + "/" + (month + 1) + "/" + year;
                 fechaEditText.setText(selectedDateStr);
             }
         }
     };
-
-
-
 }

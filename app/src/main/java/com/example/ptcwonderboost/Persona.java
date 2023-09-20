@@ -213,6 +213,55 @@ public class Persona {
         }
     }
 
+    public int EditarPerfil(){
+        Connection con = null;
+        PreparedStatement ps;
+        try{
+            con = Conexion.getConnection(null);
+            String query = "UPDATE TbPersonas SET Nombres= ?, Apellidos = ?, Genero = ?, Nacimiento = ?, Direccion = ?, Telefono = ?, Correo = ?, DUI = ?, Foto = ?, Descripcion = ?, idNacionalidad = ?  WHERE idUsuarios = ?";
+            ps = con.prepareStatement(query);
+            ps.setString(1, nombres);
+            ps.setString(2, apellidos);
+            ps.setByte(3, genero);
+            ps.setString(4, nacimiento);
+            ps.setString(5, direccion);
+            ps.setString(6, telefono);
+            ps.setString(7, correo);
+            ps.setString(8, dui);
+            ps.setBytes(9, foto);
+            ps.setString(10, descripcion);
+            ps.setInt(11, idNacionalidad);
+            ps.setInt(12, id);
+            ps.execute();
+            return 1;
+        }catch(Exception ex){
+            return 0;
+        }finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public ResultSet mostrarDatosEditarPerfil(){
+        Connection con = null;
+        PreparedStatement ps;
+        try{
+            con = Conexion.getConnection(null);
+            String query = "SELECT p.Nombres, p.Apellidos, p.Genero, p.Nacimiento, p.Foto, p.Direccion, p.Telefono, p.Correo, p.DUI, p.Descripcion, p.idNacionalidad FROM TbPersonas p INNER JOIN TbUsuarios u ON u.idUsuarios = p.idUsuarios INNER JOIN TbNacionalidades n ON n.idNacionalidad = p.idNacionalidad WHERE p.idUsuarios = ?";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        }catch(Exception ex){
+            return null;
+        }
+    }
+
     public ResultSet CargarNacionalidad(){
         PreparedStatement ps;
         Connection con;

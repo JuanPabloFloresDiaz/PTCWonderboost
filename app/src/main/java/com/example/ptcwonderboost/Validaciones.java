@@ -20,7 +20,7 @@ public class Validaciones {
     // Método para validar si un campo de texto contiene solo letras.
     public static boolean Letras(EditText editText) {
         String input = editText.getText().toString().trim();
-        return input.matches("[a-zA-Z]+");
+        return input.matches("[\\p{L}\\s]+");
     }
 
     // Método para validar si un campo de texto contiene un precio válido con máximo 2 decimales.
@@ -32,6 +32,11 @@ public class Validaciones {
     public static boolean ValidarContrasena(String contrasena) {
         // Validar contraseña segura (al menos una letra y un número)
         return contrasena.matches("^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$");
+    }
+
+    public static boolean ValidarTelefono(String telefono) {
+        // Validar contraseña segura (al menos una letra y un número)
+        return telefono.matches("\\+\\d{1,3} \\d{4}-\\d{4}");
     }
 
     public static boolean ValidarDUI(String dui) {

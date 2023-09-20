@@ -46,7 +46,7 @@ public class ImagenListAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.item_producto, parent, false);
         }
-
+        TextView txtIDProducto = convertView.findViewById(R.id.idCatalogo);
         ImageView imgFotoProducto = convertView.findViewById(R.id.imgFotoProducto);
         TextView txtNombreProducto = convertView.findViewById(R.id.txtNombreProducto);
         TextView txtPrecio = convertView.findViewById(R.id.PrecioCat);
@@ -55,6 +55,8 @@ public class ImagenListAdapter extends BaseAdapter {
         TextView txtCantidad = convertView.findViewById(R.id.CantidadCat);
         TextView txtVendedor = convertView.findViewById(R.id.Vendedor);
         Producto producto = productos.get(position);
+        //int idProducto = producto.getIdProducto();
+        txtIDProducto.setText(String.valueOf(producto.getIdProducto()));
         byte[] fotoBytes = producto.getFotoProducto();
         Bitmap bitmap = BitmapFactory.decodeByteArray(fotoBytes, 0, fotoBytes.length);
         imgFotoProducto.setImageBitmap(bitmap);

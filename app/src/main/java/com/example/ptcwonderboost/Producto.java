@@ -111,7 +111,9 @@ public class Producto {
         }
     }
 
-    public List<Producto> BuscarCatalogos() throws SQLException{
+
+
+    public List<Producto> BuscarCatalogos() throws SQLException {
         List<Producto> productos = new ArrayList<>();
         PreparedStatement ps;
         Connection con;
@@ -134,23 +136,9 @@ public class Producto {
                 productos.add(producto);
             }
             return productos;
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             return null;
         } catch (Exception e) {
-            return null;
-        }
-    }
-
-    public ResultSet mostrarinventarioProductos(){
-        Connection con;
-        PreparedStatement ps;
-        try{
-            con= Conexion.getConnection(null);
-            String query = "SELECT s.Producto AS 'Nombre del producto', s.Precio AS 'Precio del producto', s.Descripcion AS 'Descripcion del producto', s.GastodeProduccion AS 'Gasto de produccion', s.Cantidad AS 'Cantidad', p.Nombres + ' ' + p.Apellidos AS 'Vendedor' FROM tbProductos s INNER JOIN tbPersonas p on p.idPersonas = s.idPersonas;";
-            ps = con.prepareStatement(query);
-            ResultSet rs = ps.executeQuery();
-            return rs;
-        }catch(Exception e){
             return null;
         }
     }
