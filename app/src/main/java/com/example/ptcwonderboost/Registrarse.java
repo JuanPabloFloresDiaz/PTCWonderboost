@@ -51,7 +51,9 @@ public class Registrarse extends AppCompatActivity {
                 if(Validaciones.Vacio(UsuarioEditText) || Validaciones.Vacio(ClaveEditText)) {
                     Toast.makeText(Registrarse.this, "Los campos estan vacios", Toast.LENGTH_SHORT).show();
                 }else if(!Validaciones.ValidarContrasena(password)) {
+                    Toast.makeText(Registrarse.this, "La clave debe cumplir los siguientes requerimientos", Toast.LENGTH_SHORT).show();
                     Toast.makeText(Registrarse.this, "La clave debe tener al menos una letra y un numero", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Registrarse.this, "La clave debe estar en el rango de 6 a 50 caracteres", Toast.LENGTH_SHORT).show();
                 }else {
                     try {
                         Usuario user = new Usuario();

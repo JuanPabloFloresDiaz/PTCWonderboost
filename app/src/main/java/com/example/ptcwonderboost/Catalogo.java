@@ -18,7 +18,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class Catalogo extends AppCompatActivity implements SearchView.OnQueryTextListener{
-
+    private int idSeleccionado;
     ListView lista;
     SearchView buscador;
 
@@ -31,6 +31,15 @@ public class Catalogo extends AppCompatActivity implements SearchView.OnQueryTex
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                try{
+                    // Obtén el producto seleccionado
+                    Producto productoSeleccionado = (Producto) parent.getItemAtPosition(position);
+                    // Guarda el valor del campo "id" en la variable idSeleccionado
+                    idSeleccionado = productoSeleccionado.getIdProducto();
+                    VariablesGlobales.idProducto = idSeleccionado;
+                }catch (Exception ex){
+                    Toast.makeText(Catalogo.this, "ERROR: " + ex, Toast.LENGTH_LONG).show();
+                }
                 // Aquí puedes mostrar un AlertDialog con opciones
                 mostrarDialogoDeOpciones();
             }

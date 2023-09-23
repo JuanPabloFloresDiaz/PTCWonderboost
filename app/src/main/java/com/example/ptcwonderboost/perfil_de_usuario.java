@@ -5,6 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.Shader;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -44,7 +52,32 @@ public class perfil_de_usuario extends AppCompatActivity {
             }
         });
     }
+    private Bitmap getRoundedBitmap(Bitmap bitmap) {
+        int width = bitmap.getWidth();
+        int height = bitmap.getHeight();
+        int size = Math.min(width, height);
 
+        Bitmap output = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+        Paint paint = new Paint();
+        paint.setAntiAlias(true);
+
+        // Calcula el radio del círculo, que es la mitad del tamaño más pequeño (ancho o alto)
+        float radius = size / 2f;
+
+        // Calcula el centro del círculo (coordenadas x e y)
+        float centerX = width / 2f;
+        float centerY = height / 2f;
+
+        // Dibuja el círculo redondeado sin recortar la imagen original
+        canvas.drawCircle(centerX, centerY, radius, paint);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+
+        // Dibuja la imagen original sobre el círculo
+        canvas.drawBitmap(bitmap, 0, 0, paint);
+
+        return output;
+    }
     public final void CargarDatosPerfil(){
         try {
             username = findViewById(R.id.username);
@@ -59,7 +92,8 @@ public class perfil_de_usuario extends AppCompatActivity {
                 String descripcion = rs.getString("Descripcion");
                 byte[] fotoBytes = rs.getBytes("Foto");
                 Bitmap bitmap = BitmapFactory.decodeByteArray(fotoBytes, 0, fotoBytes.length);
-                foto.setImageBitmap(bitmap);
+                Bitmap roundedBitmap = getRoundedBitmap(bitmap);
+                foto.setImageBitmap(roundedBitmap);
                 profilename.setText(nombrePerfil);
                 username.setText(usuario);
                 description.setText(descripcion);

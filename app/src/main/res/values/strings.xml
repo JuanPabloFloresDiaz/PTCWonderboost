@@ -2,8 +2,8 @@
     <string name="app_name">PTC Wonderboost</string>
     <string name="open_nav">Open Navigation Drawer</string>
     <string name="close_nav">Close Navigation Drawer</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open">Arrastra o da click para abrir el menú</string>
+    <string name="navigation_drawer_close">Arrastra para cerrar el menú</string>
     <string name="title_activity_clientes_frecuentes">ClientesFrecuentes</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

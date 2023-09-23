@@ -315,18 +315,26 @@ public class ProductosIngreso extends AppCompatActivity {
         agregarP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AgregarDatos();
-                LeerDatos();
-                LimpiarCampos();
+                if(VariablesGlobales.getPermisoVenta() == 0){
+                    Toast.makeText(ProductosIngreso.this, "Usted no tiene permiso para vender", Toast.LENGTH_LONG).show();
+                }else {
+                    AgregarDatos();
+                    LeerDatos();
+                    LimpiarCampos();
+                }
             }
         });
         eleminarP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
-                    EliminarProductos();
-                    LeerDatos();
-                    LimpiarCampos();
+                    if(VariablesGlobales.getPermisoVenta() == 0){
+                        Toast.makeText(ProductosIngreso.this, "Usted no tiene permiso para vender", Toast.LENGTH_LONG).show();
+                    }else {
+                        EliminarProductos();
+                        LeerDatos();
+                        LimpiarCampos();
+                    }
                 }catch(Exception ex){
                     Toast.makeText(ProductosIngreso.this, "No se ha seleccionado nada. ", Toast.LENGTH_SHORT).show();
                 }
@@ -336,9 +344,13 @@ public class ProductosIngreso extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    ActualizarProductos();
-                    LeerDatos();
-                    LimpiarCampos();
+                    if(VariablesGlobales.getPermisoVenta() == 0){
+                        Toast.makeText(ProductosIngreso.this, "Usted no tiene permiso para vender", Toast.LENGTH_LONG).show();
+                    }else {
+                        ActualizarProductos();
+                        LeerDatos();
+                        LimpiarCampos();
+                    }
                 }catch(Exception ex){
                     Toast.makeText(ProductosIngreso.this, "No se ha seleccionado nada ", Toast.LENGTH_SHORT).show();
                 }

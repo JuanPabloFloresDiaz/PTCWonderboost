@@ -31,7 +31,7 @@ public class Validaciones {
 
     public static boolean ValidarContrasena(String contrasena) {
         // Validar contraseña segura (al menos una letra y un número)
-        return contrasena.matches("^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$");
+        return contrasena.matches("^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+).{6,50}$");
     }
 
     public static boolean ValidarTelefono(String telefono) {
