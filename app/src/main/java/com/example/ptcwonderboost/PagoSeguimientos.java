@@ -2,8 +2,6 @@ package com.example.ptcwonderboost;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -31,15 +29,37 @@ import java.util.List;
 
 public class PagoSeguimientos extends AppCompatActivity {
     private ListView listView;
-    private Spinner formaPago;
+    private Spinner estadoPago;
     private EditText fechaEditText;
-    private int idFormaPago;
+    private int idEstadoPago, idEnvio;
     private List<String> datos;
     private Button btnGuardar;
     private Calendar calendar = Calendar.getInstance();
 
     public final void GuardarPago(){
+        try{
+            Pagos pagos = new Pagos();
+            if(idEstadoPago == 0){
+                Toast.makeText(this,"No se ha seleccionado estado de pago", Toast.LENGTH_SHORT).show();
+            }else if(Validaciones.Vacio(fechaEditText)){
+                Toast.makeText(this,"No se ha seleccionado fecha en la que se pago", Toast.LENGTH_SHORT).show();
+            }else if(idEnvio == 0){
+                Toast.makeText(this,"Debe seleccionar un dato de la lista", Toast.LENGTH_SHORT).show();
+            }else{
+                pagos.setIdEstadoPago(idEstadoPago);
+                pagos.setFechaPago(fechaEditText.getText().toString());
+                pagos.setIdEnvio(idEnvio);
+                int valor = pagos.IngresarPago();
+                if(valor == 1){
+                    LeerDatos();
+                    Toast.makeText(this,"Se guardo el pedido", Toast.LENGTH_SHORT ).show();
 
+                }
+            }
+        }catch(Exception ex){
+            System.out.println("Error: " + ex);
+
+        }
     }
     public final void LeerDatos(){
         Pagos pagos = new Pagos();
@@ -58,7 +78,7 @@ public class PagoSeguimientos extends AppCompatActivity {
                 BigDecimal precioVenta = rsL.getBigDecimal("Precio de venta");
 
                 // Agrega los datos a la lista "datos"
-                String item =  idEnvio + "\n" +  " Nombre: " + nombre + "\n"+ " Estado de envio: " + envio + "\n"+ " Precio original: " + precioOriginal + "\n"+ " Precio ofrecido: " + precioOfrecido + "\n"+  " Precio de venta " + precioVenta;
+                String item =  idEnvio + " Nombre: " + nombre + "\n"+ " Estado de envio: " + envio + "\n"+ " Precio original: " + precioOriginal + "\n"+ " Precio ofrecido: " + precioOfrecido + "\n"+  " Precio de venta " + precioVenta;
                 datos.add(item);
             }
         } catch (Exception e) {
@@ -90,8 +110,32 @@ public class PagoSeguimientos extends AppCompatActivity {
         setContentView(R.layout.activity_pago_seguimientos);
         listView = findViewById(R.id.listViewSeguimientoPago);
         LeerDatos();
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                try{
+                    String nombreProductoSeleccionado = datos.get(position);
+
+                    // Extrae el idProducto del texto seleccionado
+                    String[] partes = nombreProductoSeleccionado.split(" ");
+                    if (partes.length > 1) {
+                        String idEnvios = partes[0];
+                        try {
+                            idEnvio = Integer.parseInt(idEnvios);
+                            Toast.makeText(getApplicationContext(), "ID del producto seleccionado: " + idEnvio, Toast.LENGTH_SHORT).show();
+                        } catch (NumberFormatException e) {
+                            Toast.makeText(getApplicationContext(), "La cadena no es un número válido", Toast.LENGTH_SHORT).show();
+                            // Aquí puedes manejar la excepción o tomar otras acciones apropiadas
+                        }
+                        Toast.makeText(getApplicationContext(), "ID del producto seleccionado: " + idEnvio, Toast.LENGTH_SHORT).show();
+                    }
+                }catch (Exception ex){
+                    Toast.makeText(PagoSeguimientos.this, "ERROR: " + ex, Toast.LENGTH_LONG).show();
+                }
+            }
+        });
         Pagos pagos = new Pagos();
-        formaPago = findViewById(R.id.spinnerEstadoPago);
+        estadoPago = findViewById(R.id.spinnerEstadoPago);
         ResultSet rs = pagos.CargarEstadoPago();
         if (rs != null) {
             List<String> datos1 = new ArrayList<>();
@@ -104,18 +148,18 @@ public class PagoSeguimientos extends AppCompatActivity {
                 // Crea el adaptador y asigna los datos al Spinner
                 ArrayAdapter<String> adapterN1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, datos1);
                 adapterN1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                formaPago.setAdapter(adapterN1);
+                estadoPago.setAdapter(adapterN1);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-        formaPago.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        estadoPago.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItem = (String) parent.getItemAtPosition(position);
                 if (!selectedItem.equals("Seleccionar")) {
                     // Realiza acciones basadas en el elemento seleccionado
-                    idFormaPago = (int) id;
+                    idEstadoPago = (int) id;
                 }else{
 
                 }
@@ -166,12 +210,12 @@ public class PagoSeguimientos extends AppCompatActivity {
             Calendar selectedDate = Calendar.getInstance();
             selectedDate.set(year, month, dayOfMonth);
 
-            if (selectedDate.after(currentDate)) {
-                Toast.makeText(PagoSeguimientos.this, "Seleccione una fecha menor o igual a la fecha actual", Toast.LENGTH_SHORT).show();
+            if (selectedDate.before(currentDate)) {
+                Toast.makeText(PagoSeguimientos.this, "Seleccione una fecha mayor a la fecha actual", Toast.LENGTH_SHORT).show();
             } else if (selectedDate.before(minDate)) {
                 Toast.makeText(PagoSeguimientos.this, "Seleccione una fecha mayor a 1900", Toast.LENGTH_SHORT).show();
             } else {
-                String selectedDateStr = dayOfMonth + "/" + (month + 1) + "/" + year;
+                String selectedDateStr = year + "-" + (month + 1) + "-" + dayOfMonth;
                 fechaEditText.setText(selectedDateStr);
             }
         }

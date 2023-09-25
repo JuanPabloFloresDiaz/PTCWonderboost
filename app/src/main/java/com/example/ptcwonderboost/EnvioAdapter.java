@@ -1,39 +1,36 @@
 package com.example.ptcwonderboost;
+
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.NumberFormat;
 import java.util.List;
 
-public class CartAdapter extends BaseAdapter{
+public class EnvioAdapter extends BaseAdapter {
 
     private Context context;
-    private List<Negociaciones> negociaciones;
     private List<Envio> envio;
 
-    public CartAdapter(Context context, List<Negociaciones> negociaciones) {
+    public EnvioAdapter(Context context, List<Envio> envio) {
         this.context = context;
-        this.negociaciones = negociaciones;
+        this.envio = envio;
     }
 
     @Override
     public int getCount() {
-        return negociaciones.size();
+        return envio.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return negociaciones.get(position);
+        return envio.get(position);
     }
 
     @Override
@@ -53,7 +50,7 @@ public class CartAdapter extends BaseAdapter{
         TextView txtPrecioOfr = convertView.findViewById(R.id.PrecioOfrecido);
         TextView txtPrecioVen = convertView.findViewById(R.id.PrecioVenta);
         TextView txtVendedor = convertView.findViewById(R.id.VendedorNego);
-        Negociaciones producto = negociaciones.get(position);
+        Envio producto = envio.get(position);
         txtIDNegociacion.setText(String.valueOf(producto.getIdNegociacion()));
         byte[] fotoBytes = producto.getFoto();
         Bitmap bitmap = BitmapFactory.decodeByteArray(fotoBytes, 0, fotoBytes.length);

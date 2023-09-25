@@ -155,7 +155,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btnGuardarCambios"
+                    android:id="@+id/btnGuardarCambiosM"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"

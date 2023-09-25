@@ -48,7 +48,9 @@ public class perfil_de_usuario extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(perfil_de_usuario.this, Login.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
+                finish();
             }
         });
     }

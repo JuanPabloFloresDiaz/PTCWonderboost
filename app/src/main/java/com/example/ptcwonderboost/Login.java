@@ -44,7 +44,7 @@ public class Login extends AppCompatActivity {
                         usuario.setId(VariablesGlobales.idUsuario);
                         int valor = usuario.ActualizarEstadoActivo();
                         if(valor == 1){
-                            Toast.makeText(Login.this, "Se actualizo su estado a activo:" + idUsuario, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, "Se actualizo su estado a activo" , Toast.LENGTH_SHORT).show();
                         }
                         ResultSet identificador = usuario.CapturarIDPersona();
                         try{

@@ -303,7 +303,7 @@ public class editarperfil extends AppCompatActivity {
             } else if (selectedDate.before(minDate)) {
                 Toast.makeText(editarperfil.this, "Seleccione una fecha mayor a 1900", Toast.LENGTH_SHORT).show();
             } else {
-                String selectedDateStr = dayOfMonth + "/" + (month + 1) + "/" + year;
+                String selectedDateStr = dayOfMonth + "-" + (month + 1) + "-" + year;
                 fechaEditText.setText(selectedDateStr);
             }
         }

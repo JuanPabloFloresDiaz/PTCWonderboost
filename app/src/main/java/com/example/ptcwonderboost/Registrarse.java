@@ -64,23 +64,23 @@ public class Registrarse extends AppCompatActivity {
                         user.setPin(Integer.parseInt(codigoPin));
                         int valor = user.insertarUsuario(Registrarse.this);
                         if (valor == 1) {
-                            Toast.makeText(Registrarse.this, "Se han ingresado los datos", Toast.LENGTH_SHORT);
+                            Toast.makeText(Registrarse.this, "Se han ingresado los datos", Toast.LENGTH_SHORT).show();
                             ResultSet rs = user.CapturarID();
                             try {
                                 while (rs.next()) {
                                     VariablesGlobales.idRegistro = rs.getInt("idUsuarios");
                                 }
-                                Toast.makeText(Registrarse.this, "id: " + VariablesGlobales.idRegistro, Toast.LENGTH_SHORT);
+                                Toast.makeText(Registrarse.this, "PIN de seguridad: " + codigoPin, Toast.LENGTH_LONG).show();
                             } catch (Exception ex) {
-                                Toast.makeText(Registrarse.this, "Error: " + ex, Toast.LENGTH_SHORT);
+                                Toast.makeText(Registrarse.this, "Error: " + ex, Toast.LENGTH_SHORT).show();
                             }
                             Intent intent = new Intent(Registrarse.this, RegistrarsePersona.class);
                             startActivity(intent);
                         } else if (valor == 0) {
-                            Toast.makeText(Registrarse.this, "Ha ocurrido un error inesperado ", Toast.LENGTH_SHORT);
+                            Toast.makeText(Registrarse.this, "Ha ocurrido un error inesperado ", Toast.LENGTH_SHORT).show();
                         }
                     } catch (Exception e) {
-                        Toast.makeText(Registrarse.this, "Error: " + e, Toast.LENGTH_SHORT);
+                        Toast.makeText(Registrarse.this, "Error: " + e, Toast.LENGTH_SHORT).show();
                     }
                 }
             }

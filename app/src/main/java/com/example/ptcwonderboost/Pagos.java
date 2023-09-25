@@ -48,7 +48,7 @@ public class Pagos {
         PreparedStatement ps;
         try{
             con = Conexion.getConnection(null);
-            String query = "SELECT e.idEnvio, n.idNegociacion, CASE WHEN n.idProducto IS NOT NULL THEN p.Producto WHEN n.idServicio IS NOT NULL THEN s.Servicio END AS 'Nombre', ee.estadoEnvio AS 'Estado de envio', CASE WHEN n.idProducto IS NOT NULL THEN p.Precio WHEN n.idServicio IS NOT NULL THEN s.Precio END AS 'Precio original', COALESCE(n.PrecioOfrecido, 0) AS 'Precio ofrecido', COALESCE(n.PrecioVenta, 0) AS 'Precio de venta' FROM  tbEnvios e INNER JOIN tbNegociaciones n ON e.idNegociacion = n.idNegociacion LEFT JOIN tbProductos p ON p.idProducto = n.idProducto LEFT JOIN tbServicios s ON s.idServicio = n.idServicio INNER JOIN tbEstadosEnvio ee ON e.idEstadoEnvio = ee.idEstadoEnvio WHERE (p.idPersonas = ? OR s.idPersonas = ?) AND e.idEstadoEnvio = 3;";
+            String query = "SELECT e.idEnvio, CASE WHEN n.idProducto IS NOT NULL THEN p.Producto WHEN n.idServicio IS NOT NULL THEN s.Servicio END AS 'Nombre', ee.estadoEnvio AS 'Estado de envio', CASE WHEN n.idProducto IS NOT NULL THEN p.Precio WHEN n.idServicio IS NOT NULL THEN s.Precio END AS 'Precio original', COALESCE(n.PrecioOfrecido, 0) AS 'Precio ofrecido', COALESCE(n.PrecioVenta, 0) AS 'Precio de venta' FROM  tbEnvios e INNER JOIN tbNegociaciones n ON e.idNegociacion = n.idNegociacion LEFT JOIN tbProductos p ON p.idProducto = n.idProducto LEFT JOIN tbServicios s ON s.idServicio = n.idServicio INNER JOIN tbEstadosEnvio ee ON e.idEstadoEnvio = ee.idEstadoEnvio WHERE (p.idPersonas = ? OR s.idPersonas = ?) AND e.idEstadoEnvio = 3;";
             ps = con.prepareStatement(query);
             ps.setInt(1, idVendedor);
             ps.setInt(2, idVendedor);

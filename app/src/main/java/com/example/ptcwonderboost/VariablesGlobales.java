@@ -11,6 +11,15 @@ public class VariablesGlobales {
     public static byte permisoVenta;
     public static byte idioma;
     public static byte modoColor;
+    public static int idNegociacion;
+
+    public static int getIdNegociacion() {
+        return idNegociacion;
+    }
+
+    public static void setIdNegociacion(int idNegociacion) {
+        VariablesGlobales.idNegociacion = idNegociacion;
+    }
 
     public static byte getPermisoVenta() {
         return permisoVenta;

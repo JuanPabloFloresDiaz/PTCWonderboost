@@ -264,7 +264,7 @@ public class RegistrarsePersona extends AppCompatActivity {
             } else if (selectedDate.before(minDate)) {
                 Toast.makeText(RegistrarsePersona.this, "Seleccione una fecha mayor a 1900", Toast.LENGTH_SHORT).show();
             } else {
-                String selectedDateStr = dayOfMonth + "/" + (month + 1) + "/" + year;
+                String selectedDateStr = year + "-" + (month + 1) + "-" + dayOfMonth;
                 fechaEditText.setText(selectedDateStr);
             }
         }

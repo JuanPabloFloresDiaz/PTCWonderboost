@@ -65,7 +65,7 @@
                     android:typeface="normal" />
 
                 <EditText
-                    android:id="@+id/txtUbicacionOrigen"
+                    android:id="@+id/txtUbicacionOrigenG"
                     android:layout_width="match_parent"
                     android:layout_height="53dp"
                     android:background="@drawable/bordett"
@@ -99,7 +99,7 @@
                     android:typeface="normal" />
 
                 <EditText
-                    android:id="@+id/txtUbicacionDestino"
+                    android:id="@+id/txtUbicacionDestinoG"
                     android:layout_width="match_parent"
                     android:layout_height="53dp"
                     android:background="@drawable/bordett"
@@ -133,13 +133,13 @@
                     android:typeface="normal" />
 
                 <EditText
-                    android:id="@+id/txtFechaEnvio"
+                    android:id="@+id/txtFechaEnvioG"
                     android:layout_width="match_parent"
                     android:layout_height="53dp"
                     android:background="@drawable/bordett"
                     android:ems="10"
                     android:hint="fecha "
-                    android:inputType="text"
+                    android:inputType="none"
                     android:textColor="@color/design_default_color_primary_dark"
 
 
@@ -169,7 +169,7 @@
                     android:typeface="normal" />
 
                 <Spinner
-                    android:id="@+id/spinnerEstadoEnvio"
+                    android:id="@+id/spinnerEstadoEnvioG"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_marginBottom="5dp"
@@ -190,7 +190,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btnGuardarCambios"
+                    android:id="@+id/btnGuardarCambiosG"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
