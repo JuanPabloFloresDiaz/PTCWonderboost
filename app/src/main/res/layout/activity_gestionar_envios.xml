@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/vectorpanel"
-    tools:context=".MonitorearEnvios">
-
+    tools:context=".gestionar_envios">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="154dp"
@@ -19,7 +18,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Monitoreo de envios"
+            android:text="Gesionar envios"
             android:textSize="32dp"
             android:textColor="@color/black"
             android:textStyle="bold"
@@ -151,6 +150,42 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp" >
+
+
+                <TextView
+                    android:id="@+id/txtnacionalidad"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:text="Estado envio:"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+
+                    android:typeface="normal" />
+
+                <Spinner
+                    android:id="@+id/spinnerEstadoEnvio"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/bordett"
+                    android:paddingStart="5dp"
+                    android:textColor="@color/design_default_color_primary_dark"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
@@ -169,5 +204,4 @@
         </LinearLayout>
 
     </ScrollView>
-
 </LinearLayout>

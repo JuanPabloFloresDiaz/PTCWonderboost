@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".Tasa_Economica">
 
+    <RatingBar
+        android:id="@+id/ratingBar"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="91dp"
+        tools:layout_editor_absoluteY="235dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

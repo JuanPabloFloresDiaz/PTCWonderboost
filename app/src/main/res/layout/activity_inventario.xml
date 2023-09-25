@@ -4,19 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/vectorpanel"
     tools:context=".InventarioActivity">
-
-    <ImageView
-        android:id="@+id/baja"
-        android:layout_width="412dp"
-        android:layout_height="733dp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/vectorpanel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.514" />
 
     <ListView
         android:id="@+id/listViewInventario"

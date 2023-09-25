@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/vectorpanel"
-    tools:context=".MonitorearEnvios">
+    tools:context=".editarperfil"
+    android:orientation="vertical">
+
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -19,9 +20,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Monitoreo de envios"
+            android:text="Negociacion"
             android:textSize="32dp"
-            android:textColor="@color/black"
             android:textStyle="bold"
 
             app:layout_constraintBottom_toBottomOf="parent"
@@ -38,7 +38,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/vectorpanel">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,30 +50,18 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp" >
 
                 <TextView
-                    android:id="@+id/textView16"
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:text="Ubicacion de origen:"
-                    android:textAlignment="center"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-
-                    android:typeface="normal" />
-
-                <EditText
-                    android:id="@+id/txtUbicacionOrigen"
+                    android:id="@+id/txtProductosPro"
                     android:layout_width="match_parent"
                     android:layout_height="53dp"
                     android:background="@drawable/bordett"
                     android:ems="10"
-                    android:hint="Ubicacion"
-                    android:inputType="text"
+                    android:hint="Producto"
 
 
                     android:textColor="@color/design_default_color_primary_dark"
@@ -83,30 +72,20 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp" >
 
 
-                <TextView
-                    android:id="@+id/textView1261"
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:text="Ubicacion destino:"
-                    android:textAlignment="center"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:typeface="normal" />
-
                 <EditText
-                    android:id="@+id/txtUbicacionDestino"
+                    android:id="@+id/txtCantidadPro"
                     android:layout_width="match_parent"
                     android:layout_height="53dp"
                     android:background="@drawable/bordett"
                     android:ems="10"
-                    android:hint="Ubicacion"
-                    android:inputType="text"
+                    android:hint="Cantidad"
+                    android:inputType="number"
                     android:textColor="@color/design_default_color_primary_dark"
                     android:textSize="20sp" />
 
@@ -116,31 +95,117 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp" >
 
 
                 <TextView
-                    android:id="@+id/textView161"
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:text="Fecha de entrega estipulada:"
-                    android:textAlignment="center"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-
-                    android:typeface="normal" />
-
-                <EditText
-                    android:id="@+id/txtFechaEnvio"
+                    android:id="@+id/txtComprador"
                     android:layout_width="match_parent"
                     android:layout_height="53dp"
                     android:background="@drawable/bordett"
                     android:ems="10"
-                    android:hint="fecha "
-                    android:inputType="text"
+                    android:hint="Comprador"
+                    android:textColor="@color/design_default_color_primary_dark"
+
+
+                    android:textSize="20sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp" >
+
+
+                <Spinner
+                    android:id="@+id/SpinnerForma"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/bordett"
+                    android:paddingStart="5dp"
+                    android:textColor="@color/design_default_color_primary_dark"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp" >
+
+
+                <TextView
+                    android:id="@+id/txtVendedor"
+                    android:layout_width="match_parent"
+                    android:layout_height="53dp"
+                    android:background="@drawable/bordett"
+                    android:ems="10"
+                    android:hint="Vendedor"
+                    android:textColor="@color/design_default_color_primary_dark"
+
+
+                    android:textSize="20sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp" >
+
+
+                <TextView
+                    android:id="@+id/txtPrecioOriginal"
+                    android:layout_width="match_parent"
+                    android:layout_height="53dp"
+                    android:background="@drawable/bordett"
+                    android:ems="10"
+                    android:hint="Precio original"
+                    android:textColor="@color/design_default_color_primary_dark"
+
+
+                    android:textSize="20sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp" >
+
+
+                <EditText
+                    android:id="@+id/txtPrecioOfrecido"
+                    android:layout_width="match_parent"
+                    android:layout_height="53dp"
+                    android:background="@drawable/bordett"
+                    android:ems="10"
+                    android:hint="Precio ofrecido"
+                    android:inputType="numberDecimal"
                     android:textColor="@color/design_default_color_primary_dark"
 
 
@@ -155,7 +220,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btnGuardarCambios"
+                    android:id="@+id/btnGuardarNegociacion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -169,5 +234,6 @@
         </LinearLayout>
 
     </ScrollView>
+
 
 </LinearLayout>

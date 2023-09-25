@@ -1,14 +1,18 @@
 package com.example.ptcwonderboost;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
@@ -66,7 +71,19 @@ public class ProductosIngreso extends AppCompatActivity {
             e.printStackTrace();
         }
         // Crea un ArrayAdapter y configúralo con los datos
-        ArrayAdapter<String> adaptador = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, datos);
+        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, datos) {
+            @NonNull
+            @Override
+            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                View itemView = super.getView(position, convertView, parent);
+
+                // Cambia el color del texto a blanco
+                TextView textView = itemView.findViewById(android.R.id.text1);
+                textView.setTextColor(Color.WHITE);
+
+                return itemView;
+            }
+        };
         // Establece el adaptador en el ListView
         listView.setAdapter(adaptador);
 

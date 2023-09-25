@@ -121,6 +121,22 @@ public class Productos {
         }
     }
 
+    public ResultSet mostrarNegociacionProducto(){
+        Connection con;
+        PreparedStatement ps;
+        try{
+            con = Conexion.getConnection(null);
+            String query = "SELECT p.Producto, p.Precio AS 'Precio original', pe.Nombres + ' ' + pe.Apellidos AS 'Vendedor', p.Cantidad FROM tbProductos p INNER JOIN TbPersonas pe ON pe.idPersonas = p.idPersonas WHERE p.idProducto = ?;";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, idProducto);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        }catch(Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
+
     public ResultSet mostrarProductos(){
         Connection con = null;
         PreparedStatement ps;
@@ -142,6 +158,19 @@ public class Productos {
         try {
             con = Conexion.getConnection(null);
             ps = con.prepareStatement("SELECT * FROM tbCategorias");
+            ResultSet respuesta=ps.executeQuery();
+            return respuesta;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public ResultSet CargarFormaPago(){
+        PreparedStatement ps;
+        Connection con;
+        try {
+            con = Conexion.getConnection(null);
+            ps = con.prepareStatement("SELECT * FROM tbFormasDePagos");
             ResultSet respuesta=ps.executeQuery();
             return respuesta;
         } catch (Exception e) {

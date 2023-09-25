@@ -3,6 +3,7 @@ package com.example.ptcwonderboost;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,8 +20,31 @@ import java.util.List;
 
 public class Catalogo extends AppCompatActivity implements SearchView.OnQueryTextListener{
     private int idSeleccionado;
+    private double precioUnitario;
     ListView lista;
     SearchView buscador;
+    private void abrirNegociacion() {
+        // Aquí puedes abrir una nueva pantalla, por ejemplo:
+        Intent intent = new Intent(this, negociacion.class);
+        startActivity(intent);
+    }
+
+    private void AgregarCarrito(){
+        Producto carrito = new Producto();
+        try{
+            carrito.setIdPersona(VariablesGlobales.getIdPersona());
+            carrito.setIdProducto(VariablesGlobales.getIdProducto());
+            carrito.setPrecioUnitario(precioUnitario);
+            int valor = carrito.AgregarAlCarritoProducto();
+            if(valor == 1){
+                Toast.makeText(this,"Se ha agregado al carrito", Toast.LENGTH_LONG).show();
+            }else{
+                Toast.makeText(this,"ERROR ", Toast.LENGTH_LONG).show();
+            }
+        }catch(Exception ex){
+            Toast.makeText(this,"ERROR: " + ex, Toast.LENGTH_LONG).show();
+        }
+    }
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -36,7 +60,9 @@ public class Catalogo extends AppCompatActivity implements SearchView.OnQueryTex
                     Producto productoSeleccionado = (Producto) parent.getItemAtPosition(position);
                     // Guarda el valor del campo "id" en la variable idSeleccionado
                     idSeleccionado = productoSeleccionado.getIdProducto();
+                    precioUnitario = productoSeleccionado.getPrecio();
                     VariablesGlobales.idProducto = idSeleccionado;
+                    Toast.makeText(Catalogo.this, "id: " + VariablesGlobales.idProducto, Toast.LENGTH_LONG).show();
                 }catch (Exception ex){
                     Toast.makeText(Catalogo.this, "ERROR: " + ex, Toast.LENGTH_LONG).show();
                 }
@@ -57,10 +83,10 @@ public class Catalogo extends AppCompatActivity implements SearchView.OnQueryTex
                         // Aquí puedes manejar la selección del usuario
                         switch (which) {
                             case 0:
-
+                                abrirNegociacion();
                                 break;
                             case 1:
-
+                                AgregarCarrito();
                                 break;
                         }
                     }

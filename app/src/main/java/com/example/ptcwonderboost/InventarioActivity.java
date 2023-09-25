@@ -27,7 +27,8 @@ public class InventarioActivity extends AppCompatActivity {
         try {
             listView = findViewById(R.id.listViewInventario);
             Producto producto = new Producto();
-            List<Producto> productos = producto.CargarCatalogos();
+            producto.setIdPersona(VariablesGlobales.getIdPersona());
+            List<Producto> productos = producto.CargarInventario();
 
             if (productos != null) {
                 ImagenListAdapter adapter = new ImagenListAdapter(this, productos);

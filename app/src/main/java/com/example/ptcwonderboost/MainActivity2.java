@@ -149,19 +149,19 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
         cardView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                abrirNuevaPantalla1();
+                //abrirNuevaPantalla1();
             }
         });
         cardView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                abrirNuevaPantalla2();
+                //abrirNuevaPantalla2();
             }
         });
         cardView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                abrirNuevaPantalla3();
+                //abrirNuevaPantalla3();
             }
         });
         cardView4.setOnClickListener(new View.OnClickListener() {
@@ -215,7 +215,7 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
             Intent intent = new Intent(MainActivity2.this, Envios.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_rate2) {
-            Intent intent = new Intent(MainActivity2.this, Calendario.class);
+            Intent intent = new Intent(MainActivity2.this, PagoSeguimientos.class);
             startActivity(intent);
         } else if (itemId == R.id.nav_share3) {
             Intent intent = new Intent(MainActivity2.this, Necociaciones.class);

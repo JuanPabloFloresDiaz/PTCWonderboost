@@ -4,20 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/vectorpanel"
     tools:context=".perfil_de_usuario">
-
-    <ImageView
-        android:id="@+id/baja"
-        android:layout_width="415dp"
-        android:layout_height="734dp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/vectorpanel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.514" />
 
     <TextView
         android:id="@+id/profileName"

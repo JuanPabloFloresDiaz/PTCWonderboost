@@ -18,6 +18,12 @@
         android:theme="@style/Theme.PTCWonderboost"
         tools:targetApi="31">
         <activity
+            android:name=".gestionar_envios"
+            android:exported="false" />
+        <activity
+            android:name=".negociacion"
+            android:exported="false" />
+        <activity
             android:name=".Solicitar_Permiso"
             android:exported="false" />
         <activity

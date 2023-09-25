@@ -14,5 +14,11 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="BottomNavigationViewStyle">
+        <item name="android:background">@color/yellow</item>
+        <item name="itemIconTint">@color/darkblue</item>
+        <item name="itemTextColor">@color/darkblue</item>
+    </style>
     <style name="Theme.PTCWonderboost" parent="Base.Theme.PTCWonderboost" />
 </resources>
