@@ -1,7 +1,32 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.PTCWonderboost" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/darkgray</item>
+        <item name="colorAccent">@color/darkblue</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/darkgray</item>
+        <item name="colorSecondaryVariant">@color/darkgray</item>
+        <item name="colorOnSecondary">@color/darkgray</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorAccent</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="BottomNavigationViewStyle">
+        <item name="android:background">@color/black</item>
+        <item name="itemIconTint">@color/white</item>
+        <item name="itemTextColor">@color/white</item>
+    </style>
+
+    <style name="NavigationViewStyle">
+        <!-- Cambia el color del texto de los elementos del menú -->
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:background">@color/black</item>
+        <!-- Cambia el color de los íconos de los elementos del menú -->
+        <item name="itemIconTint">@color/gray</item>
     </style>
 </resources>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:theme="@style/Base.Theme.PTCWonderboost"
     tools:context=".Login">
 
     <ImageView
@@ -32,7 +32,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Inicio de sesión"
-        android:textColor="#000000"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -43,27 +42,15 @@
         app:layout_constraintVertical_bias="0.319" />
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="33dp"
-        android:layout_height="31dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.801"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.322"
-        app:srcCompat="@drawable/uuuuser" />
-
-    <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="33dp"
-        android:layout_height="33dp"
+        android:layout_width="42dp"
+        android:layout_height="44dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.941"
+        app:layout_constraintHorizontal_bias="0.826"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.323"
+        app:layout_constraintVertical_bias="0.318"
         app:srcCompat="@drawable/elsalvador" />
 
     <TextView
@@ -72,7 +59,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="432dp"
         android:text="¡Hola! Bienvenido a tu cuenta nuevamente."
-        android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,7 +75,6 @@
         android:hint="Usuario"
         android:inputType="textPersonName"
         android:paddingStart="5dp"
-        android:textColor="@color/design_default_color_primary_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -104,7 +89,6 @@
         android:hint="Contraseña"
         android:inputType="textPassword"
         android:paddingStart="5dp"
-        android:textColor="@color/design_default_color_primary_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -126,10 +110,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="216dp"
-        android:background="#FFFFFF"
         android:text="¿Olvido su clave?"
-        android:textColor="#000000"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.868"
@@ -141,7 +122,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="76dp"
         android:text="¿No tienes cuenta aún? Crea aquí tu cuenta"
-        android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

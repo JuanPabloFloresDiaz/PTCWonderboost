@@ -5,7 +5,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/vectorpanel"
     tools:context=".historial">
 
   <LinearLayout
@@ -17,16 +16,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-      <ImageView
-          android:id="@+id/baja"
-          android:layout_width="410dp"
-          android:layout_height="729dp"
-          android:layout_centerHorizontal="true"
-          android:src="@drawable/vectorpanel"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent" />
 
       <ImageView
           android:id="@+id/imageView5"

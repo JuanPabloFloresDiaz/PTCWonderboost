@@ -7,17 +7,6 @@
     tools:context=".configuracion">
 
     <ImageView
-        android:id="@+id/baja"
-        android:layout_width="408dp"
-        android:layout_height="814dp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/vectorpanel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
         android:id="@+id/imageView16"
         android:layout_width="413dp"
         android:layout_height="194dp"
@@ -48,15 +37,14 @@
 
     <ImageButton
         android:id="@+id/btnAdministrarContraseña"
-        android:layout_width="403dp"
-        android:layout_height="103dp"
-        android:backgroundTint="#FFFFFF"
+        android:layout_width="407dp"
+        android:layout_height="122dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.273"
+        app:layout_constraintVertical_bias="0.286"
         app:srcCompat="@drawable/contra2" />
 
     <TextView
@@ -64,7 +52,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Administrar contraseña"
-        android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,13 +63,11 @@
         android:id="@+id/btnPDF"
         android:layout_width="395dp"
         android:layout_height="128dp"
-        android:backgroundTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.013"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.449"
+        app:layout_constraintVertical_bias="0.499"
         app:srcCompat="@drawable/condiciones" />
 
     <TextView
@@ -90,7 +75,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Condiciones politica y seguridad"
-        android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

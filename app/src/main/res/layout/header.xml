@@ -3,13 +3,15 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:gravity="bottom"
-    android:background="@color/your_rgb_color"
-    >
+    android:padding="25dp"
+    android:gravity="bottom">
+
     <ImageView
         android:layout_width="75dp"
         android:layout_height="75dp"
+        android:paddingEnd="25dp"
         android:src="@drawable/logowonderboost" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

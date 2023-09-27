@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/vectorpanel"
     tools:context=".MonitorearEnvios">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -50,6 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp" >
@@ -67,7 +67,7 @@
 
                 <EditText
                     android:id="@+id/txtUbicacionOrigen"
-                    android:layout_width="match_parent"
+                    android:layout_width="349dp"
                     android:layout_height="53dp"
                     android:background="@drawable/bordett"
                     android:ems="10"
@@ -84,6 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp" >
@@ -101,7 +102,7 @@
 
                 <EditText
                     android:id="@+id/txtUbicacionDestino"
-                    android:layout_width="match_parent"
+                    android:layout_width="347dp"
                     android:layout_height="53dp"
                     android:background="@drawable/bordett"
                     android:ems="10"
@@ -117,6 +118,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp" >
@@ -135,12 +137,13 @@
 
                 <EditText
                     android:id="@+id/txtFechaEnvio"
-                    android:layout_width="match_parent"
+                    android:layout_width="345dp"
                     android:layout_height="53dp"
                     android:background="@drawable/bordett"
                     android:ems="10"
                     android:hint="fecha "
-                    android:inputType="text"
+                    android:focusable="false"
+                    android:inputType="date"
                     android:textColor="@color/design_default_color_primary_dark"
 
 

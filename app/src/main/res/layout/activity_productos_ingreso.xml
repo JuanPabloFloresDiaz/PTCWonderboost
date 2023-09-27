@@ -10,7 +10,6 @@
         android:id="@+id/scrollView2"
         android:layout_width="417dp"
         android:layout_height="526dp"
-        android:background="@drawable/vectorpanel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -21,6 +20,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="vertical">
 
             <TextView
@@ -83,7 +83,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="53dp"
                         android:text="Nombre: "
-                        android:textColor="#000000"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -97,7 +96,6 @@
                         android:hint="Nombre"
                         android:inputType="textPersonName"
                         android:paddingStart="5dp"
-                        android:textColor="@color/design_default_color_primary_dark"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -125,7 +123,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="53dp"
                         android:text="Precio: "
-                        android:textColor="#000000"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -139,7 +136,6 @@
                         android:hint="00.00"
                         android:inputType="numberDecimal"
                         android:paddingStart="5dp"
-                        android:textColor="@color/design_default_color_primary_dark"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -162,7 +158,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="53dp"
                         android:text="Tipo de precio: "
-                        android:textColor="#000000"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -173,7 +168,6 @@
                         android:layout_marginBottom="348dp"
                         android:background="@drawable/bordett"
                         android:paddingStart="5dp"
-                        android:textColor="@color/design_default_color_primary_dark"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -197,7 +191,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="53dp"
                         android:text="Descripción: "
-                        android:textColor="#000000"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -211,7 +204,6 @@
                         android:hint="Descripción Producto"
                         android:inputType="textPersonName"
                         android:paddingStart="5dp"
-                        android:textColor="@color/design_default_color_primary_dark"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -237,7 +229,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="53dp"
                         android:text="Cantidad: "
-                        android:textColor="#000000"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -251,7 +242,6 @@
                         android:hint="Cantidad Producto"
                         android:inputType="number"
                         android:paddingStart="5dp"
-                        android:textColor="@color/design_default_color_primary_dark"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -276,7 +266,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="53dp"
                         android:text="Gasto producción:"
-                        android:textColor="#000000"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -290,7 +279,6 @@
                         android:hint="Gasto de producción"
                         android:inputType="numberDecimal"
                         android:paddingStart="5dp"
-                        android:textColor="@color/design_default_color_primary_dark"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -315,7 +303,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="53dp"
                         android:text="Categoria: "
-                        android:textColor="#000000"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -326,7 +313,6 @@
                         android:layout_marginBottom="348dp"
                         android:background="@drawable/bordett"
                         android:paddingStart="5dp"
-                        android:textColor="@color/design_default_color_primary_dark"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -416,6 +402,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Agregar productos"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

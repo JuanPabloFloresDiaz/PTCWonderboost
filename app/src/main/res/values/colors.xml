@@ -7,4 +7,6 @@
     <color name="your_rgb_color">#FAC30D</color>
     <color name="green">#00FF00</color>
     <color name="red">#FF0000</color>
+    <color name="gray">#FF999999</color>
+    <color name="darkgray">#FF555555</color>
 </resources>

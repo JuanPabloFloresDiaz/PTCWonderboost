@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/Base.Theme.PTCWonderboost"
     tools:context=".Necociaciones">
 
     <LinearLayout
@@ -16,15 +17,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/baja"
-                android:layout_width="410dp"
-                android:layout_height="729dp"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/vectorpanel"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
 
             <ImageView
                 android:id="@+id/imageView5"
@@ -46,6 +38,7 @@
                 android:textAlignment="viewStart"
                 android:textAllCaps="true"
                 android:textSize="30sp"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

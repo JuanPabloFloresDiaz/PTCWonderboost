@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/vectorpanel"
     tools:context=".gestionar_envios">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -49,6 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp" >
@@ -66,15 +66,12 @@
 
                 <EditText
                     android:id="@+id/txtUbicacionOrigenG"
-                    android:layout_width="match_parent"
+                    android:layout_width="322dp"
                     android:layout_height="53dp"
                     android:background="@drawable/bordett"
                     android:ems="10"
                     android:hint="Ubicacion"
                     android:inputType="text"
-
-
-                    android:textColor="@color/design_default_color_primary_dark"
                     android:textSize="20sp" />
 
             </LinearLayout>
@@ -83,6 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp" >
@@ -100,13 +98,12 @@
 
                 <EditText
                     android:id="@+id/txtUbicacionDestinoG"
-                    android:layout_width="match_parent"
+                    android:layout_width="328dp"
                     android:layout_height="53dp"
                     android:background="@drawable/bordett"
                     android:ems="10"
                     android:hint="Ubicacion"
                     android:inputType="text"
-                    android:textColor="@color/design_default_color_primary_dark"
                     android:textSize="20sp" />
 
 
@@ -116,6 +113,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp" >
@@ -134,15 +132,13 @@
 
                 <EditText
                     android:id="@+id/txtFechaEnvioG"
-                    android:layout_width="match_parent"
+                    android:layout_width="324dp"
                     android:layout_height="53dp"
                     android:background="@drawable/bordett"
                     android:ems="10"
                     android:hint="fecha "
-                    android:inputType="none"
-                    android:textColor="@color/design_default_color_primary_dark"
-
-
+                    android:focusable="false"
+                    android:inputType="date"
                     android:textSize="20sp" />
 
 
@@ -152,6 +148,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp" >
@@ -170,12 +167,11 @@
 
                 <Spinner
                     android:id="@+id/spinnerEstadoEnvioG"
-                    android:layout_width="match_parent"
+                    android:layout_width="316dp"
                     android:layout_height="60dp"
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/bordett"
                     android:paddingStart="5dp"
-                    android:textColor="@color/design_default_color_primary_dark"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

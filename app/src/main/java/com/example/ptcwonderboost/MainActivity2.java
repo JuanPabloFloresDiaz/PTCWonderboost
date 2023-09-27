@@ -104,10 +104,7 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
                 if (fotoBytes != null) {
                     //Convertir la imagen
                     Bitmap bitmap = BitmapFactory.decodeByteArray(fotoBytes, 0, fotoBytes.length);
-                    //Redondear la imagen
-                    Bitmap roundedBitmap = getRoundedBitmap(bitmap);
-                    //Enviar la imagen redondeada
-                    toolbar.setNavigationIcon(new BitmapDrawable(getResources(), roundedBitmap));
+                    toolbar.setNavigationIcon(new BitmapDrawable(getResources(), bitmap));
                 } else {
                     // Si no se encuentra el ícono en la base de datos, puedes establecer un ícono predeterminado aquí
                     toolbar.setNavigationIcon(R.drawable.menu_24);
@@ -145,7 +142,6 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
-        ObtenerImagen();
         cardView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

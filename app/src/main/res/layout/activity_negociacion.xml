@@ -20,6 +20,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:textColor="@color/black"
             android:text="Negociacion"
             android:textSize="32dp"
             android:textStyle="bold"
@@ -38,8 +39,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/vectorpanel">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,20 +51,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp" >
 
                 <TextView
                     android:id="@+id/txtProductosPro"
-                    android:layout_width="match_parent"
+                    android:layout_width="304dp"
                     android:layout_height="53dp"
                     android:background="@drawable/bordett"
                     android:ems="10"
                     android:hint="Producto"
-
-
-                    android:textColor="@color/design_default_color_primary_dark"
                     android:textSize="20sp" />
 
             </LinearLayout>
@@ -73,6 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp" >
@@ -80,13 +79,12 @@
 
                 <EditText
                     android:id="@+id/txtCantidadPro"
-                    android:layout_width="match_parent"
+                    android:layout_width="302dp"
                     android:layout_height="53dp"
                     android:background="@drawable/bordett"
                     android:ems="10"
                     android:hint="Cantidad"
                     android:inputType="number"
-                    android:textColor="@color/design_default_color_primary_dark"
                     android:textSize="20sp" />
 
 
@@ -96,6 +94,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp" >
@@ -103,14 +102,11 @@
 
                 <TextView
                     android:id="@+id/txtComprador"
-                    android:layout_width="match_parent"
+                    android:layout_width="306dp"
                     android:layout_height="53dp"
                     android:background="@drawable/bordett"
                     android:ems="10"
                     android:hint="Comprador"
-                    android:textColor="@color/design_default_color_primary_dark"
-
-
                     android:textSize="20sp" />
 
 
@@ -120,6 +116,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp" >
@@ -127,12 +124,11 @@
 
                 <Spinner
                     android:id="@+id/SpinnerForma"
-                    android:layout_width="match_parent"
+                    android:layout_width="308dp"
                     android:layout_height="60dp"
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/bordett"
                     android:paddingStart="5dp"
-                    android:textColor="@color/design_default_color_primary_dark"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -145,6 +141,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp" >
@@ -152,14 +149,11 @@
 
                 <TextView
                     android:id="@+id/txtVendedor"
-                    android:layout_width="match_parent"
+                    android:layout_width="309dp"
                     android:layout_height="53dp"
                     android:background="@drawable/bordett"
                     android:ems="10"
                     android:hint="Vendedor"
-                    android:textColor="@color/design_default_color_primary_dark"
-
-
                     android:textSize="20sp" />
 
 
@@ -169,6 +163,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp" >
@@ -176,14 +171,11 @@
 
                 <TextView
                     android:id="@+id/txtPrecioOriginal"
-                    android:layout_width="match_parent"
+                    android:layout_width="306dp"
                     android:layout_height="53dp"
                     android:background="@drawable/bordett"
                     android:ems="10"
                     android:hint="Precio original"
-                    android:textColor="@color/design_default_color_primary_dark"
-
-
                     android:textSize="20sp" />
 
 
@@ -193,6 +185,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp" >
@@ -200,15 +193,12 @@
 
                 <EditText
                     android:id="@+id/txtPrecioOfrecido"
-                    android:layout_width="match_parent"
+                    android:layout_width="304dp"
                     android:layout_height="53dp"
                     android:background="@drawable/bordett"
                     android:ems="10"
                     android:hint="Precio ofrecido"
                     android:inputType="numberDecimal"
-                    android:textColor="@color/design_default_color_primary_dark"
-
-
                     android:textSize="20sp" />
 
 

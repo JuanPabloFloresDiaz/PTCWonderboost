@@ -17,16 +17,6 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/baja"
-                android:layout_width="410dp"
-                android:layout_height="729dp"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/vectorpanel"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <ImageView
                 android:id="@+id/imageView5"
                 android:layout_width="455dp"
                 android:layout_height="206dp"
@@ -43,6 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="PEDIDOS"
+                android:textColor="@color/black"
                 android:textAlignment="viewStart"
                 android:textAllCaps="true"
                 android:textSize="30sp"
@@ -56,8 +47,8 @@
 
             <ListView
                 android:id="@+id/listviewPed"
-                android:layout_width="409dp"
-                android:layout_height="548dp"
+                android:layout_width="403dp"
+                android:layout_height="536dp"
                 android:background="@drawable/card_background"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

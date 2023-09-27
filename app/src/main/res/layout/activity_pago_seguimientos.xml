@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/vectorpanel"
     tools:context=".PagoSeguimientos">
 
     <Button
@@ -107,8 +106,9 @@
         android:id="@+id/txtFechaPago"
         android:layout_width="228dp"
         android:layout_height="50dp"
-        android:inputType="text"
         android:hint="Fecha"
+        android:focusable="false"
+        android:inputType="date"
         android:background="@drawable/bordett"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
