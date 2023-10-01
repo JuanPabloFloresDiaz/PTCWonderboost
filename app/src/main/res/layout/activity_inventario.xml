@@ -10,7 +10,7 @@
         android:id="@+id/listViewInventario"
         android:layout_width="409dp"
         android:layout_height="448dp"
-        android:background="@drawable/bordett"
+        android:background="@drawable/card_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

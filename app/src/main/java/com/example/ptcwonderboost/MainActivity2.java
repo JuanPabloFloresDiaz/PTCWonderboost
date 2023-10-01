@@ -15,6 +15,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
@@ -31,11 +32,17 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.navigation.NavigationView;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class MainActivity2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -45,6 +52,40 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
     Menu menu;
     TextView textView;
 
+    private void Grafica(){
+        Grafica ccar = new Grafica();
+        try{
+            PieChart pieChart = findViewById(R.id.chart1);
+
+            ArrayList<PieEntry> entries = new ArrayList<>();
+            ResultSet rs = ccar.llenarGraficas();
+            while(rs.next()){
+            entries.add(new PieEntry(rs.getInt("TotalCompras"), rs.getString("Producto")));
+            }
+
+            PieDataSet dataSet = new PieDataSet(entries, "Productos mas vendidos");
+            ArrayList<Integer> colors = new ArrayList<>();
+            Random random = new Random();
+            for (int i = 0; i < entries.size(); i++) {
+                int color = Color.rgb(random.nextInt(154), random.nextInt(154), random.nextInt(154));
+                colors.add(color);
+            }
+            dataSet.setColors(colors); // Asigna la lista de colores aleatorios
+            dataSet.setValueTextSize(10f); // Tamaño del texto
+
+            PieData pieData = new PieData(dataSet);
+
+            pieChart.setData(pieData);
+            pieChart.getDescription().setEnabled(false); // Deshabilitar descripción
+            pieChart.setCenterText("Productos mas vendidos"); // Texto central
+            // Establece el color del texto central en blanco
+            pieChart.setCenterTextColor(android.graphics.Color.WHITE);
+            // Establece el color del fondo del círculo en negro
+            pieChart.setHoleColor(android.graphics.Color.BLACK);
+            pieChart.animateY(1000); // Animación de entrada
+        }catch (Exception ex){
+            Toast.makeText(this,"Error: "+ex , Toast.LENGTH_SHORT).show();        }
+    }
     //Metodo para redondear una imagen desde codigo
     private Bitmap getRoundedBitmap(Bitmap bitmap) {
         int width = bitmap.getWidth();
@@ -145,19 +186,19 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
         cardView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //abrirNuevaPantalla1();
+                abrirNuevaPantalla1();
             }
         });
         cardView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //abrirNuevaPantalla2();
+                abrirNuevaPantalla2();
             }
         });
         cardView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //abrirNuevaPantalla3();
+                abrirNuevaPantalla3();
             }
         });
         cardView4.setOnClickListener(new View.OnClickListener() {
@@ -166,6 +207,7 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
                 abrirNuevaPantalla4();
             }
         });
+        Grafica();
     }
     @Override
     public void onBackPressed(){

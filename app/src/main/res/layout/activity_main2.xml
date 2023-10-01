@@ -12,11 +12,11 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
+        style="@style/NavigationViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:visibility="gone"
-        style="@style/NavigationViewStyle"
         app:headerLayout="@layout/header"
         app:menu="@menu/main_menu" />
 
@@ -30,6 +30,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/chart1"
+                android:layout_width="356dp"
+                android:layout_height="203dp"
+                android:layout_marginBottom="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.49"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <ImageView
                 android:id="@+id/baja"
@@ -252,6 +262,7 @@
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="15dp"
                             app:srcCompat="@drawable/permisoventa" />
+
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>

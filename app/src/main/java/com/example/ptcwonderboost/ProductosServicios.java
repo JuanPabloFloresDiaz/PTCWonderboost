@@ -63,7 +63,7 @@ public class ProductosServicios extends AppCompatActivity {
                 double precioServicio = rsL.getDouble("Precio del servicio");
 
                 // Agrega los datos a la lista "datos"
-                String item =  idServicio +  " Servicio: " + nombreServicio + " Precio: " + precioServicio;
+                String item =  idServicio +  " Servicio: " + nombreServicio + " Precio: $" + precioServicio;
                 datos.add(item);
             }
         } catch (Exception e) {

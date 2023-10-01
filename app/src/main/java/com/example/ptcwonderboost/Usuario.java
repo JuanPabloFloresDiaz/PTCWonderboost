@@ -91,7 +91,7 @@ public class Usuario {
         try {
             String claveEncriptada = e.encriptarContrasenaSHA256(clave);
 
-            ps = con.prepareStatement("SELECT idUsuarios, Usuario, Clave, idTipoUsuario, idEstadoUsuario FROM TbUsuarios  WHERE Usuario = ? AND Clave = ?");
+            ps = con.prepareStatement("SELECT idUsuarios, Usuario, Clave, idTipoUsuario, idEstadoUsuario FROM TbUsuarios WHERE Usuario = ? COLLATE SQL_Latin1_General_CP1_CS_AS AND Clave = ? COLLATE SQL_Latin1_General_CP1_CS_AS");
             ps.setString(1, usuario);
             ps.setString(2, claveEncriptada);
             ResultSet rs = ps.executeQuery();

@@ -64,7 +64,7 @@ public class ProductosIngreso extends AppCompatActivity {
                 int cantidad = rsL.getInt("Cantidad");
 
                 // Agrega los datos a la lista "datos"
-                String item =  idProducto +  " Producto: " + nombreProducto + " Precio: " + precioProducto + " Cantidad: " + cantidad;
+                String item =  idProducto +  " Producto: " + nombreProducto + " Precio: $" + precioProducto + " Cantidad: " + cantidad;
                 datos.add(item);
             }
         } catch (Exception e) {

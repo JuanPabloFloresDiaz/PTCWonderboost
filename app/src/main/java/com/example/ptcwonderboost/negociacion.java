@@ -2,8 +2,10 @@ package com.example.ptcwonderboost;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -26,6 +28,24 @@ public class negociacion extends AppCompatActivity {
     private Spinner formaPago;
     private int idFormaPago;
     private Button Negociar;
+
+    final void AbrirWhatsaap(){
+        String numeroCelular = "50360126129";
+        if(numeroCelular.toString().isEmpty()){
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, numeroCelular);
+            sendIntent.setType("text/plain");
+            sendIntent.setPackage("com.whatsaap");
+            startActivity(sendIntent);
+        }else{
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_VIEW);
+            String url = "whatsapp://send?phone="+numeroCelular+"&text="+" Se quiere contactar contigo desde Wonderboost";
+            sendIntent.setData(Uri.parse(url));
+            startActivity(sendIntent);
+        }
+    }
 
     final void ConfirmarNegociacion(){
         try {

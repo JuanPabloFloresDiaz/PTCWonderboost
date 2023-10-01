@@ -55,6 +55,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView5"
                 app:layout_constraintVertical_bias="0.0" />
 
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigationG"
+                style="@style/BottomNavigationViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:menu="@menu/boton_nav_menu" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
