@@ -8,8 +8,8 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="403dp"
-        android:layout_height="533dp"
+        android:layout_width="399dp"
+        android:layout_height="698dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -30,7 +30,7 @@
                 android:gravity="center"
                 android:text="Agregar imagen del servicio"
                 android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:id="@+id/linearLayout2"
@@ -64,7 +64,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:tag="0"
-                        app:srcCompat="@drawable/productos1" />
+                        app:srcCompat="@drawable/producto" />
 
                 </LinearLayout>
             </HorizontalScrollView>
@@ -207,6 +207,7 @@
                         app:layout_constraintStart_toStartOf="parent" />
                 </LinearLayout>
             </HorizontalScrollView>
+
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="82dp"
@@ -242,8 +243,8 @@
 
             <!-- ScrollView horizontal (dentro del ScrollView original) -->
             <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="425dp"
+                android:layout_width="413dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1">
 
                 <LinearLayout
@@ -253,8 +254,8 @@
 
                     <ListView
                         android:id="@+id/listViewIngresarServicios"
-                        android:layout_width="410dp"
-                        android:layout_height="424dp"
+                        android:layout_width="401dp"
+                        android:layout_height="336dp"
                         android:background="@drawable/card_background"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"

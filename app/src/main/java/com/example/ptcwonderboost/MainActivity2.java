@@ -10,6 +10,8 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.annotation.SuppressLint;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -24,6 +26,7 @@ import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.Image;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.NetworkOnMainThreadException;
 import android.view.Menu;
@@ -32,10 +35,17 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.navigation.NavigationView;
@@ -86,6 +96,46 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
         }catch (Exception ex){
             Toast.makeText(this,"Error: "+ex , Toast.LENGTH_SHORT).show();        }
     }
+
+    private void GraficaDeBarras() {
+        Grafica ccar = new Grafica();
+        try {
+            BarChart barChart = findViewById(R.id.chart1); // Reemplaza con el ID de tu gráfico de barras en el diseño XML
+
+            ArrayList<BarEntry> entries = new ArrayList<>();
+            ResultSet rs = ccar.llenarGraficas();
+            int i = 0;
+            ArrayList<String> productNames = new ArrayList<>();
+            while (rs.next()) {
+                entries.add(new BarEntry(i++, rs.getInt("TotalCompras")));
+                productNames.add(rs.getString("Producto"));
+            }
+
+            BarDataSet dataSet = new BarDataSet(entries, "Productos más vendidos");
+            dataSet.setColors(ColorTemplate.JOYFUL_COLORS); // Colores predeterminados alegres
+            dataSet.setValueTextSize(10f); // Tamaño del texto
+
+            BarData barData = new BarData(dataSet);
+            barChart.setData(barData);
+
+            // Personalización adicional del gráfico de barras
+            barChart.getDescription().setEnabled(false); // Deshabilitar descripción
+            barChart.setDrawValueAboveBar(true); // Muestra los valores encima de las barras
+            barChart.setFitBars(true); // Ajusta automáticamente el ancho de las barras
+            barChart.animateY(1000); // Animación de entrada
+            barChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(productNames));
+            barChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM); // Coloca el eje X en la parte inferior
+            barChart.getXAxis().setLabelRotationAngle(45f);
+            barChart.getLegend().setEnabled(false); // Deshabilitar leyenda
+
+            // Actualiza el gráfico
+            barChart.invalidate();
+
+        } catch (Exception ex) {
+            Toast.makeText(this, "Error: " + ex, Toast.LENGTH_SHORT).show();
+        }
+    }
+
     //Metodo para redondear una imagen desde codigo
     private Bitmap getRoundedBitmap(Bitmap bitmap) {
         int width = bitmap.getWidth();
@@ -113,6 +163,7 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
 
         return output;
     }
+
     private void abrirNuevaPantalla1() {
         // Aquí puedes abrir una nueva pantalla, por ejemplo:
         Intent intent = new Intent(this, Ganancias.class);
@@ -207,7 +258,7 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
                 abrirNuevaPantalla4();
             }
         });
-        Grafica();
+        GraficaDeBarras();
     }
     @Override
     public void onBackPressed(){

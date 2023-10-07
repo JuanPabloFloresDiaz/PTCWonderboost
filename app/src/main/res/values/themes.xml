@@ -31,5 +31,9 @@
         <!-- Cambia el color de los íconos de los elementos del menú -->
         <item name="itemIconTint">@color/black</item>
     </style>
+    <style name="CustomRatingBar">
+        <item name="android:progressTint">@color/dorado</item>
+        <item name="android:progressBackgroundTint">@color/black</item>
+    </style>
 
 </resources>

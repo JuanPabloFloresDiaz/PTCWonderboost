@@ -286,6 +286,23 @@ public class Envio {
         }
     }
 
+    public ResultSet MostrarDatosGestionEnvio(){
+        Connection con;
+        PreparedStatement ps;
+        try{
+            con= Conexion.getConnection(null);
+            String query = "SELECT n.idNegociacion, CASE WHEN n.idProducto IS NOT NULL THEN p.FotoProducto WHEN n.idServicio IS NOT NULL THEN s.FotoServicio END AS 'Foto', CASE WHEN n.idProducto IS NOT NULL THEN p.Producto WHEN n.idServicio IS NOT NULL THEN s.Servicio END AS 'Producto o Servicio', CASE WHEN n.idProducto IS NOT NULL THEN PP.Nombres + ' ' + PP.Apellidos WHEN n.idServicio IS NOT NULL THEN SP.Nombres + ' ' + SP.Apellidos END AS Cliente, CASE WHEN n.idProducto IS NOT NULL THEN Pe.Nombres + ' ' + Pe.Apellidos WHEN n.idServicio IS NOT NULL THEN Ps.Nombres + ' ' + ps.Apellidos END AS Vendedor, CASE WHEN n.idProducto IS NOT NULL THEN p.Precio WHEN n.idServicio IS NOT NULL THEN s.Precio END AS 'Precio original', COALESCE(n.PrecioOfrecido, 0) AS 'Precio ofrecido', COALESCE(n.PrecioVenta, 0) AS 'Precio de venta', CASE WHEN n.idProducto IS NOT NULL THEN PC.Categoria WHEN n.idServicio IS NOT NULL THEN SC.Categoria END AS Categoria, e.UbicacionOrigen AS Origen, e.UbicacionDestino AS Destino, e.FechaEstipulada AS Fecha, e.idEstadoEnvio AS idEstado FROM tbEnvios e LEFT JOIN tbNegociaciones n ON e.idNegociacion = n.idNegociacion LEFT JOIN tbProductos p ON p.idProducto = n.idProducto LEFT JOIN tbServicios s ON s.idServicio = n.idServicio LEFT JOIN TbPersonas pe ON pe.idPersonas = p.idPersonas LEFT JOIN TbPersonas ps ON ps.idPersonas = n.idPersonas LEFT JOIN TbPersonas PP ON PP.idPersonas = n.idPersonas LEFT JOIN tbCategorias PC ON P.idCategoria = PC.idCategoria LEFT JOIN tbCategorias SC ON S.idCategoria = SC.idCategoria LEFT JOIN TbPersonas SP ON SP.idPersonas = n.idPersonas WHERE e.idEnvio = ?;";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, idEnvio);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        }catch(Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
+
+
     public List<Envio> cargarTablaGestionarEnvios(int idVendedor) throws SQLException {
         List<Envio> productos = new ArrayList<>();
         PreparedStatement ps;

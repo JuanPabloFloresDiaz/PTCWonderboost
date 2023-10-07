@@ -29,6 +29,12 @@ public class Catalogo extends AppCompatActivity implements SearchView.OnQueryTex
         startActivity(intent);
     }
 
+    private void abrirDetalles() {
+        // Aquí puedes abrir una nueva pantalla, por ejemplo:
+        Intent intent = new Intent(this, DetallesProducto.class);
+        startActivity(intent);
+    }
+
     private void AgregarCarrito(){
         Producto carrito = new Producto();
         try{
@@ -62,6 +68,7 @@ public class Catalogo extends AppCompatActivity implements SearchView.OnQueryTex
                     idSeleccionado = productoSeleccionado.getIdProducto();
                     precioUnitario = productoSeleccionado.getPrecio();
                     VariablesGlobales.idProducto = idSeleccionado;
+                    VariablesGlobales.precioUnitario = precioUnitario;
                     Toast.makeText(Catalogo.this, "id: " + VariablesGlobales.idProducto, Toast.LENGTH_LONG).show();
                 }catch (Exception ex){
                     Toast.makeText(Catalogo.this, "ERROR: " + ex, Toast.LENGTH_LONG).show();
@@ -78,7 +85,7 @@ public class Catalogo extends AppCompatActivity implements SearchView.OnQueryTex
     private void mostrarDialogoDeOpciones() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Selecciona una opción")
-                .setItems(new CharSequence[]{"Ir a negociaciones", "Agregar al carrito"}, new DialogInterface.OnClickListener() {
+                .setItems(new CharSequence[]{"Ir a negociaciones", "Agregar al carrito", "Detalles de producto"}, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // Aquí puedes manejar la selección del usuario
                         switch (which) {
@@ -88,6 +95,12 @@ public class Catalogo extends AppCompatActivity implements SearchView.OnQueryTex
                             case 1:
                                 AgregarCarrito();
                                 break;
+                            case 2:
+                                abrirDetalles();
+                                break;
+//                            case 3:
+//                                EmailUtils.sendEmail("pablojuanfd@gmail.com", "Probando envío de correo", "Se esta testeando el envio de correo");
+//                                break;
                         }
                     }
                 })

@@ -12,6 +12,15 @@ public class VariablesGlobales {
     public static byte idioma;
     public static byte modoColor;
     public static int idNegociacion;
+    public static double precioUnitario;
+
+    public static double getPrecioUnitario() {
+        return precioUnitario;
+    }
+
+    public static void setPrecioUnitario(double precioUnitario) {
+        VariablesGlobales.precioUnitario = precioUnitario;
+    }
 
     public static int getIdNegociacion() {
         return idNegociacion;

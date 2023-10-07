@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bordett">
+
+    <ImageView
+        android:id="@+id/authorImageView"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="16dp" />
+
+    <TextView
+        android:id="@+id/authorTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/authorImageView"
+        android:layout_alignTop="@id/authorImageView"
+        android:layout_marginEnd="8dp"
+        android:hint="Nombre del autor"
+        android:textSize="16dp"
+        android:textStyle="bold"/>
+
+    <RatingBar
+        android:id="@+id/ratingBarCom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/authorImageView"
+        android:layout_marginTop="30dp"
+        android:layout_toEndOf="@id/authorImageView"
+        android:numStars="5"
+        android:stepSize="1.0"
+        style="@style/CustomRatingBar"
+        android:isIndicator="true"/>
+
+    <TextView
+        android:id="@+id/opinionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/authorImageView"
+        android:layout_marginTop="18dp"
+        android:hint="reseña"
+        android:textSize="16dp"/>
+</RelativeLayout>

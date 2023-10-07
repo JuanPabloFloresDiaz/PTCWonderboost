@@ -7,19 +7,15 @@
     android:gravity="bottom">
 
     <ImageView
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="157dp"
+        android:layout_height="113dp"
         android:paddingEnd="25dp"
-        android:src="@drawable/logowonderboost" />
+        android:src="@drawable/logo" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="155dp"
         android:layout_height="wrap_content"
         android:text="WonderBoost"
         android:textSize="24sp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Confianza y seguridad"
-        android:textSize="14sp"/>
+
 </LinearLayout>

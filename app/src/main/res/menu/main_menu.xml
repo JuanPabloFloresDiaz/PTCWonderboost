@@ -40,7 +40,7 @@
                 android:title="Envios" />
             <item
                 android:id="@+id/nav_rate2"
-                android:icon="@drawable/baseline_calendar_today_24"
+                android:icon="@drawable/pago"
                 android:title="Seguimiento de pagos" />
 
         </menu>

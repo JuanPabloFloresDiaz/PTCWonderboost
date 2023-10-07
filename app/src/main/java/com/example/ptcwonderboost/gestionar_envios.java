@@ -51,6 +51,22 @@ public class gestionar_envios extends AppCompatActivity {
         }
     }
 
+    public final void CargarDatosGestionarEnvios(){
+        Envio envio = new Envio();
+        try {
+            envio.setIdEnvio(VariablesGlobales.getIdProducto());
+            ResultSet rs = envio.MostrarDatosGestionEnvio();
+            while (rs.next()){
+                UbicacionOrigen.setText(rs.getString("Origen"));
+                UbicacionDestino.setText(rs.getString("Destino"));
+                fechaEditText.setText(rs.getString("Fecha"));
+                estadoEnvio.setSelection(rs.getInt("idEstado"));
+            }
+        }catch (Exception ex){
+
+        }
+    }
+
     private void abrirNegociacion() {
         // Aquí puedes abrir una nueva pantalla, por ejemplo:
         Intent intent = new Intent(this, Envios.class);
@@ -106,6 +122,7 @@ public class gestionar_envios extends AppCompatActivity {
                 showDatePicker();
             }
         });
+        CargarDatosGestionarEnvios();
         btnGuardar = findViewById(R.id.btnGuardarCambiosG);
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,6 +134,7 @@ public class gestionar_envios extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     private void showDatePicker() {

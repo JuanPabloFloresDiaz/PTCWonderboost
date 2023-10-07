@@ -1,7 +1,11 @@
 package com.example.ptcwonderboost;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Bundle;
 
@@ -19,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
                finish();
             }
         }, 3200);
-
     }
+
+
 }
