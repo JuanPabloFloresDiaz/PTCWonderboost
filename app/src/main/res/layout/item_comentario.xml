@@ -28,12 +28,16 @@
         android:id="@+id/ratingBarCom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:layout_alignTop="@id/authorImageView"
         android:layout_marginTop="30dp"
         android:layout_toEndOf="@id/authorImageView"
         android:numStars="5"
         android:stepSize="1.0"
         style="@style/CustomRatingBar"
+        android:layout_gravity="left"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
         android:isIndicator="true"/>
 
     <TextView

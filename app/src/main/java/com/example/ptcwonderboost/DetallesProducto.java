@@ -21,7 +21,7 @@ import java.sql.ResultSet;
 import java.util.List;
 
 public class DetallesProducto extends AppCompatActivity {
-    private double precioUnitario;
+
     TextView producto, precio, estado, unidades, vendedor;
     Button nego, carro, agregar;
     RatingBar estrellas;
@@ -97,6 +97,9 @@ public class DetallesProducto extends AppCompatActivity {
             Toast.makeText(this,"ERROR: " + ex, Toast.LENGTH_LONG).show();
         }
     }
+    public final void LimpiarCampos(){
+        comentarios.setText("");
+    }
 
     public final void CargarComentarios(){
         Comentarios comentario = new Comentarios();
@@ -146,6 +149,7 @@ public class DetallesProducto extends AppCompatActivity {
             public void onClick(View view) {
                 AgregarComentarios();
                 CargarComentarios();
+                LimpiarCampos();
             }
         });
         nego.setOnClickListener(new View.OnClickListener() {

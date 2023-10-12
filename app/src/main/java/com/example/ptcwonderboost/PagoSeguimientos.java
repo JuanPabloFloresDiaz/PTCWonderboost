@@ -35,6 +35,9 @@ public class PagoSeguimientos extends AppCompatActivity {
     private List<String> datos;
     private Button btnGuardar;
     private Calendar calendar = Calendar.getInstance();
+    private int idP;
+    private String correo, productoServicio;
+    private BigDecimal Precio;
 
     public final void GuardarPago(){
         try{
@@ -52,15 +55,46 @@ public class PagoSeguimientos extends AppCompatActivity {
                 int valor = pagos.IngresarPago();
                 if(valor == 1){
                     LeerDatos();
-                    Toast.makeText(this,"Se guardo el pedido", Toast.LENGTH_SHORT ).show();
+                    Toast.makeText(this,"Se guardo el pago", Toast.LENGTH_SHORT ).show();
+                    try {
+                        Correo crec = new Correo();
+                        crec.setId(idEnvio);
+                        ResultSet rsss = crec.CapturaIDEnvio();
 
+                        while (rsss.next()){
+                            VariablesGlobales.setIdNegociacion(rsss.getInt("idNegociacion"));
+                        }
+                        crec.setId(VariablesGlobales.getIdNegociacion());
+                        ResultSet rss = crec.CapturaIDdeNegociacion();
+
+                        while (rss.next()){
+                            idP = rss.getInt("idPersonas");
+                            productoServicio = rss.getString("Producto o Servicio");
+                            Precio = rss.getBigDecimal("Precio de venta");
+                        }
+                        crec.setId(idP);
+                        ResultSet rs = crec.NotificarCorreo();
+                        while(rs.next()){
+                            // Obtener el correo del resultado
+                            correo = rs.getString("Correo");
+                        }
+                        String mensaje =
+                                 " Número de negociación: " + VariablesGlobales.getIdNegociacion()
+                                + "\n Nombre del producto o del servicio solicitado: " + productoServicio
+                                + "\n Precio acordado: $" + Precio + " USD"
+                                + "\n Tu envío fue realizado y tu pago a sido corroborado el: " + fechaEditText.getText();
+                        EmailUtils.sendEmailOld(correo, "Envío y pago realizado", mensaje);
+                    } catch (Exception ex) {
+                        Toast.makeText(this,"Error: "+ ex, Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         }catch(Exception ex){
             System.out.println("Error: " + ex);
-
+            Toast.makeText(this,"Error: " + ex, Toast.LENGTH_SHORT).show();
         }
     }
+
     public final void LeerDatos(){
         Pagos pagos = new Pagos();
         pagos.setIdVendedor(VariablesGlobales.getIdPersona());

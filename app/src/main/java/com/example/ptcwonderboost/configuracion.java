@@ -19,7 +19,6 @@ public class configuracion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuracion);
         AdministraClave = findViewById(R.id.btnAdministrarContraseña);
-        Politica = findViewById(R.id.btnPDF);
 
         AdministraClave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,13 +26,6 @@ public class configuracion extends AppCompatActivity {
                 // Aquí puedes abrir una nueva pantalla, por ejemplo:
                 Intent intent = new Intent(configuracion.this, ReestablecerContrasena.class);
                 startActivity(intent);
-            }
-        });
-        Politica.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Aquí puedes abrir una nueva pantalla, por ejemplo:
-
             }
         });
     }

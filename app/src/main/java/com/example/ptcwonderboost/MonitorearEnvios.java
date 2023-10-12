@@ -1,6 +1,5 @@
 package com.example.ptcwonderboost;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +9,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.math.BigDecimal;
+import java.sql.ResultSet;
 import java.util.Calendar;
 
 public class MonitorearEnvios extends AppCompatActivity {
@@ -17,6 +18,10 @@ public class MonitorearEnvios extends AppCompatActivity {
     private EditText fechaEditText, UbicacionOrigen, UbicacionDestino;
     private Button btnGuardar;
     private Calendar calendar = Calendar.getInstance();
+    private int idP;
+    private String correo, productoServicio;
+    private BigDecimal Precio;
+
     public final void IngresarEnvio(){
         try{
             Envio envio = new Envio();
@@ -34,6 +39,31 @@ public class MonitorearEnvios extends AppCompatActivity {
             if(valor == 1){
                 Toast.makeText(this,"Se agrego el envio", Toast.LENGTH_SHORT ).show();
                 abrirNegociacion();
+                try {
+                    Correo crec = new Correo();
+                    crec.setId(VariablesGlobales.getIdNegociacion());
+                    ResultSet rss = crec.CapturaIDdeNegociacion();
+
+                    while (rss.next()){
+                        idP = rss.getInt("idPersonas");
+                        productoServicio = rss.getString("Producto o Servicio");
+                        Precio = rss.getBigDecimal("Precio de venta");
+                    }
+                    crec.setId(idP);
+                    ResultSet rs = crec.NotificarCorreo();
+                    while(rs.next()){
+                        // Obtener el correo del resultado
+                        correo = rs.getString("Correo");
+                    }
+                    String mensaje = "Número de negociación: " + VariablesGlobales.getIdNegociacion()
+                            + "\n Nombre del producto o del servicio solicitado: " + productoServicio
+                            + "\n Precio acordado: $" + Precio + " USD"
+                            + "\n Ubicación de destino: "+ UbicacionDestino.getText()
+                            + "\n Fecha estimada de entrega: " + fechaEditText.getText();
+                    EmailUtils.sendEmailOld(correo, "Datos de tu envío", mensaje);
+                } catch (Exception ex) {
+                    Toast.makeText(this,"Error: "+ ex, Toast.LENGTH_SHORT).show();
+                }
             }
             }
         }catch(Exception ex){

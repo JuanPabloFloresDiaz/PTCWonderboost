@@ -12,12 +12,15 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.math.BigDecimal;
+import java.sql.ResultSet;
 import java.util.List;
 
 public class Pedidos extends AppCompatActivity {
     ListView lista;
     private int idSeleccionado;
+    private int idP;
     private BigDecimal PRECIO;
+    private String correo;
     final void AceptarPedido(){
         try{
             Pedido ocu = new Pedido();
@@ -27,6 +30,24 @@ public class Pedidos extends AppCompatActivity {
             if(valor == 1){
                 CargarLista();
                 Toast.makeText(this,"Se acepto el pedido", Toast.LENGTH_SHORT ).show();
+                try {
+                    Correo crec = new Correo();
+                    crec.setId(idSeleccionado);
+                    ResultSet rss = crec.CapturaIDdeNegociacion();
+                    while (rss.next()){
+                        idP = rss.getInt("idPersonas");
+                    }
+                    crec.setId(idP);
+                    ResultSet rs = crec.NotificarCorreo();
+                    while(rs.next()){
+                        // Obtener el correo del resultado
+                        correo = rs.getString("Correo");
+                    }
+                    String mensaje =" Tu pedido fue aceptado por el monto de: $" + PRECIO;
+                    EmailUtils.sendEmailOld(correo, "Pedido aceptado", mensaje);
+                } catch (Exception ex) {
+                    Toast.makeText(this,"Error: "+ ex, Toast.LENGTH_SHORT).show();
+                }
             }
         }catch(Exception ex){
             System.out.println("Error: " + ex);
@@ -40,6 +61,24 @@ public class Pedidos extends AppCompatActivity {
             if(valor == 1){
                 CargarLista();
                 Toast.makeText(this,"Se rechazo el pedido", Toast.LENGTH_SHORT ).show();
+                try {
+                    Correo crec = new Correo();
+                    crec.setId(idSeleccionado);
+                    ResultSet rss = crec.CapturaIDdeNegociacion();
+                    while (rss.next()){
+                        idP = rss.getInt("idPersonas");
+                    }
+                    crec.setId(idP);
+                    ResultSet rs = crec.NotificarCorreo();
+                    while(rs.next()){
+                        // Obtener el correo del resultado
+                        correo = rs.getString("Correo");
+                    }
+                    String mensaje =" Tu pedido fue rechazado";
+                    EmailUtils.sendEmailOld(correo, "Pedido rechazado", mensaje);
+                } catch (Exception ex) {
+                    Toast.makeText(this,"Error: "+ ex, Toast.LENGTH_SHORT).show();
+                }
             }
         }catch(Exception ex){
             System.out.println("Error: " + ex);
