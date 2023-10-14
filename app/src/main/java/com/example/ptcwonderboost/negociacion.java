@@ -27,6 +27,7 @@ public class negociacion extends AppCompatActivity {
     private EditText cantidad, precioOfrecido;
     private Spinner formaPago;
     private int idFormaPago;
+    private int valormaximo;
     private Button Negociar;
 
     final void AbrirWhatsaap(){
@@ -47,9 +48,13 @@ public class negociacion extends AppCompatActivity {
         }
     }
 
+    int cantidadSoli;
     final void ConfirmarNegociacion(){
         try {
             Negociaciones n = new Negociaciones();
+            String preciotext = precioOfrecido.getText().toString();
+            String Cantidad = cantidad.getText().toString();
+            cantidadSoli = Integer.parseInt(Cantidad);
             if(Validaciones.Vacio(cantidad) || Validaciones.Vacio(precioOfrecido)){
                 Toast.makeText(this,"Ay campos vacios", Toast.LENGTH_SHORT).show();
             }else if(idFormaPago == 0){
@@ -58,9 +63,12 @@ public class negociacion extends AppCompatActivity {
                 Toast.makeText(this,"Se debe respetar el formato del precio", Toast.LENGTH_SHORT).show();
             }else if(!Validaciones.Numeros(cantidad)){
                 Toast.makeText(this,"Solo debes poner numeros para cantidad", Toast.LENGTH_SHORT).show();
+            }else if(cantidadSoli > valormaximo){
+                Toast.makeText(this,"La cantidad que usted solicito, sobrepasa la cantidad de productos", Toast.LENGTH_SHORT).show();
+            }else if(cantidadSoli == 0){
+                Toast.makeText(this,"La cantidad debe ser mayor a 0", Toast.LENGTH_SHORT).show();
             }else{
-                String preciotext = precioOfrecido.getText().toString();
-                String Cantidad = cantidad.getText().toString();
+
                 n.setIdProducto(VariablesGlobales.getIdProducto());
                 n.setIdEstado(1);
                 n.setIdPersona(VariablesGlobales.getIdPersona());
@@ -106,6 +114,7 @@ public class negociacion extends AppCompatActivity {
                 BigDecimal precio = rs.getBigDecimal("Precio original");
                 precioOriginal.setText(precio.toString());
                 vendedor.setText(rs.getString("Vendedor"));
+                valormaximo = rs.getInt("Cantidad");
             }
         }catch(Exception ex){
         }
