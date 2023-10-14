@@ -64,7 +64,7 @@ public class negociacion extends AppCompatActivity {
             }else if(!Validaciones.Numeros(cantidad)){
                 Toast.makeText(this,"Solo debes poner numeros para cantidad", Toast.LENGTH_SHORT).show();
             }else if(cantidadSoli > valormaximo){
-                Toast.makeText(this,"La cantidad que usted solicito, sobrepasa la cantidad de productos", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"La cantidad que usted solicito, sobrepasa la cantidad de productos disponibles", Toast.LENGTH_SHORT).show();
             }else if(cantidadSoli == 0){
                 Toast.makeText(this,"La cantidad debe ser mayor a 0", Toast.LENGTH_SHORT).show();
             }else{
